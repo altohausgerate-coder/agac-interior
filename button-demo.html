@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Button Effektləri — Demo</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --dark:#111110;--bg:#FAFAF8;--acc:#8B6A45;
+  --S:'Plus Jakarta Sans',-apple-system,sans-serif;
+  --D:'Cormorant Garamond',Georgia,serif;
+}
+body{font-family:var(--S);background:var(--bg);color:var(--dark);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:4rem 2rem;gap:5rem}
+.section{width:100%;max-width:900px;display:flex;flex-direction:column;gap:2rem}
+.label{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);font-weight:500}
+h2{font-family:var(--D);font-size:1.6rem;font-weight:300;margin-top:.3rem;margin-bottom:1.5rem}
+.row{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center}
+.divider{width:100%;height:1px;background:rgba(17,17,16,.08)}
+
+/* ─── 1. ARROW SLIDE ───────────────────────── */
+.btn-arrow{
+  display:inline-flex;align-items:center;overflow:hidden;
+  font-family:var(--S);font-size:.75rem;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase;text-decoration:none;
+  background:var(--dark);color:var(--bg);
+  padding:.65rem 1.6rem;border-radius:1px;border:1px solid var(--dark);
+  position:relative;cursor:pointer;
+  transition:background .22s;
+}
+.btn-arrow .txt{
+  display:inline-flex;align-items:center;gap:.5rem;
+  transition:transform .3s cubic-bezier(.16,1,.3,1);
+}
+.btn-arrow .arrow{
+  display:inline-flex;align-items:center;
+  position:absolute;right:1.6rem;opacity:0;
+  transform:translateX(-8px);
+  transition:opacity .3s,transform .3s cubic-bezier(.16,1,.3,1);
+}
+.btn-arrow:hover .txt{transform:translateX(-14px)}
+.btn-arrow:hover .arrow{opacity:1;transform:translateX(0)}
+
+.btn-arrow-outline{
+  display:inline-flex;align-items:center;overflow:hidden;
+  font-family:var(--S);font-size:.75rem;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase;text-decoration:none;
+  background:transparent;color:var(--dark);
+  padding:.65rem 1.6rem;border-radius:1px;border:1px solid rgba(17,17,16,.3);
+  position:relative;cursor:pointer;
+}
+.btn-arrow-outline .txt{
+  display:inline-flex;align-items:center;gap:.5rem;
+  transition:transform .3s cubic-bezier(.16,1,.3,1);
+}
+.btn-arrow-outline .arrow{
+  display:inline-flex;align-items:center;
+  position:absolute;right:1.6rem;opacity:0;
+  transform:translateX(-8px);
+  transition:opacity .3s,transform .3s cubic-bezier(.16,1,.3,1);
+}
+.btn-arrow-outline:hover .txt{transform:translateX(-14px)}
+.btn-arrow-outline:hover .arrow{opacity:1;transform:translateX(0)}
+.btn-arrow-outline:hover{border-color:var(--dark)}
+
+/* ─── 2. FILL SWEEP ────────────────────────── */
+.btn-fill{
+  display:inline-flex;align-items:center;
+  font-family:var(--S);font-size:.75rem;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase;text-decoration:none;
+  color:var(--dark);padding:.65rem 1.6rem;border-radius:1px;
+  border:1px solid rgba(17,17,16,.3);position:relative;
+  overflow:hidden;cursor:pointer;
+  transition:color .3s,border-color .3s;
+}
+.btn-fill::before{
+  content:'';position:absolute;inset:0;
+  background:var(--dark);
+  transform:translateX(-101%);
+  transition:transform .4s cubic-bezier(.16,1,.3,1);
+}
+.btn-fill span{position:relative;z-index:1}
+.btn-fill:hover::before{transform:translateX(0)}
+.btn-fill:hover{color:#fff;border-color:var(--dark)}
+
+.btn-fill-acc{
+  display:inline-flex;align-items:center;
+  font-family:var(--S);font-size:.75rem;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase;text-decoration:none;
+  color:var(--acc);padding:.65rem 1.6rem;border-radius:1px;
+  border:1px solid var(--acc);position:relative;
+  overflow:hidden;cursor:pointer;
+  transition:color .3s;
+}
+.btn-fill-acc::before{
+  content:'';position:absolute;inset:0;
+  background:var(--acc);
+  transform:translateX(-101%);
+  transition:transform .4s cubic-bezier(.16,1,.3,1);
+}
+.btn-fill-acc span{position:relative;z-index:1}
+.btn-fill-acc:hover::before{transform:translateX(0)}
+.btn-fill-acc:hover{color:#fff}
+
+/* ─── 3. MAGNETIC ──────────────────────────── */
+.btn-mag{
+  display:inline-flex;align-items:center;
+  font-family:var(--S);font-size:.75rem;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase;text-decoration:none;
+  background:var(--dark);color:var(--bg);
+  padding:.65rem 1.6rem;border-radius:1px;border:1px solid var(--dark);
+  cursor:pointer;transition:box-shadow .2s;will-change:transform;
+}
+.btn-mag:hover{box-shadow:0 8px 24px rgba(17,17,16,.2)}
+
+.btn-mag-outline{
+  display:inline-flex;align-items:center;
+  font-family:var(--S);font-size:.75rem;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase;text-decoration:none;
+  background:transparent;color:var(--dark);
+  padding:.65rem 1.6rem;border-radius:1px;border:1px solid rgba(17,17,16,.3);
+  cursor:pointer;transition:box-shadow .2s,border-color .2s;will-change:transform;
+}
+.btn-mag-outline:hover{box-shadow:0 8px 24px rgba(17,17,16,.1);border-color:var(--dark)}
+
+/* ─── 4. SHIMMER ───────────────────────────── */
+.btn-shimmer{
+  display:inline-flex;align-items:center;
+  font-family:var(--S);font-size:.75rem;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase;text-decoration:none;
+  background:var(--dark);color:var(--bg);
+  padding:.65rem 1.6rem;border-radius:1px;border:1px solid var(--dark);
+  position:relative;overflow:hidden;cursor:pointer;
+}
+.btn-shimmer::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.22) 50%,transparent 70%);
+  transform:translateX(-100%);
+  transition:none;
+}
+.btn-shimmer:hover::after{
+  transform:translateX(100%);
+  transition:transform .55s cubic-bezier(.16,1,.3,1);
+}
+
+.btn-shimmer-gold{
+  display:inline-flex;align-items:center;
+  font-family:var(--S);font-size:.75rem;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase;text-decoration:none;
+  background:transparent;color:var(--dark);
+  padding:.65rem 1.6rem;border-radius:1px;border:1px solid rgba(17,17,16,.3);
+  position:relative;overflow:hidden;cursor:pointer;
+  transition:border-color .2s;
+}
+.btn-shimmer-gold::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(105deg,transparent 30%,rgba(139,106,69,.18) 50%,transparent 70%);
+  transform:translateX(-100%);
+}
+.btn-shimmer-gold:hover{border-color:var(--acc)}
+.btn-shimmer-gold:hover::before{
+  transform:translateX(100%);
+  transition:transform .55s cubic-bezier(.16,1,.3,1);
+}
+
+/* note */
+.note{font-size:.75rem;color:#999;font-weight:300;line-height:1.6;max-width:420px}
+</style>
+</head>
+<body>
+
+<div class="section">
+  <p class="label">Button Effektləri — Canlı Demo</p>
+  <p class="note">Hər düymənin üzərinə sürün — effekti canlı görün. Bəyəndiyini söylə, sayta əlavə edim.</p>
+</div>
+
+<!-- 1 ARROW -->
+<div class="section">
+  <p class="label">Effekt 1</p>
+  <h2>Arrow Slide</h2>
+  <div class="row">
+    <button class="btn-arrow">
+      <span class="txt">Sifariş ver</span>
+      <span class="arrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </span>
+    </button>
+    <button class="btn-arrow-outline">
+      <span class="txt">Ətraflı bax</span>
+      <span class="arrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </span>
+    </button>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 2 FILL -->
+<div class="section">
+  <p class="label">Effekt 2</p>
+  <h2>Fill Sweep</h2>
+  <div class="row">
+    <button class="btn-fill"><span>Əlaqə</span></button>
+    <button class="btn-fill-acc"><span>Sifariş ver</span></button>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 3 MAGNETIC -->
+<div class="section">
+  <p class="label">Effekt 3</p>
+  <h2>Magnetic Hover</h2>
+  <p class="note" style="margin-bottom:1rem">Kursor yaxınlaşanda düymə kursorun ardınca gedir — premium interaktiv hiss.</p>
+  <div class="row">
+    <button class="btn-mag" id="m1">Sifariş ver</button>
+    <button class="btn-mag-outline" id="m2">Əlaqə</button>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 4 SHIMMER -->
+<div class="section">
+  <p class="label">Effekt 4</p>
+  <h2>Shimmer Sweep</h2>
+  <div class="row">
+    <button class="btn-shimmer">Sifariş ver</button>
+    <button class="btn-shimmer-gold">Ətraflı bax</button>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- COMBO -->
+<div class="section">
+  <p class="label">Kombinasiya</p>
+  <h2>Arrow + Shimmer (tövsiyə)</h2>
+  <p class="note" style="margin-bottom:1rem">Hər iki effekti birlikdə — arrow slide + işıq süpürgəsi.</p>
+  <div class="row">
+    <button class="btn-combo-solid">
+      <span class="txt">Sifariş ver</span>
+      <span class="arrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </span>
+    </button>
+    <button class="btn-combo-outline">
+      <span class="txt">Ətraflı bax</span>
+      <span class="arrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </span>
+    </button>
+  </div>
+</div>
+
+<style>
+.btn-combo-solid{
+  display:inline-flex;align-items:center;overflow:hidden;
+  font-family:var(--S);font-size:.75rem;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase;
+  background:var(--dark);color:var(--bg);
+  padding:.65rem 1.6rem;border-radius:1px;border:1px solid var(--dark);
+  position:relative;cursor:pointer;
+}
+.btn-combo-solid::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.18) 50%,transparent 70%);
+  transform:translateX(-100%);
+}
+.btn-combo-solid:hover::after{transform:translateX(100%);transition:transform .55s cubic-bezier(.16,1,.3,1)}
+.btn-combo-solid .txt{display:inline-flex;align-items:center;gap:.5rem;position:relative;transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.btn-combo-solid .arrow{position:absolute;right:1.6rem;opacity:0;transform:translateX(-8px);transition:opacity .3s,transform .3s cubic-bezier(.16,1,.3,1)}
+.btn-combo-solid:hover .txt{transform:translateX(-14px)}
+.btn-combo-solid:hover .arrow{opacity:1;transform:translateX(0)}
+
+.btn-combo-outline{
+  display:inline-flex;align-items:center;overflow:hidden;
+  font-family:var(--S);font-size:.75rem;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase;
+  background:transparent;color:var(--dark);
+  padding:.65rem 1.6rem;border-radius:1px;border:1px solid rgba(17,17,16,.3);
+  position:relative;cursor:pointer;
+  transition:border-color .2s;
+}
+.btn-combo-outline::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(105deg,transparent 30%,rgba(139,106,69,.15) 50%,transparent 70%);
+  transform:translateX(-100%);
+}
+.btn-combo-outline:hover{border-color:var(--dark)}
+.btn-combo-outline:hover::before{transform:translateX(100%);transition:transform .55s cubic-bezier(.16,1,.3,1)}
+.btn-combo-outline .txt{display:inline-flex;align-items:center;gap:.5rem;position:relative;transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.btn-combo-outline .arrow{position:absolute;right:1.6rem;opacity:0;transform:translateX(-8px);transition:opacity .3s,transform .3s cubic-bezier(.16,1,.3,1)}
+.btn-combo-outline:hover .txt{transform:translateX(-14px)}
+.btn-combo-outline:hover .arrow{opacity:1;transform:translateX(0)}
+</style>
+
+<script>
+// Magnetic effect
+function magnetic(el, strength = 0.35) {
+  el.addEventListener('mousemove', e => {
+    const r = el.getBoundingClientRect();
+    const x = e.clientX - r.left - r.width / 2;
+    const y = e.clientY - r.top - r.height / 2;
+    el.style.transform = `translate(${x * strength}px, ${y * strength}px)`;
+  });
+  el.addEventListener('mouseleave', () => {
+    el.style.transform = '';
+    el.style.transition = 'transform .4s cubic-bezier(.16,1,.3,1)';
+    setTimeout(() => el.style.transition = '', 400);
+  });
+  el.addEventListener('mouseenter', () => {
+    el.style.transition = 'transform .1s';
+  });
+}
+magnetic(document.getElementById('m1'));
+magnetic(document.getElementById('m2'));
+</script>
+
+</body>
+</html>

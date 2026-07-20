@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Epoxy Azerbaijan Group</title>
+<meta name="description" content="Epoxy Azerbaijan Group — Agach Interiors, HAUZ Furniture, ARCHI Studio, Doorsa">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --D:'Cormorant Garamond',Georgia,serif;
+  --S:'Plus Jakarta Sans',-apple-system,sans-serif;
+}
+html,body{width:100%;height:100%;overflow:hidden;background:#080706;cursor:none}
+@media(pointer:coarse){body{cursor:auto}#cur{display:none!important}}
+
+/* ── CURSOR ─────────────────────────── */
+#cur{
+  position:fixed;z-index:9999;pointer-events:none;
+  top:0;left:0;
+  width:10px;height:10px;border-radius:50%;
+  background:rgba(255,255,255,.9);
+  box-shadow:0 0 0 1.5px rgba(0,0,0,.4);
+  will-change:transform;
+  transform:translate(-50%,-50%);
+  transition:width .22s cubic-bezier(.16,1,.3,1),height .22s cubic-bezier(.16,1,.3,1),opacity .2s;
+}
+#cur.big{width:42px;height:42px;background:rgba(255,255,255,.15);box-shadow:0 0 0 1.5px rgba(255,255,255,.3)}
+#cur.hidden{opacity:0}
+
+/* ── TOP BAR ────────────────────────── */
+.top{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:2rem clamp(1.5rem,3vw,3.5rem);
+  pointer-events:none;
+}
+.top-group{
+  font-family:var(--S);font-size:.55rem;font-weight:400;
+  letter-spacing:.26em;text-transform:uppercase;
+  color:rgba(255,255,255,.4);
+  opacity:0;animation:fadeIn .8s .3s forwards;
+}
+.top-right{
+  display:flex;gap:1.8rem;
+  opacity:0;animation:fadeIn .8s .5s forwards;
+  pointer-events:all;
+}
+.top-link{
+  font-family:var(--S);font-size:.55rem;font-weight:300;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.35);text-decoration:none;
+  transition:color .2s;
+}
+.top-link:hover{color:#fff}
+
+/* ── PANELS GRID ────────────────────── */
+.grid{
+  display:flex;width:100%;height:100%;
+  position:relative;
+}
+
+/* ── SINGLE PANEL ───────────────────── */
+.panel{
+  position:relative;
+  flex:1;
+  overflow:hidden;
+  cursor:none;
+  transition:flex .7s cubic-bezier(.16,1,.3,1);
+  border-right:1px solid rgba(255,255,255,.06);
+}
+.panel:last-child{border-right:none}
+.grid:has(.panel:hover) .panel:not(:hover){flex:.6}
+.grid:has(.panel:hover) .panel:hover{flex:1.8}
+
+/* image */
+.panel-img{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  transform:scale(1.06);
+  transition:transform .9s cubic-bezier(.16,1,.3,1),filter .7s;
+  filter:saturate(.75) brightness(.78);
+  will-change:transform;
+}
+.panel:hover .panel-img{
+  transform:scale(1);
+  filter:saturate(.95) brightness(.9);
+}
+
+/* overlay */
+.panel-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(4,3,2,.75) 0%,
+    rgba(4,3,2,.18) 55%,
+    rgba(4,3,2,.04) 100%
+  );
+  transition:background .7s;
+}
+.panel:hover .panel-overlay{
+  background:linear-gradient(
+    to top,
+    rgba(4,3,2,.65) 0%,
+    rgba(4,3,2,.1) 60%,
+    rgba(4,3,2,.0) 100%
+  );
+}
+
+/* grain per panel */
+.panel-grain{
+  position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+  opacity:.35;pointer-events:none;
+}
+
+/* content */
+.panel-body{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;
+  justify-content:flex-end;
+  padding:clamp(1.5rem,3vw,3rem) clamp(1.2rem,2.5vw,2.5rem);
+  padding-top:5rem;
+}
+
+.panel-num{
+  font-family:var(--S);font-size:.5rem;font-weight:300;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(255,255,255,.28);
+  margin-bottom:auto;
+  transform:translateY(-4px);opacity:0;
+  animation:fadeUp .6s calc(var(--d, 0ms) + 400ms) forwards;
+}
+
+.panel-tag{
+  font-family:var(--S);font-size:.52rem;font-weight:400;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.35);
+  margin-bottom:.6rem;
+  transform:translateY(8px);opacity:0;
+  transition:transform .4s,opacity .4s,color .3s;
+}
+.panel:hover .panel-tag{color:rgba(255,255,255,.55)}
+
+.panel-name{
+  font-family:var(--D);
+  font-size:clamp(1.4rem,3vw,2.6rem);
+  font-weight:300;
+  color:#fff;line-height:1.05;
+  letter-spacing:-.01em;
+  transform:translateY(10px);opacity:0;
+  transition:transform .5s cubic-bezier(.16,1,.3,1),opacity .5s;
+}
+.panel-name em{font-style:italic;color:rgba(255,255,255,.6)}
+
+/* stagger in on load */
+.panel:nth-child(1){--d:0ms}
+.panel:nth-child(2){--d:100ms}
+.panel:nth-child(3){--d:200ms}
+.panel:nth-child(4){--d:300ms}
+
+.panel-num{animation:fadeUp .7s calc(var(--d) + 300ms) forwards}
+.panel-tag{animation:fadeUp .7s calc(var(--d) + 450ms) forwards}
+.panel-name{animation:fadeUp .8s calc(var(--d) + 550ms) forwards}
+
+.panel-sub{
+  font-family:var(--S);font-size:.7rem;font-weight:300;
+  color:rgba(255,255,255,.4);line-height:1.7;
+  max-width:22ch;
+  margin-top:.7rem;
+  max-height:0;overflow:hidden;
+  transition:max-height .5s cubic-bezier(.16,1,.3,1),opacity .4s;
+  opacity:0;
+}
+.panel:hover .panel-sub{max-height:80px;opacity:1}
+
+.panel-cta{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:var(--S);font-size:.6rem;font-weight:400;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);text-decoration:none;
+  margin-top:1.2rem;
+  transform:translateY(6px);
+  opacity:0;
+  transition:opacity .4s .1s,transform .4s .1s,color .2s;
+  border-bottom:1px solid transparent;
+  padding-bottom:2px;
+  width:fit-content;
+}
+.panel:hover .panel-cta{opacity:1;transform:translateY(0)}
+.panel-cta:hover{color:#fff;border-color:rgba(255,255,255,.3)}
+.panel-cta svg{transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.panel-cta:hover svg{transform:translateX(4px)}
+
+/* soon badge */
+.panel-soon{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-family:var(--S);font-size:.52rem;font-weight:400;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.28);
+  margin-top:1.2rem;
+  opacity:0;
+  transition:opacity .4s .1s;
+}
+.panel:hover .panel-soon{opacity:1}
+
+/* active panel (Agach) indicator */
+.panel.active .panel-name{color:#fff}
+.panel.active .panel-tag{color:rgba(255,255,255,.5)}
+
+/* ── BOTTOM STRIP ───────────────────── */
+.bottom-strip{
+  position:fixed;bottom:0;left:0;right:0;z-index:50;
+  display:flex;justify-content:center;align-items:center;
+  padding:1.2rem;
+  pointer-events:none;
+  opacity:0;animation:fadeIn .8s 1.2s forwards;
+}
+.bottom-strip span{
+  font-family:var(--S);font-size:.5rem;font-weight:300;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.2);
+}
+
+/* ── PAGE EXIT ──────────────────────── */
+body.exit{animation:exitAnim .5s ease forwards}
+@keyframes exitAnim{to{opacity:0}}
+
+/* ── KEYFRAMES ──────────────────────── */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(14px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* ── MOBILE ─────────────────────────── */
+@media(max-width:768px){
+  html,body{overflow:auto;height:auto}
+  .grid{flex-direction:column;height:auto}
+  .panel{
+    flex:none!important;
+    height:50vh;min-height:260px;
+    border-right:none;
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .panel:last-child{border-bottom:none}
+  .panel-img{transform:scale(1)!important;filter:saturate(.7) brightness(.6)!important}
+  .panel-sub{max-height:80px!important;opacity:1!important}
+  .panel-cta,.panel-soon{opacity:1!important;transform:translateY(0)!important}
+  .grid:has(.panel:hover) .panel:not(:hover){flex:none}
+  .grid:has(.panel:hover) .panel:hover{flex:none}
+  .bottom-strip{display:none}
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+
+<!-- Top bar -->
+<header class="top">
+  <span class="top-group">Epoxy Azerbaijan Group</span>
+  <nav class="top-right">
+    <a href="tel:+994519996822" class="top-link">+994 51 999 68 22</a>
+  </nav>
+</header>
+
+<!-- 4 Brand Panels -->
+<div class="grid">
+
+  <!-- 1. Agach Interiors -->
+  <div class="panel active" id="p-agach">
+    <div class="panel-img" style="background-image:url('media/img/img11.jpg')"></div>
+    <div class="panel-overlay"></div>
+    <div class="panel-grain"></div>
+    <div class="panel-body">
+      <span class="panel-num">01</span>
+      <span class="panel-tag">Massiv Mebel</span>
+      <h2 class="panel-name">Agach<br><em>Interiors</em></h2>
+      <p class="panel-sub">Massiv ağac və epoxy reçinedən fərdi mebel. Bakı.</p>
+      <a href="site.html" class="panel-cta" id="agachLink">
+        Sayta keç
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- 2. HAUZ Furniture -->
+  <div class="panel active" id="p-hauz">
+    <div class="panel-img" style="background-image:url('media/hauz/h27.jpg');background-position:center 50%"></div>
+    <div class="panel-overlay"></div>
+    <div class="panel-grain"></div>
+    <div class="panel-body">
+      <span class="panel-num">02</span>
+      <span class="panel-tag">Ev Mebelləri</span>
+      <h2 class="panel-name">HAUZ<br><em>Furniture</em></h2>
+      <p class="panel-sub">Premium ev mebeli. Fərdi dizayn, klassik texnika.</p>
+      <a href="hauz.html" class="panel-cta" id="hauzLink">
+        Sayta keç
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- 3. ARCHI Studio -->
+  <div class="panel active" id="p-archi">
+    <div class="panel-img" style="background-image:url('media/archi/ar5.jpg');background-position:center 35%"></div>
+    <div class="panel-overlay"></div>
+    <div class="panel-grain"></div>
+    <div class="panel-body">
+      <span class="panel-num">03</span>
+      <span class="panel-tag">Dizayn & Təmir</span>
+      <h2 class="panel-name">ARCHİ<br><em>Studio</em></h2>
+      <p class="panel-sub">İnteryer dizaynı, memarlıq və kompleks təmir.</p>
+      <a href="archi.html" class="panel-cta" id="archiLink">
+        Sayta keç
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- 4. Doorsa -->
+  <div class="panel active" id="p-doorsa">
+    <div class="panel-img" style="background-image:url('media/doorsa/d3.jpg');background-position:center 30%"></div>
+    <div class="panel-overlay"></div>
+    <div class="panel-grain"></div>
+    <div class="panel-body">
+      <span class="panel-num">04</span>
+      <span class="panel-tag">Daxili Qapılar</span>
+      <h2 class="panel-name">Doorsa</h2>
+      <p class="panel-sub">Fərdi istehsal daxili qapılar. İstənilən üslub.</p>
+      <a href="doorsa-b.html" class="panel-cta" id="doorsaLink">
+        Sayta keç
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- Bottom label -->
+<div class="bottom-strip">
+  <span>Epoxy Azerbaijan — Bakı, Azərbaycan</span>
+</div>
+
+<script>
+// Custom cursor
+(function(){
+  const c=document.getElementById('cur');
+  if(!c||!matchMedia('(pointer:fine)').matches)return;
+  let mx=window.innerWidth/2,my=window.innerHeight/2,cx=mx,cy=my,rafId;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;},{passive:true});
+  function loop(){
+    cx+=(mx-cx)*.2;cy+=(my-cy)*.2;
+    c.style.transform=`translate(calc(${cx}px - 50%), calc(${cy}px - 50%))`;
+    rafId=requestAnimationFrame(loop);
+  }
+  rafId=requestAnimationFrame(loop);
+  document.querySelectorAll('.panel,.top-link,a').forEach(el=>{
+    el.addEventListener('mouseenter',()=>c.classList.add('big'));
+    el.addEventListener('mouseleave',()=>c.classList.remove('big'));
+  });
+  document.addEventListener('mouseleave',()=>c.classList.add('hidden'));
+  document.addEventListener('mouseenter',()=>c.classList.remove('hidden'));
+  window.addEventListener('pagehide',()=>cancelAnimationFrame(rafId));
+})();
+
+// Agach link — page exit animation
+document.getElementById('agachLink').addEventListener('click',function(e){
+  e.preventDefault();
+  const href=this.href;
+  document.body.classList.add('exit');
+  setTimeout(()=>window.location.href=href,550);
+});
+
+// Clicking anywhere on agach panel also navigates
+document.getElementById('p-agach').addEventListener('click',function(e){
+  if(e.target.closest('a'))return;
+  document.getElementById('agachLink').click();
+});
+
+// HAUZ panel exit animation
+document.getElementById('hauzLink').addEventListener('click',function(e){
+  e.preventDefault();
+  const href=this.href;
+  document.body.classList.add('exit');
+  setTimeout(()=>window.location.href=href,550);
+});
+document.getElementById('p-hauz').addEventListener('click',function(e){
+  if(e.target.closest('a'))return;
+  document.getElementById('hauzLink').click();
+});
+
+// ARCHI panel exit animation
+document.getElementById('archiLink').addEventListener('click',function(e){
+  e.preventDefault();
+  const href=this.href;
+  document.body.classList.add('exit');
+  setTimeout(()=>window.location.href=href,550);
+});
+document.getElementById('p-archi').addEventListener('click',function(e){
+  if(e.target.closest('a'))return;
+  document.getElementById('archiLink').click();
+});
+
+// Doorsa panel exit animation
+document.getElementById('doorsaLink').addEventListener('click',function(e){
+  e.preventDefault();
+  const href=this.href;
+  document.body.classList.add('exit');
+  setTimeout(()=>window.location.href=href,550);
+});
+document.getElementById('p-doorsa').addEventListener('click',function(e){
+  if(e.target.closest('a'))return;
+  document.getElementById('doorsaLink').click();
+});
+</script>
+</body>
+</html>

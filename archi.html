@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ARCHİ Studio — İnteryer Dizaynı & Təmir | Epoxy Azerbaijan</title>
+<meta name="description" content="ARCHİ Studio — İnteryer dizaynı, fasad dizaynı, memarlıq, təmir və tikinti xidmətləri. Açarı təhvil layihələr. Bakı, Azərbaycan.">
+<meta property="og:title" content="ARCHİ Studio — Dizayn & Təmir">
+<meta property="og:image" content="media/archi/ar5.jpg">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F6F5F1;--bg2:#EFEDE8;--dark:#111110;--mid:#1E1C17;
+  --muted:#7A7870;--line:rgba(17,16,16,.08);
+  --acc:#4A7B6F;--acc2:#3A6058;
+  --S:'Plus Jakarta Sans',-apple-system,sans-serif;
+  --D:'Cormorant Garamond',Georgia,serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--S);background:var(--bg);color:var(--dark);cursor:none;overflow-x:hidden}
+img,video{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+
+#sprog{position:fixed;top:0;left:0;height:2px;width:0%;background:var(--acc);z-index:9999;transition:width .1s}
+
+#loader{position:fixed;inset:0;z-index:9000;background:var(--dark);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;transition:opacity .6s,visibility .6s}
+#loader.hide{opacity:0;visibility:hidden}
+.loader-brand{font-family:var(--D);font-size:2rem;font-weight:300;letter-spacing:.5em;color:#fff;text-transform:uppercase;animation:lbPulse 1.4s ease-in-out infinite}
+.loader-sub{font-size:.52rem;letter-spacing:.36em;text-transform:uppercase;color:rgba(255,255,255,.2)}
+@keyframes lbPulse{0%,100%{opacity:.2}50%{opacity:1}}
+
+@media(pointer:fine){
+  #cur{position:fixed;z-index:9998;pointer-events:none;width:10px;height:10px;border-radius:50%;background:#fff;top:0;left:0;transform:translate(-50%,-50%);box-shadow:0 0 0 1.5px rgba(0,0,0,.35);transition:width .2s cubic-bezier(.16,1,.3,1),height .2s}
+  #cur.big{width:36px;height:36px;background:rgba(255,255,255,.15);box-shadow:0 0 0 1.5px rgba(0,0,0,.18)}
+  #cur.hidden{opacity:0}
+  body,a,button,[role="button"],.bn,.svc-item,.vid-item{cursor:none}
+}
+@media(pointer:coarse){body{cursor:auto}#cur{display:none}}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:800;padding:1.4rem clamp(1.5rem,4vw,4rem);display:flex;align-items:center;justify-content:space-between;transition:background .4s,backdrop-filter .4s}
+.nav.scrolled{background:rgba(246,245,241,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-logo{font-family:var(--D);font-size:1.4rem;font-weight:300;letter-spacing:.18em;color:#fff;transition:color .3s}
+.nav-logo em{font-style:italic;color:rgba(255,255,255,.55)}
+.nav.scrolled .nav-logo{color:var(--dark)}
+.nav.scrolled .nav-logo em{color:var(--acc)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:.61rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);transition:color .2s}
+.nav.scrolled .nav-links a{color:var(--muted)}
+.nav-links a:hover{color:#fff}
+.nav.scrolled .nav-links a:hover{color:var(--dark)}
+.nav-cta{font-size:.59rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:.5rem 1.3rem;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.7);position:relative;overflow:hidden;transition:color .3s,border-color .3s}
+.nav.scrolled .nav-cta{border-color:var(--dark);color:var(--dark)}
+.nav-cta::before{content:'';position:absolute;inset:0;background:#fff;transform:translateX(-101%);transition:transform .35s cubic-bezier(.16,1,.3,1)}
+.nav.scrolled .nav-cta::before{background:var(--dark)}
+.nav-cta span{position:relative;z-index:1}
+.nav-cta:hover::before{transform:translateX(0)}
+.nav-cta:hover{color:var(--dark)}
+.nav.scrolled .nav-cta:hover{color:#fff}
+.ham{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:.4rem}
+.ham span{display:block;width:22px;height:1px;background:#fff;transition:.3s}
+.nav.scrolled .ham span{background:var(--dark)}
+
+.mob-nav{position:fixed;inset:0;z-index:700;background:var(--dark);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.2rem;opacity:0;visibility:hidden;transition:.4s}
+.mob-nav.open{opacity:1;visibility:visible}
+.mob-nav a{font-family:var(--D);font-size:2rem;font-weight:300;font-style:italic;color:#fff;letter-spacing:.04em;transition:color .2s}
+.mob-nav a:hover{color:var(--acc)}
+.mob-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:#fff;font-size:1.4rem}
+
+/* ─── HERO: SPLIT LAYOUT ──────────────────────────────── */
+.hero{
+  height:100dvh;
+  display:grid;
+  grid-template-columns:42fr 58fr;
+  position:relative;
+}
+/* Left dark panel */
+.hero-l{
+  position:relative;
+  background:var(--dark);
+  display:flex;flex-direction:column;
+  justify-content:flex-end;
+  padding:0 clamp(2rem,4vw,4rem) clamp(4rem,7vw,7rem);
+  overflow:hidden;
+  z-index:2;
+}
+.hero-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.5}
+.hero-l-content{position:relative;z-index:1}
+.hero-l-num{
+  position:absolute;top:clamp(5rem,9vw,8rem);left:clamp(2rem,4vw,4rem);
+  font-family:var(--D);font-size:clamp(4rem,8vw,8rem);font-weight:300;
+  color:rgba(255,255,255,.04);line-height:1;pointer-events:none;
+  letter-spacing:-.02em;
+}
+.hero-tag{font-size:.56rem;font-weight:400;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:1.4rem}
+.hero-h1{
+  font-family:var(--D);
+  font-size:clamp(2.4rem,4.2vw,4.4rem);
+  font-weight:300;
+  font-style:italic;
+  color:#fff;
+  line-height:1.1;
+  letter-spacing:-.01em;
+  margin-bottom:1.4rem;
+}
+.hero-h1>.h1-pre{display:block;font-style:normal;color:rgba(255,255,255,.35);font-size:.88em}
+/* TextRoll */
+.txr-w{display:inline-block;perspective:500px;transform-style:preserve-3d;vertical-align:bottom}
+.txr-c{display:inline-block;opacity:0;transform:rotateX(-90deg);transform-origin:50% 100%;animation:txrIn .5s cubic-bezier(.16,1,.3,1) forwards;backface-visibility:hidden}
+@keyframes txrIn{to{opacity:1;transform:rotateX(0deg)}}
+/* Bento Gallery */
+.bento-wrap{overflow-x:auto;overflow-y:hidden;cursor:grab;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:8px}
+.bento-wrap::-webkit-scrollbar{display:none}
+.bento-wrap.grab{cursor:grabbing}
+.bento-track{display:flex;gap:10px;padding:0 clamp(1.5rem,4vw,4rem);width:max-content;align-items:stretch}
+.bn{position:relative;overflow:hidden;flex-shrink:0;height:360px}
+.bn.s{width:220px}.bn.m{width:310px}.bn.l{width:460px}
+.bn img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.16,1,.3,1)}
+.bn:hover img{transform:scale(1.06)}
+.bn-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.82) 0%,rgba(0,0,0,.15) 55%,transparent 100%);opacity:0;transition:opacity .4s}
+.bn:hover .bn-veil{opacity:1}
+.bn-info{position:absolute;bottom:0;left:0;right:0;padding:1.4rem 1.2rem;transform:translateY(10px);opacity:0;transition:transform .45s cubic-bezier(.16,1,.3,1),opacity .4s}
+.bn:hover .bn-info{transform:translateY(0);opacity:1}
+.bn-title{font-family:var(--D);font-size:1.05rem;font-weight:300;font-style:italic;color:#fff;line-height:1.2}
+.bn-desc{font-size:.57rem;color:rgba(255,255,255,.5);margin-top:.2rem;letter-spacing:.08em;text-transform:uppercase}
+.hero-divider{width:40px;height:1px;background:rgba(255,255,255,.18);margin-bottom:1.4rem}
+.hero-sub{font-size:.82rem;font-weight:300;color:rgba(255,255,255,.4);max-width:30ch;line-height:1.85;margin-bottom:2.4rem}
+.hero-actions{display:flex;gap:.8rem;flex-wrap:wrap}
+
+/* Right photo panel */
+.hero-r{
+  position:relative;
+  overflow:hidden;
+}
+.hero-r img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  transition:transform .1s linear;
+}
+.hero-r-veil{
+  position:absolute;inset:0;
+  background:linear-gradient(to right,rgba(17,16,16,.35) 0%,transparent 40%),
+             linear-gradient(to top,rgba(17,16,16,.3) 0%,transparent 35%);
+}
+.hero-badge{
+  position:absolute;top:2rem;right:2rem;
+  padding:.6rem 1.2rem;
+  border:1px solid rgba(255,255,255,.2);
+  backdrop-filter:blur(8px);
+  background:rgba(17,16,16,.35);
+  font-size:.55rem;font-weight:400;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(255,255,255,.6);
+}
+.hero-scroll{
+  position:absolute;bottom:2rem;right:2rem;z-index:2;
+  display:flex;align-items:center;gap:.8rem;
+  font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);
+}
+.hero-scroll-line{width:40px;height:1px;background:rgba(255,255,255,.2);position:relative;overflow:hidden}
+.hero-scroll-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:rgba(255,255,255,.6);animation:scrollSlide 2s ease-in-out infinite}
+@keyframes scrollSlide{0%{left:-100%}100%{left:100%}}
+
+/* BUTTONS */
+.btn-acc{display:inline-flex;align-items:center;font-family:var(--S);font-size:.65rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;background:var(--acc);color:#fff;padding:.72rem 1.8rem;border:1px solid var(--acc);position:relative;overflow:hidden;transition:color .3s}
+.btn-acc::before{content:'';position:absolute;inset:0;background:var(--acc2);transform:translateX(-101%);transition:transform .35s cubic-bezier(.16,1,.3,1)}
+.btn-acc span{position:relative;z-index:1}
+.btn-acc:hover::before{transform:translateX(0)}
+.btn-ghost{display:inline-flex;align-items:center;font-family:var(--S);font-size:.65rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);padding:.72rem 1.8rem;border:1px solid rgba(255,255,255,.2);position:relative;overflow:hidden;transition:color .3s,border-color .3s}
+.btn-ghost::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.08);transform:translateX(-101%);transition:transform .35s cubic-bezier(.16,1,.3,1)}
+.btn-ghost span{position:relative;z-index:1}
+.btn-ghost:hover::before{transform:translateX(0)}
+.btn-ghost:hover{color:#fff;border-color:rgba(255,255,255,.4)}
+.btn-dark{display:inline-flex;align-items:center;font-family:var(--S);font-size:.65rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#fff;padding:.72rem 1.8rem;border:1px solid var(--dark);background:var(--dark);position:relative;overflow:hidden;transition:color .3s}
+.btn-dark::before{content:'';position:absolute;inset:0;background:var(--acc);transform:translateX(-101%);transition:transform .35s cubic-bezier(.16,1,.3,1)}
+.btn-dark span{position:relative;z-index:1}
+.btn-dark:hover::before{transform:translateX(0)}
+.btn-outline-dark{display:inline-flex;align-items:center;font-family:var(--S);font-size:.65rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--dark);padding:.72rem 1.8rem;border:1px solid var(--dark);position:relative;overflow:hidden;transition:color .3s}
+.btn-outline-dark::before{content:'';position:absolute;inset:0;background:var(--dark);transform:translateX(-101%);transition:transform .35s cubic-bezier(.16,1,.3,1)}
+.btn-outline-dark span{position:relative;z-index:1}
+.btn-outline-dark:hover::before{transform:translateX(0)}
+.btn-outline-dark:hover{color:#fff}
+
+/* INFO BAND */
+.info-band{background:var(--acc);padding:0;display:grid;grid-template-columns:repeat(5,1fr)}
+.info-item{padding:1.5rem 1.6rem;border-right:1px solid rgba(255,255,255,.12);display:flex;align-items:center;gap:.75rem}
+.info-item:last-child{border-right:none}
+.info-icon{width:18px;height:18px;flex-shrink:0;color:rgba(255,255,255,.65)}
+.info-text strong{display:block;font-size:.65rem;font-weight:500;letter-spacing:.06em;color:#fff;margin-bottom:.15rem}
+.info-text span{font-size:.57rem;font-weight:300;color:rgba(255,255,255,.5)}
+
+/* INTRO */
+.intro-sec{padding:clamp(5rem,9vw,10rem) clamp(1.5rem,4vw,4rem);display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center}
+.intro-tag{font-size:.56rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-bottom:.8rem}
+.intro-h{font-family:var(--D);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;font-style:italic;color:var(--dark);line-height:1.18;margin-bottom:1.4rem}
+.intro-p{font-size:.82rem;font-weight:300;color:var(--muted);line-height:1.9;margin-bottom:1.2rem;max-width:44ch}
+.intro-img{position:relative}
+.intro-img img{width:100%;height:500px;object-fit:cover;filter:brightness(.92)}
+.intro-img-badge{position:absolute;bottom:-1.5rem;right:-1.5rem;background:var(--dark);padding:1.4rem 1.8rem;text-align:right}
+.intro-img-badge strong{display:block;font-family:var(--D);font-size:1.8rem;font-weight:300;color:#fff;line-height:1}
+.intro-img-badge span{font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:.3rem;display:block}
+
+/* SERVICES — TYPOGRAPHIC LIST */
+.svc-sec{background:var(--bg2);padding:clamp(5rem,8vw,9rem) 0}
+.svc-head{padding:0 clamp(1.5rem,4vw,4rem);margin-bottom:clamp(3rem,5vw,5rem)}
+.svc-tag{font-size:.56rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-bottom:.8rem}
+.svc-h{font-family:var(--D);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;font-style:italic;color:var(--dark);line-height:1.15}
+
+.svc-list{border-top:1px solid var(--line)}
+.svc-item{padding:0 clamp(1.5rem,4vw,4rem);border-bottom:1px solid var(--line);display:grid;grid-template-columns:5rem 1fr auto;align-items:center;gap:2rem;min-height:5.5rem;cursor:default;position:relative;overflow:hidden;transition:background .3s}
+.svc-item::before{content:'';position:absolute;inset:0;background:var(--acc);transform:translateX(-101%);transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.svc-item:hover::before{transform:translateX(0)}
+.svc-item:hover .svc-num,.svc-item:hover .svc-name,.svc-item:hover .svc-desc{color:rgba(255,255,255,.5)}
+.svc-item:hover .svc-name{color:#fff}
+.svc-num{font-family:var(--D);font-size:1rem;font-weight:300;font-style:italic;color:rgba(17,16,16,.2);position:relative;z-index:1;transition:color .3s}
+.svc-name{font-family:var(--D);font-size:clamp(1.5rem,3vw,2.4rem);font-weight:300;font-style:italic;color:var(--dark);position:relative;z-index:1;transition:color .3s}
+.svc-desc{font-size:.65rem;font-weight:300;color:var(--muted);position:relative;z-index:1;transition:color .3s;max-width:24ch;text-align:right;line-height:1.6}
+
+/* GALLERY */
+.gal-sec{padding:clamp(5rem,8vw,9rem) 0}
+.gal-head{padding:0 clamp(1.5rem,4vw,4rem);margin-bottom:clamp(2rem,4vw,4rem);display:flex;align-items:flex-end;justify-content:space-between}
+.gal-masonry{columns:4 230px;column-gap:3px;padding:0 3px}
+.gi{overflow:hidden;margin-bottom:3px;break-inside:avoid;display:block;cursor:zoom-in}
+.gi img{width:100%;height:auto;transition:transform .75s cubic-bezier(.16,1,.3,1)}
+.gi:hover img{transform:scale(1.04)}
+
+/* PROJECT FEATURE */
+.feature-sec{background:var(--dark);padding:0;display:grid;grid-template-columns:1fr 1fr}
+.feat-img{overflow:hidden}
+.feat-img img{width:100%;height:520px;object-fit:cover;filter:brightness(.8);transition:transform .9s cubic-bezier(.16,1,.3,1)}
+.feat-img:hover img{transform:scale(1.03)}
+.feat-info{padding:clamp(3rem,5vw,6rem) clamp(2rem,4vw,4rem);display:flex;flex-direction:column;justify-content:center}
+.feat-tag{font-size:.55rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-bottom:1rem}
+.feat-h{font-family:var(--D);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;font-style:italic;color:#fff;line-height:1.18;margin-bottom:1.2rem}
+.feat-p{font-size:.8rem;font-weight:300;color:rgba(255,255,255,.35);line-height:1.9;max-width:36ch;margin-bottom:2rem}
+.feat-meta{display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.feat-meta-item strong{display:block;font-family:var(--D);font-size:1.4rem;font-weight:300;color:#fff;margin-bottom:.2rem}
+.feat-meta-item span{font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25)}
+
+/* VIDEOS */
+.vid-sec{background:var(--bg2);padding:clamp(4rem,6vw,7rem) clamp(1.5rem,4vw,4rem)}
+.vid-h{font-family:var(--D);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;font-style:italic;color:var(--dark);margin-bottom:2.5rem}
+.vid-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.vid-item{position:relative;overflow:hidden;aspect-ratio:9/16;cursor:pointer}
+.vid-item video{width:100%;height:100%;object-fit:cover;display:block}
+.vid-overlay{position:absolute;inset:0;background:rgba(17,16,16,.2);transition:background .3s;display:flex;align-items:center;justify-content:center}
+.vid-item:hover .vid-overlay{background:rgba(17,16,16,.4)}
+.vid-play{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;color:#fff;opacity:.7;transition:opacity .3s,transform .3s}
+.vid-item:hover .vid-play{opacity:1;transform:scale(1.1)}
+.vid-label{position:absolute;bottom:0;left:0;right:0;padding:.8rem 1rem;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+
+/* PROCESS */
+.proc-sec{background:var(--bg);padding:clamp(5rem,8vw,9rem) clamp(1.5rem,4vw,4rem)}
+.proc-head{margin-bottom:4rem}
+.proc-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line)}
+.proc-step{padding:2.5rem 2rem;border-right:1px solid var(--line);position:relative;counter-increment:proc}
+.proc-step:last-child{border-right:none}
+.proc-step::before{content:counter(proc,decimal-leading-zero);position:absolute;top:2rem;right:2rem;font-family:var(--D);font-size:3rem;font-weight:300;font-style:italic;color:rgba(17,16,16,.05);line-height:1}
+.proc-acc{display:block;width:24px;height:2px;background:var(--acc);margin-bottom:1.4rem}
+.proc-icon{color:var(--acc);width:26px;height:26px;margin-bottom:1rem;opacity:.8}
+.proc-h{font-family:var(--D);font-size:1.15rem;font-weight:300;font-style:italic;color:var(--dark);margin-bottom:.6rem}
+.proc-p{font-size:.7rem;font-weight:300;color:var(--muted);line-height:1.85}
+
+/* STATS */
+.stats-sec{background:var(--dark);padding:clamp(4rem,6vw,6rem) clamp(1.5rem,4vw,4rem);display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.06)}
+.stat-item{padding:2rem;border-right:1px solid rgba(255,255,255,.06);text-align:center}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:var(--D);font-size:clamp(2.8rem,5vw,4.2rem);font-weight:300;font-style:italic;color:#fff;display:flex;align-items:baseline;justify-content:center;gap:.1rem}
+.stat-suf{font-size:1.6rem;color:var(--acc)}
+.stat-lbl{font-size:.57rem;font-weight:300;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:.6rem}
+
+/* MATERIALS */
+.mat-sec{background:var(--bg);padding:clamp(5rem,8vw,9rem) clamp(1.5rem,4vw,4rem)}
+.mat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:3rem}
+.mat-card{position:relative;overflow:hidden;height:320px}
+.mat-card img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1);filter:brightness(.75) saturate(.8)}
+.mat-card:hover img{transform:scale(1.06)}
+.mat-card-info{position:absolute;bottom:0;left:0;right:0;padding:1.8rem 1.5rem;background:linear-gradient(to top,rgba(17,16,16,.85) 0%,transparent 100%)}
+.mat-card-name{font-family:var(--D);font-size:1.2rem;font-weight:300;font-style:italic;color:#fff;margin-bottom:.25rem}
+.mat-card-sub{font-size:.57rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+
+/* CONTACT */
+.contact-sec{background:var(--bg2);padding:clamp(5rem,8vw,9rem) clamp(1.5rem,4vw,4rem);display:grid;grid-template-columns:1fr 1fr;gap:7rem}
+.sec-tag{font-size:.56rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-bottom:.8rem}
+.sec-h2{font-family:var(--D);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;font-style:italic;color:var(--dark);line-height:1.15}
+.sec-sub{font-size:.82rem;font-weight:300;color:var(--muted);max-width:44ch;line-height:1.85;margin-top:1rem}
+.cinfo-list{margin-top:2.5rem;display:flex;flex-direction:column;gap:1.4rem}
+.cinfo-row{display:flex;align-items:flex-start;gap:.9rem}
+.cinfo-icon{width:17px;height:17px;flex-shrink:0;margin-top:.2rem;color:var(--acc);opacity:.8}
+.cinfo-label{font-size:.55rem;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:.18rem}
+.cinfo-val{font-size:.8rem;font-weight:300;color:var(--dark);line-height:1.6}
+.cinfo-val a{color:var(--dark);transition:color .2s}
+.cinfo-val a:hover{color:var(--acc)}
+.csoc{display:flex;gap:.8rem;margin-top:2rem;flex-wrap:wrap}
+.csoc a{font-size:.57rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:.55rem 1.1rem;border:1px solid var(--line);position:relative;overflow:hidden;transition:color .3s}
+.csoc a::before{content:'';position:absolute;inset:0;background:var(--dark);transform:translateX(-101%);transition:transform .32s cubic-bezier(.16,1,.3,1)}
+.csoc a span{position:relative;z-index:1}
+.csoc a:hover::before{transform:translateX(0)}
+.csoc a:hover{color:#fff}
+.cform{display:flex;flex-direction:column;gap:1rem}
+.cform label{display:block}
+.cform-lbl{font-size:.55rem;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:.45rem}
+.cform input,.cform textarea,.cform select{width:100%;background:#fff;border:1px solid var(--line);color:var(--dark);font-family:var(--S);font-size:.8rem;font-weight:300;padding:.82rem 1rem;outline:none;transition:border-color .25s;-webkit-appearance:none}
+.cform select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a7870' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+.cform input:focus,.cform textarea:focus,.cform select:focus{border-color:var(--acc)}
+.cform input.err,.cform textarea.err{border-color:#c0392b}
+.cform textarea{resize:vertical;min-height:88px}
+#formSuccess{display:none;padding:1rem;border:1px solid rgba(74,123,111,.25);background:rgba(74,123,111,.07);font-size:.76rem;font-weight:300;color:var(--muted);letter-spacing:.04em}
+
+/* LIGHTBOX */
+#lbox{position:fixed;inset:0;z-index:8500;background:rgba(5,5,4,.97);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:.3s}
+#lbox.open{opacity:1;visibility:visible}
+#lbox img{max-width:90vw;max-height:88vh;object-fit:contain;transform:scale(.92);transition:transform .3s cubic-bezier(.16,1,.3,1)}
+#lbox.open img{transform:scale(1)}
+.lbox-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:none;color:rgba(255,255,255,.35);cursor:pointer;padding:.5rem;transition:color .2s}
+.lbox-close:hover{color:#fff}
+.lbox-prev,.lbox-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(255,255,255,.3);cursor:pointer;padding:1rem;transition:color .2s}
+.lbox-prev{left:1rem}.lbox-next{right:1rem}
+.lbox-prev:hover,.lbox-next:hover{color:#fff}
+
+/* FOOTER */
+footer{background:var(--dark);padding:3rem clamp(1.5rem,4vw,4rem) 2rem;border-top:1px solid rgba(255,255,255,.05)}
+.ft-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+.ft-logo{font-family:var(--D);font-size:1.3rem;font-weight:300;letter-spacing:.2em;color:rgba(255,255,255,.35)}
+.ft-logo em{font-style:italic;color:var(--acc)}
+.ft-links{display:flex;gap:2rem}
+.ft-links a{font-size:.55rem;font-weight:300;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.18);transition:color .2s}
+.ft-links a:hover{color:rgba(255,255,255,.5)}
+.ft-copy{font-size:.55rem;font-weight:300;color:rgba(255,255,255,.16);letter-spacing:.06em}
+
+/* WA */
+.wa-float{position:fixed;bottom:2rem;right:2rem;z-index:600;width:50px;height:50px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(37,211,102,.28);transition:transform .25s}
+.wa-float:hover{transform:scale(1.1)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:none}
+.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}
+
+/* RESPONSIVE */
+@media(max-width:1100px){.hero{grid-template-columns:1fr}.hero-l{min-height:50vh;justify-content:flex-end;padding-top:7rem}.hero-r{min-height:50vh}.mat-grid{grid-template-columns:1fr 1fr}.intro-sec{grid-template-columns:1fr;gap:3rem}.intro-img-badge{right:0}.feature-sec{grid-template-columns:1fr}.feat-img img,.feat-img{height:350px}}
+@media(max-width:900px){.svc-item{grid-template-columns:4rem 1fr;min-height:4.5rem}.svc-desc{display:none}.info-band{grid-template-columns:1fr 1fr 1fr}.info-item:nth-child(3){border-right:none}.stats-sec{grid-template-columns:1fr 1fr}.stat-item:nth-child(2){border-right:none}.proc-steps{grid-template-columns:1fr 1fr;border-right:none}.proc-step{border-bottom:1px solid var(--line)}.proc-step:nth-child(2){border-right:none}.contact-sec{grid-template-columns:1fr;gap:3rem}.vid-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.nav-links,.nav-cta{display:none}.ham{display:flex}.hero-h1{font-size:2.2rem}.gal-masonry{columns:2}.info-band{grid-template-columns:1fr}.info-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}.info-item:last-child{border-bottom:none}.stats-sec{grid-template-columns:1fr 1fr}.proc-steps{grid-template-columns:1fr}.mat-grid{grid-template-columns:1fr}.vid-grid{grid-template-columns:1fr 1fr}footer{text-align:center}.ft-row{flex-direction:column;align-items:center}}
+/* Zoom Parallax */
+.zp-sec{height:300vh;position:relative;background:var(--dark)}
+.zp-sticky{position:sticky;top:0;height:100vh;overflow:hidden}
+.zp-label{position:absolute;top:2.5rem;left:50%;transform:translateX(-50%);z-index:10;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.28);white-space:nowrap;pointer-events:none}
+.zp-layer{position:absolute;inset:0;will-change:transform}
+.zp-layer img{width:100%;height:100%;object-fit:cover;display:block}
+.zp-l0{transform-origin:50% 50%}
+.zp-l1{transform-origin:calc(50% + 5vw) calc(50% - 30vh)}
+.zp-l2{transform-origin:calc(50% - 25vw) calc(50% - 10vh)}
+.zp-l3{transform-origin:calc(50% + 27.5vw) 50%}
+.zp-l4{transform-origin:calc(50% + 5vw) calc(50% + 27.5vh)}
+.zp-l5{transform-origin:calc(50% - 22.5vw) calc(50% + 27.5vh)}
+.zp-l6{transform-origin:calc(50% + 25vw) calc(50% + 22.5vh)}
+
+/* BACK TO TOP */
+#btt{position:fixed;bottom:5.5rem;right:2rem;z-index:600;width:42px;height:42px;border-radius:50%;background:var(--dark);border:1px solid rgba(255,255,255,.12);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s}
+#btt.show{opacity:1;pointer-events:auto}
+#btt:hover{transform:translateY(-3px)}
+#nav-home{position:fixed;bottom:5.5rem;left:2rem;z-index:600;display:flex;align-items:center;gap:.45rem;padding:.55rem 1.1rem;background:rgba(17,16,16,.88);backdrop-filter:blur(8px);color:rgba(255,255,255,.8);font-size:.58rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,.1);opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s;text-decoration:none;pointer-events:none}
+#nav-home.show{opacity:1;transform:translateY(0);pointer-events:auto}
+#nav-home:hover{background:rgba(17,16,16,1);color:#fff}
+/* LANGUAGE SWITCHER */
+.lang-sw{font-size:.55rem;font-weight:600;letter-spacing:.1em;cursor:pointer;border:none;background:none;color:rgba(255,255,255,.45);padding:.2rem .4rem;transition:color .2s}
+.lang-sw:hover{color:#fff}
+/* BEFORE/AFTER SLIDER */
+.ba-sec{padding:6rem 2rem;background:var(--cream)}
+.ba-head{text-align:center;margin-bottom:3.5rem}
+.ba-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1100px;margin:0 auto}
+.ba-wrap{position:relative;overflow:hidden;aspect-ratio:3/4;cursor:col-resize;user-select:none;border-radius:2px}
+.ba-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ba-after{clip-path:inset(0 50% 0 0)}
+.ba-handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;transform:translateX(-50%);pointer-events:none}
+.ba-handle::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:32px;height:32px;border-radius:50%;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.25)}
+.ba-label{position:absolute;bottom:.75rem;font-size:.52rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.38);padding:.2rem .5rem;border-radius:2px;pointer-events:none}
+.ba-label.before{left:.75rem}.ba-label.after{right:.75rem}
+@media(max-width:700px){.ba-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div id="sprog"></div>
+<div id="loader"><div class="loader-brand">ARCHİ</div><div class="loader-sub">Studio</div></div>
+<div id="cur"></div>
+
+<nav class="mob-nav" id="mobNav">
+  <button class="mob-close" id="mobClose">✕</button>
+  <a href="#services" onclick="closeMob()">Xidmətlər</a>
+  <a href="#gallery" onclick="closeMob()">Qalereya</a>
+  <a href="#videos" onclick="closeMob()">Videolar</a>
+  <a href="#contact" onclick="closeMob()">Əlaqə</a>
+  <a href="index.html" style="font-size:.9rem;letter-spacing:.14em;color:rgba(255,255,255,.22);margin-top:2rem">← Epoxy Azerbaijan</a>
+</nav>
+
+<header class="nav" id="nav">
+  <a href="index.html" class="nav-logo">ARCHİ <em>Studio</em></a>
+  <ul class="nav-links">
+    <li><a href="#services">Xidmətlər</a></li>
+    <li><a href="#gallery">Qalereya</a></li>
+    <li><a href="#videos">Videolar</a></li>
+    <li><a href="#contact">Əlaqə</a></li>
+    <li><button class="lang-sw" id="langBtn" onclick="toggleLang()">EN</button></li>
+  </ul>
+  <a href="#contact" class="nav-cta"><span>Layihə başlat</span></a>
+  <button class="ham" id="hamBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+</header>
+
+<!-- ─── HERO: SPLIT ─────────────────────────────────── -->
+<section class="hero" id="hero">
+  <div class="hero-l">
+    <canvas class="hero-canvas" id="heroCanvas"></canvas>
+    <span class="hero-l-num">01</span>
+    <div class="hero-l-content">
+      <p class="hero-tag">Epoxy Azerbaijan — Dizayn & Təmir Bölməsi</p>
+      <h1 class="hero-h1">
+        <span class="h1-pre" id="txrL1">Sıfırdan —</span>
+        <span id="txrL2">xəyal eviniz</span>
+      </h1>
+      <div class="hero-divider"></div>
+      <p class="hero-sub">İnteryer dizaynı, memarlıq, fasad, tam kompleks təmir. Müəllif nəzarəti ilə açarı təhvil.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-acc"><span>Layihəni başlat</span></a>
+        <a href="#gallery" class="btn-ghost"><span>İşlərə bax</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-r">
+    <img src="media/archi/ar5.jpg" alt="ARCHİ Studio — Premium İnteryer Dizaynı" id="heroImg">
+    <div class="hero-r-veil"></div>
+    <div class="hero-badge">Açarı Təhvil Layihə</div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      Davam et
+    </div>
+  </div>
+</section>
+
+<!-- INFO BAND -->
+<div class="info-band">
+  <div class="info-item">
+    <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <div class="info-text"><strong>İnteryer Dizaynı</strong><span>Fərdi konsepsiya</span></div>
+  </div>
+  <div class="info-item">
+    <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    <div class="info-text"><strong>Fasad Dizaynı</strong><span>Xarici örtük həlləri</span></div>
+  </div>
+  <div class="info-item">
+    <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+    <div class="info-text"><strong>Memarlıq</strong><span>Layihə & texniki nəzarət</span></div>
+  </div>
+  <div class="info-item">
+    <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+    <div class="info-text"><strong>Kompleks Təmir</strong><span>Anahtar təslim</span></div>
+  </div>
+  <div class="info-item">
+    <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    <div class="info-text"><strong>09:00 – 19:00</strong><span>Həftənin 6 günü</span></div>
+  </div>
+</div>
+
+<!-- ZOOM PARALLAX -->
+<section class="zp-sec" id="showcase">
+  <div class="zp-sticky">
+    <div class="zp-label">Dizayn &amp; Memarlıq · Sürüşdür</div>
+    <div class="zp-layer zp-l0"><img src="media/archi/ar26.jpg" alt="ARCHİ Studio layihəsi"></div>
+    <div class="zp-layer zp-l1"><img src="media/archi/ar2.jpg" alt="Yataq otağı dizaynı"></div>
+    <div class="zp-layer zp-l2"><img src="media/archi/ar4.jpg" alt="Dəhliz interyer"></div>
+    <div class="zp-layer zp-l3"><img src="media/archi/ar28.jpg" alt="Qarderob dizaynı"></div>
+    <div class="zp-layer zp-l4"><img src="media/archi/ar17.jpg" alt="Yataq otağı"></div>
+    <div class="zp-layer zp-l5"><img src="media/archi/ar23.jpg" alt="Fasad həlli"></div>
+    <div class="zp-layer zp-l6"><img src="media/archi/ar29.jpg" alt="Memarlıq detay"></div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro-sec" id="about">
+  <div class="reveal">
+    <p class="intro-tag">Haqqımızda</p>
+    <h2 class="intro-h">Dizayndan <br>tikintiyə qədər —<br>biz yanınızdayıq</h2>
+    <p class="intro-p">ARCHİ Studio, Epoxy Azerbaijan Co. şirkətlər qrupunun dizayn və təmir bölməsidir. Müəllif nəzarəti altında interyer və fasad dizaynı, memarlıq, tam kompleks təmir və tikinti xidmətləri göstəririk.</p>
+    <p class="intro-p">Hər layihəni xüsusi konsepsiya ilə başlayır, müştərinin zövqünə uyğun fərdi həll yaradır, açarı təhvil ilə tamamlayırıq.</p>
+    <a href="#services" class="btn-outline-dark" style="margin-top:.5rem"><span>Xidmətlərə bax</span></a>
+  </div>
+  <div class="intro-img reveal d2">
+    <img src="media/archi/ar3.jpg" alt="ARCHİ Studio — İnteryer">
+    <div class="intro-img-badge">
+      <strong>200+</strong>
+      <span>Tamamlanmış layihə</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES: TYPOGRAPHIC LIST -->
+<section class="svc-sec" id="services">
+  <div class="svc-head">
+    <p class="svc-tag reveal">Xidmətlər</p>
+    <h2 class="svc-h reveal">Nə edirik</h2>
+  </div>
+  <div class="svc-list">
+    <div class="svc-item">
+      <span class="svc-num">01</span>
+      <span class="svc-name">İnteryer Dizaynı</span>
+      <span class="svc-desc">3D vizualizasiya, concept board, material seçimi</span>
+    </div>
+    <div class="svc-item">
+      <span class="svc-num">02</span>
+      <span class="svc-name">Fasad Dizaynı</span>
+      <span class="svc-desc">Bina fasadı, xarici örtük, dekorativ elementlər</span>
+    </div>
+    <div class="svc-item">
+      <span class="svc-num">03</span>
+      <span class="svc-name">Memarlıq</span>
+      <span class="svc-desc">Layihə sənədi, texniki nəzarət, müəllif icazəsi</span>
+    </div>
+    <div class="svc-item">
+      <span class="svc-num">04</span>
+      <span class="svc-name">Kompleks Təmir</span>
+      <span class="svc-desc">Quru tikinti, döşəmə, tavan, rəngkarlıq, kommunikasiya</span>
+    </div>
+    <div class="svc-item">
+      <span class="svc-num">05</span>
+      <span class="svc-name">Tikinti</span>
+      <span class="svc-desc">Yeni inşaat, yenidənqurma, əlavə mərtəbə</span>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" style="padding:clamp(5rem,8vw,9rem) 0;background:var(--bg)">
+  <div class="gal-head">
+    <div>
+      <p class="sec-tag reveal">Qalereya</p>
+      <h2 class="sec-h2 reveal" style="font-family:var(--D);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;font-style:italic;color:var(--dark);margin-top:.5rem">Tamamlanmış layihələr</h2>
+    </div>
+  </div>
+  <div class="bento-wrap" id="bentoWrap">
+    <div class="bento-track">
+      <div class="bn s" data-idx="1"><img src="media/archi/ar2.jpg" alt="Yataq otağı"><div class="bn-veil"></div><div class="bn-info"><div class="bn-title">Yataq otağı</div><div class="bn-desc">Adaçayı yaşıl · Parket</div></div></div>
+      <div class="bn s" data-idx="5"><img src="media/archi/ar4.jpg" alt="Dəhliz 2"><div class="bn-veil"></div><div class="bn-info"><div class="bn-title">Dəhliz 2</div><div class="bn-desc">Güzgü · Konsol masa</div></div></div>
+      <div class="bn m" data-idx="24"><img src="media/archi/ar9.jpg" alt="Rezidensiya layihəsi"><div class="bn-veil"></div><div class="bn-info"><div class="bn-title">Rezidensiya</div><div class="bn-desc">Kompleks interyer həlli</div></div></div>
+      <div class="bn m" data-idx="7"><img src="media/archi/ar92.jpg" alt="Qonaq 2"><div class="bn-veil"></div><div class="bn-info"><div class="bn-title">Qonaq 2</div><div class="bn-desc">Neoklassik üslub</div></div></div>
+      <div class="bn s" data-idx="8"><img src="media/archi/ar1.jpg" alt="İnteryer"><div class="bn-veil"></div><div class="bn-info"><div class="bn-title">Stucco panel</div><div class="bn-desc">Qızılı appliqe</div></div></div>
+      <div class="bn s" data-idx="9"><img src="media/archi/ar63.jpg" alt="Mətbəx 3"><div class="bn-veil"></div><div class="bn-info"><div class="bn-title">Mətbəx 3</div><div class="bn-desc">Parlaq finişinq</div></div></div>
+      <div class="bn m" data-idx="10"><img src="media/archi/ar93.jpg" alt="Qonaq 3"><div class="bn-veil"></div><div class="bn-info"><div class="bn-title">Qonaq 3</div><div class="bn-desc">Avize aksenti</div></div></div>
+      <div class="bn m" data-idx="11"><img src="media/archi/ar12.jpg" alt="İnteryer"><div class="bn-veil"></div><div class="bn-info"><div class="bn-title">Nəfis interyer</div><div class="bn-desc">Fərdi konsepsiya</div></div></div>
+      <div class="bn s" data-idx="12"><img src="media/archi/ar122.jpg" alt="İnteryer 2"><div class="bn-veil"></div><div class="bn-info"><div class="bn-title">Detay finişinq</div><div class="bn-desc">Yüksək keyfiyyət</div></div></div>
+      <div class="bn m" data-idx="13"><img src="media/archi/ar28.jpg" alt="Qarderob"><div class="bn-veil"></div><div class="bn-info"><div class="bn-title">Qarderob</div><div class="bn-desc">Walk-in · Fərdi həll</div></div></div>
+      <div class="bn s" data-idx="15"><img src="media/archi/ar30.jpg" alt="Təhvil"><div class="bn-veil"></div><div class="bn-info"><div class="bn-title">Açarı Təhvil</div><div class="bn-desc">Xətai Park layihəsi</div></div></div>
+      <div class="bn s" data-idx="16"><img src="media/archi/ar302.jpg" alt="Təhvil 2"><div class="bn-veil"></div><div class="bn-info"><div class="bn-title">Təhvil 2</div><div class="bn-desc">Tamamlanmış layihə</div></div></div>
+      <div class="bn m" data-idx="17"><img src="media/archi/ar303.jpg" alt="Təhvil 3"><div class="bn-veil"></div><div class="bn-info"><div class="bn-title">Keyfiyyət nəzarəti</div><div class="bn-desc">Son baxış</div></div></div>
+      <div class="bn m" data-idx="18"><img src="media/archi/ar33.jpg" alt="Türkuaz"><div class="bn-veil"></div><div class="bn-info"><div class="bn-title">Türkuaz aksent</div><div class="bn-desc">Rəng dizaynı</div></div></div>
+      <div class="bn s" data-idx="19"><img src="media/archi/ar332.jpg" alt="Türkuaz 2"><div class="bn-veil"></div><div class="bn-info"><div class="bn-title">Dekorativ panel</div><div class="bn-desc">Türkuaz finişinq</div></div></div>
+      <div class="bn s" data-idx="21"><img src="media/archi/ar142.jpg" alt="MDF 2"><div class="bn-veil"></div><div class="bn-info"><div class="bn-title">MDF 2</div><div class="bn-desc">Kafel uyumu</div></div></div>
+      <div class="bn s" data-idx="22"><img src="media/archi/ar143.jpg" alt="MDF 3"><div class="bn-veil"></div><div class="bn-info"><div class="bn-title">MDF 3</div><div class="bn-desc">Detay baxış</div></div></div>
+      <div class="bn m" data-idx="6"><img src="media/archi/ar62.jpg" alt="Mətbəx 2"><div class="bn-veil"></div><div class="bn-info"><div class="bn-title">Mətbəx 2</div><div class="bn-desc">Müasir ribbed dizayn</div></div></div>
+      <div class="bn s" data-idx="28"><img src="media/archi/ar18.jpg" alt="İnteryer 2"><div class="bn-veil"></div><div class="bn-info"><div class="bn-title">İnteryer 2</div><div class="bn-desc">Müasir üslub</div></div></div>
+      <div class="bn m" data-idx="30"><img src="media/archi/ar24.jpg" alt="İnteryer 4"><div class="bn-veil"></div><div class="bn-info"><div class="bn-title">İnteryer 4</div><div class="bn-desc">Premium materiallar</div></div></div>
+      <div class="bn s" data-idx="31"><img src="media/archi/ar25.jpg" alt="İnteryer 5"><div class="bn-veil"></div><div class="bn-info"><div class="bn-title">İnteryer 5</div><div class="bn-desc">Yüksək keyfiyyət</div></div></div>
+      <div class="bn s" data-idx="33"><img src="media/archi/ar262.jpg" alt="Sanuzəl 3"><div class="bn-veil"></div><div class="bn-info"><div class="bn-title">Sanuzəl 3</div><div class="bn-desc">Keramik detaylar</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PROJECT -->
+<section class="feature-sec">
+  <div class="feat-img">
+    <img src="media/archi/ar9.jpg" alt="Xətai Park layihəsi">
+  </div>
+  <div class="feat-info">
+    <p class="feat-tag">Seçilmiş Layihə</p>
+    <h2 class="feat-h">Xətai Park —<br>Ağabalı bəy layihəsi</h2>
+    <p class="feat-p">Bakının Xətai rayonunda tam kompleks interyer dizaynı və təmiri. Mətbəx, qonaq otağı, yataq otağı, sanuzəl — hər otaq fərdi konsepsiya ilə tamamlanıb.</p>
+    <div class="feat-meta">
+      <div class="feat-meta-item"><strong>2024</strong><span>İl</span></div>
+      <div class="feat-meta-item"><strong>5</strong><span>Otaq</span></div>
+      <div class="feat-meta-item"><strong>ARCHİ</strong><span>Dizayn & Tikinti</span></div>
+    </div>
+    <a href="#contact" class="btn-acc"><span>Bizimlə əlaqə</span></a>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section class="vid-sec" id="videos">
+  <div class="reveal">
+    <p class="sec-tag">Videolar</p>
+    <h2 class="vid-h">İşlərimiz hərəkətdə</h2>
+  </div>
+  <div class="vid-grid">
+    <div class="vid-item reveal d1">
+      <video src="media/archi/arv1.mp4" muted autoplay loop playsinline preload="metadata"></video>
+      <div class="vid-overlay"><div class="vid-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+    </div>
+    <div class="vid-item reveal d2">
+      <video src="media/archi/arv2.mp4" muted autoplay loop playsinline preload="metadata"></video>
+      <div class="vid-overlay"><div class="vid-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+    </div>
+    <div class="vid-item reveal d3">
+      <video src="media/archi/arv3.mp4" muted autoplay loop playsinline preload="metadata"></video>
+      <div class="vid-overlay"><div class="vid-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+    </div>
+    <div class="vid-item reveal d4">
+      <video src="media/archi/arv4.mp4" muted autoplay loop playsinline preload="metadata"></video>
+      <div class="vid-overlay"><div class="vid-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+    </div>
+    <div class="vid-item reveal d1">
+      <video src="media/archi/arv5.mp4" muted autoplay loop playsinline preload="metadata"></video>
+      <div class="vid-overlay"><div class="vid-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+    </div>
+    <div class="vid-item reveal d2">
+      <video src="media/archi/arv6.mp4" muted autoplay loop playsinline preload="metadata"></video>
+      <div class="vid-overlay"><div class="vid-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="ba-sec">
+  <div class="ba-head">
+    <p class="sec-tag reveal">Əvvəl / Sonra</p>
+    <h2 class="sec-h2 reveal" style="font-family:var(--D);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:300;font-style:italic;color:var(--dark)">Dəyişimin şahidi olun</h2>
+  </div>
+  <div class="ba-grid">
+    <div class="ba-wrap reveal" data-ba>
+      <img class="ba-before" src="media/archi/ar1.jpg" alt="Əvvəl">
+      <img class="ba-after" src="media/archi/ar12.jpg" alt="Sonra">
+      <div class="ba-handle"></div>
+      <span class="ba-label before">Əvvəl</span>
+      <span class="ba-label after">Sonra</span>
+    </div>
+    <div class="ba-wrap reveal d1" data-ba>
+      <img class="ba-before" src="media/archi/ar14.jpg" alt="Əvvəl">
+      <img class="ba-after" src="media/archi/ar142.jpg" alt="Sonra">
+      <div class="ba-handle"></div>
+      <span class="ba-label before">Əvvəl</span>
+      <span class="ba-label after">Sonra</span>
+    </div>
+    <div class="ba-wrap reveal d2" data-ba>
+      <img class="ba-before" src="media/archi/ar19.jpg" alt="Əvvəl">
+      <img class="ba-after" src="media/archi/ar192.jpg" alt="Sonra">
+      <div class="ba-handle"></div>
+      <span class="ba-label before">Əvvəl</span>
+      <span class="ba-label after">Sonra</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="proc-sec" id="process">
+  <div class="proc-head">
+    <p class="sec-tag reveal">Necə işləyirik</p>
+    <h2 class="sec-h2 reveal" style="font-family:var(--D);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;font-style:italic;color:var(--dark)">Dizayndan<br>açarına qədər</h2>
+  </div>
+  <div class="proc-steps" style="counter-reset:proc">
+    <div class="proc-step reveal d1">
+      <span class="proc-acc"></span>
+      <svg class="proc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <div class="proc-h">Məsləhət</div>
+      <p class="proc-p">Tələblərinizi, zövqünüzü, büdcənizi öyrənir — ilkin konsepsiya hazırlayırıq.</p>
+    </div>
+    <div class="proc-step reveal d2">
+      <span class="proc-acc"></span>
+      <svg class="proc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      <div class="proc-h">Dizayn</div>
+      <p class="proc-p">3D vizualizasiya, material seçimi, işıqlandırma planı — tam layihə sənədi.</p>
+    </div>
+    <div class="proc-step reveal d3">
+      <span class="proc-acc"></span>
+      <svg class="proc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      <div class="proc-h">Tikinti</div>
+      <p class="proc-p">Müəllif nəzarəti ilə peşəkar komanda tərəfindən tam kompleks icra.</p>
+    </div>
+    <div class="proc-step reveal d4">
+      <span class="proc-acc"></span>
+      <svg class="proc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <div class="proc-h">Açarı Təhvil</div>
+      <p class="proc-p">Bitmiş layihəni açarı ilə təhvil veririk. Zəmanət ilə.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-sec">
+  <div class="stat-item reveal">
+    <div class="stat-num"><span class="cnt" data-target="200">0</span><span class="stat-suf">+</span></div>
+    <div class="stat-lbl">Tamamlanmış layihə</div>
+  </div>
+  <div class="stat-item reveal d1">
+    <div class="stat-num"><span class="cnt" data-target="5">0</span><span class="stat-suf">+</span></div>
+    <div class="stat-lbl">İl təcrübə</div>
+  </div>
+  <div class="stat-item reveal d2">
+    <div class="stat-num"><span class="cnt" data-target="5">0</span></div>
+    <div class="stat-lbl">Xidmət kateqoriyası</div>
+  </div>
+  <div class="stat-item reveal d3">
+    <div class="stat-num"><span class="cnt" data-target="100">0</span><span class="stat-suf">%</span></div>
+    <div class="stat-lbl">Müəllif nəzarəti</div>
+  </div>
+</section>
+
+<!-- MATERIALS -->
+<section class="mat-sec">
+  <div class="reveal">
+    <p class="sec-tag">Materiallar</p>
+    <h2 class="sec-h2" style="font-family:var(--D);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;font-style:italic;color:var(--dark)">Yalnız ən yaxşısı</h2>
+  </div>
+  <div class="mat-grid">
+    <div class="mat-card reveal d1">
+      <img src="media/archi/ar19.jpg" alt="Mermer">
+      <div class="mat-card-info"><div class="mat-card-name">Mermer</div><div class="mat-card-sub">Calacatta · Statuario · Portoro</div></div>
+    </div>
+    <div class="mat-card reveal d2">
+      <img src="media/archi/ar14.jpg" alt="MDF & Lak">
+      <div class="mat-card-info"><div class="mat-card-name">MDF & Lak</div><div class="mat-card-sub">Mat · Parlaq · Satin</div></div>
+    </div>
+    <div class="mat-card reveal d3">
+      <img src="media/archi/ar6.jpg" alt="Rebed MDF">
+      <div class="mat-card-info"><div class="mat-card-name">Rebed & Kanallar</div><div class="mat-card-sub">Dekorativ panel · Friez</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-sec" id="contact">
+  <div>
+    <p class="sec-tag reveal">Əlaqə</p>
+    <h2 class="sec-h2 reveal d1">Layihənizi<br>birlikdə başladaq</h2>
+    <p class="sec-sub reveal">Pulsuz məsləhət üçün bizimlə əlaqə saxlayın. Mütəxəssisimiz ən qısa zamanda geri dönəcək.</p>
+    <div class="cinfo-list">
+      <div class="cinfo-row reveal">
+        <svg class="cinfo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.9 16a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.81 5h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 12.91a16 16 0 0 0 5.61 5.61l.95-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <div><div class="cinfo-label">Telefon</div><div class="cinfo-val"><a href="tel:+994519996822">+994 51 999 68 22</a></div></div>
+      </div>
+      <div class="cinfo-row reveal d1">
+        <svg class="cinfo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <div><div class="cinfo-label">E-poçt</div><div class="cinfo-val"><a href="mailto:info@epoxyazerbaijan.com">info@epoxyazerbaijan.com</a></div></div>
+      </div>
+      <div class="cinfo-row reveal d2">
+        <svg class="cinfo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div><div class="cinfo-label">Ünvan</div><div class="cinfo-val">Bakı, Binəqədi rayonu,<br>Binəqədi şossesi, 2-ci mədən, korpus 73</div></div>
+      </div>
+      <div class="cinfo-row reveal d3">
+        <svg class="cinfo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <div><div class="cinfo-label">İş saatları</div><div class="cinfo-val">Bazar ertəsi – Şənbə · 09:00 – 19:00</div></div>
+      </div>
+    </div>
+    <div class="csoc reveal">
+      <a href="https://www.instagram.com/archistudio.az/" target="_blank" rel="noopener"><span>Instagram</span></a>
+      <a href="https://www.facebook.com/epoxyazerbaijan" target="_blank" rel="noopener"><span>Facebook</span></a>
+      <a href="https://www.tiktok.com/@epoxyazerbaijan" target="_blank" rel="noopener"><span>TikTok</span></a>
+    </div>
+  </div>
+  <div class="reveal d2">
+    <form class="cform" id="cform" novalidate>
+      <label><div class="cform-lbl">Ad Soyad *</div><input type="text" id="fn" placeholder="Adınızı daxil edin"></label>
+      <label><div class="cform-lbl">Telefon *</div><input type="tel" id="fp" placeholder="+994 XX XXX XX XX"></label>
+      <label>
+        <div class="cform-lbl">Xidmət növü</div>
+        <select id="fcat">
+          <option value="">Seçin…</option>
+          <option>İnteryer Dizaynı</option>
+          <option>Fasad Dizaynı</option>
+          <option>Memarlıq Layihəsi</option>
+          <option>Kompleks Təmir</option>
+          <option>Tikinti</option>
+          <option>Hamısı (Tam paket)</option>
+        </select>
+      </label>
+      <label><div class="cform-lbl">Qeyd</div><textarea id="fm" placeholder="Sahə, mərtəbə, istəklər, büdcə…"></textarea></label>
+      <button type="submit" class="btn-dark"><span>Müraciət göndər</span></button>
+      <div id="formSuccess">Müraciətiniz alındı. Ən qısa zamanda sizinlə əlaqə saxlayacağıq.</div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-row">
+    <div class="ft-logo">ARCHİ <em>Studio</em></div>
+    <div class="ft-links">
+      <a href="index.html">Epoxy Azerbaijan</a>
+      <a href="site.html">Agach Interiors</a>
+      <a href="hauz.html">HAUZ Furniture</a>
+      <a href="doorsa.html">Doorsa</a>
+    </div>
+    <div class="ft-copy">© 2026 ARCHİ Studio · Epoxy Azerbaijan Co.</div>
+  </div>
+</footer>
+
+<button id="btt" aria-label="Yuxarı qayıt" onclick="window.scrollTo({top:0,behavior:'smooth'})"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="18 15 12 9 6 15"/></svg></button>
+<a id="nav-home" href="index.html"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>Epoxy Azerbaijan</a>
+
+<a class="wa-float" href="https://wa.me/994519996822?text=Salam%2C%20ARCHİ%20Studio%20xidm%C9%99tl%C9%99ri%20bar%C9%99d%C9%99%20m%C9%99lumat%20almaq%20ist%C9%99yir%C9%99m." target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#fff" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
+
+<div id="lbox" role="dialog" aria-modal="true">
+  <button class="lbox-close" id="lboxClose"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <button class="lbox-prev" id="lboxPrev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg></button>
+  <div id="lboxMedia"></div>
+  <button class="lbox-next" id="lboxNext"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// Loader
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),700));
+
+// Scroll progress
+const sprog=document.getElementById('sprog');
+const nav=document.getElementById('nav');
+const heroImg=document.getElementById('heroImg');
+const btt=document.getElementById('btt');
+const navHome=document.getElementById('nav-home');
+let _st=false;
+function _rScroll(){
+  const sy=scrollY;
+  sprog.style.width=(sy/(document.body.scrollHeight-innerHeight)*100)+'%';
+  nav.classList.toggle('scrolled',sy>80);
+  if(heroImg&&sy<innerHeight*1.5)heroImg.style.transform=`translateY(${sy*.2}px)`;
+  if(btt)btt.classList.toggle('show',sy>400);
+  if(navHome)navHome.classList.toggle('show',sy>200);
+  _st=false;
+}
+window.addEventListener('scroll',()=>{if(!_st){_st=true;requestAnimationFrame(_rScroll);}},{passive:true});
+
+// Mobile nav
+const mobNav=document.getElementById('mobNav');
+document.getElementById('hamBtn').addEventListener('click',()=>mobNav.classList.add('open'));
+document.getElementById('mobClose').addEventListener('click',()=>mobNav.classList.remove('open'));
+function closeMob(){mobNav.classList.remove('open')}
+
+// Custom cursor
+(function(){
+  const cur=document.getElementById('cur');if(!cur||!matchMedia('(pointer:fine)').matches)return;
+  let tx=0,ty=0,cx=0,cy=0;
+  document.addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY},{passive:true});
+  document.addEventListener('mouseleave',()=>cur.classList.add('hidden'));
+  document.addEventListener('mouseenter',()=>cur.classList.remove('hidden'));
+  const bigEls=document.querySelectorAll('a,button,[role="button"],.bn,.svc-item,.vid-item,.mat-card,.feat-img,.proc-step');
+  bigEls.forEach(el=>{el.addEventListener('mouseenter',()=>cur.classList.add('big'));el.addEventListener('mouseleave',()=>cur.classList.remove('big'));});
+  (function raf(){cx+=(tx-cx)*.15;cy+=(ty-cy)*.15;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(raf);})();
+})();
+
+// Three.js — architectural blueprint shader on hero left panel
+(function(){
+  const canvas=document.getElementById('heroCanvas');
+  if(!canvas||typeof THREE==='undefined')return;
+  const el=document.querySelector('.hero-l');
+  const w=el?el.offsetWidth:innerWidth*.42;
+  const h=innerHeight;
+  const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:false});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));
+  renderer.setSize(w,h);
+  const scene=new THREE.Scene();
+  const cam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
+  const mat=new THREE.ShaderMaterial({
+    transparent:true,
+    uniforms:{uT:{value:0},uR:{value:new THREE.Vector2(w,h)}},
+    vertexShader:`void main(){gl_Position=vec4(position,1.);}`,
+    fragmentShader:`
+      uniform float uT;uniform vec2 uR;
+      float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+      float noise(vec2 p){vec2 i=floor(p);vec2 f=fract(p);vec2 u=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1,0)),u.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),u.x),u.y);}
+      float grid(vec2 uv,float s){vec2 g=abs(fract(uv*s)-.5);return 1.-min(g.x,g.y)*12.;}
+      void main(){
+        vec2 st=gl_FragCoord.xy/uR;
+        float n1=noise(st*4.+uT*.04);
+        float n2=noise(st*9.-uT*.03);
+        float grain=n1*n2*.45+.12;
+        float g1=smoothstep(.88,1.,grid(st,6.))*0.028;
+        float g2=smoothstep(.92,1.,grid(st,24.))*0.018;
+        float vig=smoothstep(0.,.5,st.x)*smoothstep(1.,.5,st.x)*smoothstep(0.,.3,st.y)*smoothstep(1.,.7,st.y);
+        vec3 col=vec3(.60,.72,.68)*(grain+g1+g2)*vig;
+        gl_FragColor=vec4(col,(grain+g1+g2)*vig*.65);
+      }
+    `
+  });
+  scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2,2),mat));
+  window.addEventListener('resize',()=>{
+    const nw=el?el.offsetWidth:innerWidth*.42;const nh=innerHeight;
+    renderer.setSize(nw,nh);mat.uniforms.uR.value.set(nw,nh);
+  });
+  (function animate(t){requestAnimationFrame(animate);mat.uniforms.uT.value=t*.001;renderer.render(scene,cam);})(0);
+})();
+
+
+// Reveal observer
+const revObs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+// Counter
+const cntObs=new IntersectionObserver(e=>{
+  e.forEach(x=>{
+    if(!x.isIntersecting)return;
+    const el=x.target,t=+el.dataset.target,dur=1500,step=16,inc=t/(dur/step);
+    let v=0;const timer=setInterval(()=>{v=Math.min(v+inc,t);el.textContent=Math.round(v);if(v>=t)clearInterval(timer);},step);
+    cntObs.unobserve(el);
+  });
+},{threshold:.5});
+document.querySelectorAll('.cnt').forEach(el=>cntObs.observe(el));
+
+// Service item hover pulse (animates the large text)
+document.querySelectorAll('.svc-item').forEach(item=>{
+  item.addEventListener('mouseenter',()=>{
+    const name=item.querySelector('.svc-name');
+    if(name){name.style.letterSpacing='-.01em';name.style.transition='letter-spacing .4s cubic-bezier(.16,1,.3,1)';}
+  });
+  item.addEventListener('mouseleave',()=>{
+    const name=item.querySelector('.svc-name');
+    if(name){name.style.letterSpacing='';}
+  });
+});
+
+// Gallery lightbox
+const imgs=[...document.querySelectorAll('.bn img')].map(i=>i.src);
+let curIdx=0;
+const lbox=document.getElementById('lbox');
+const lboxMedia=document.getElementById('lboxMedia');
+function openLbox(i){curIdx=i;lboxMedia.innerHTML=`<img src="${imgs[i]}" alt="">`;lbox.classList.add('open');document.body.style.overflow='hidden';}
+function closeLbox(){lbox.classList.remove('open');document.body.style.overflow='';}
+// Bento drag + delegated click
+(function(){
+  const w=document.getElementById('bentoWrap');
+  if(!w)return;
+  let isDown=false,sx=0,sl=0,didDrag=false;
+  w.addEventListener('mousedown',e=>{isDown=true;didDrag=false;w.classList.add('grab');sx=e.pageX;sl=w.scrollLeft;});
+  document.addEventListener('mouseup',()=>{isDown=false;w.classList.remove('grab');});
+  w.addEventListener('mousemove',e=>{if(!isDown)return;const dx=e.pageX-sx;if(Math.abs(dx)>4)didDrag=true;w.scrollLeft=sl-dx;});
+  w.addEventListener('click',e=>{if(didDrag){didDrag=false;return;}const c=e.target.closest('.bn');if(c)openLbox([...document.querySelectorAll('.bn')].indexOf(c));});
+})();
+document.getElementById('lboxClose').addEventListener('click',closeLbox);
+lbox.addEventListener('click',e=>{if(e.target===lbox)closeLbox();});
+document.getElementById('lboxPrev').addEventListener('click',()=>openLbox((curIdx-1+imgs.length)%imgs.length));
+document.getElementById('lboxNext').addEventListener('click',()=>openLbox((curIdx+1)%imgs.length));
+document.addEventListener('keydown',e=>{
+  if(!lbox.classList.contains('open'))return;
+  if(e.key==='Escape')closeLbox();
+  if(e.key==='ArrowLeft')openLbox((curIdx-1+imgs.length)%imgs.length);
+  if(e.key==='ArrowRight')openLbox((curIdx+1)%imgs.length);
+});
+
+// Form (Formspree)
+document.getElementById('cform').addEventListener('submit',async function(e){
+  e.preventDefault();
+  const fn=document.getElementById('fn'),fp=document.getElementById('fp');
+  let ok=true;
+  [fn,fp].forEach(i=>{i.classList.remove('err');if(!i.value.trim()){i.classList.add('err');ok=false;}});
+  if(!ok)return;
+  const data=new FormData();
+  data.append('Ad Soyad',fn.value);
+  data.append('Telefon',fp.value);
+  data.append('Xidmət',document.getElementById('fcat').value);
+  data.append('Qeyd',document.getElementById('fm').value);
+  try{
+    const r=await fetch('https://formspree.io/f/xpwzqgnv',{method:'POST',body:data,headers:{Accept:'application/json'}});
+    if(r.ok){document.getElementById('formSuccess').style.display='block';this.querySelectorAll('input,textarea,select,button').forEach(i=>i.disabled=true);}
+    else throw new Error();
+  }catch{
+    window.location.href='mailto:info@epoxyazerbaijan.az?subject=ARCHİ%20Studio%20Müraciət&body=Ad%3A%20'+encodeURIComponent(fn.value)+'%0ATelefon%3A%20'+encodeURIComponent(fp.value);
+  }
+});
+
+// TextRoll — architectural: measured cadence, 60ms stagger
+function txRoll(el,delay,stagger){
+  if(!el)return;
+  const txt=el.textContent;
+  el.innerHTML=[...txt].map((c,i)=>{
+    const d=delay+i*stagger;
+    const ch=c===' '?'&nbsp;':c.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+    return `<span class="txr-w"><span class="txr-c" style="animation-delay:${d}ms">${ch}</span></span>`;
+  }).join('');
+}
+setTimeout(()=>{
+  txRoll(document.getElementById('txrL1'),0,60);
+  txRoll(document.getElementById('txrL2'),230,55);
+},1400);
+// Zoom Parallax — rAF throttled, cached height
+(function(){
+  const sec=document.querySelector('.zp-sec');
+  if(!sec)return;
+  const layers=sec.querySelectorAll('.zp-layer');
+  const startS=[0.25,0.2,0.167,0.2,0.167,0.125,0.111];
+  const lbl=sec.querySelector('.zp-label');
+  let zpH=sec.offsetHeight-innerHeight;
+  window.addEventListener('resize',()=>{zpH=sec.offsetHeight-innerHeight;},{passive:true});
+  let zt=false;
+  function tick(){
+    const p=Math.max(0,Math.min(1,-sec.getBoundingClientRect().top/zpH));
+    layers.forEach((l,i)=>{const s0=startS[i%startS.length];l.style.transform=`scale(${s0+(1-s0)*p})`;});
+    if(lbl)lbl.style.opacity=String(Math.max(0,1-p*4));
+    zt=false;
+  }
+  window.addEventListener('scroll',()=>{if(!zt){zt=true;requestAnimationFrame(tick);}},{passive:true});
+  tick();
+})();
+
+// Before/After slider
+document.querySelectorAll('[data-ba]').forEach(wrap=>{
+  let drag=false;
+  const after=wrap.querySelector('.ba-after');
+  const handle=wrap.querySelector('.ba-handle');
+  function set(x){
+    const r=wrap.getBoundingClientRect();
+    const pct=Math.max(0,Math.min(100,(x-r.left)/r.width*100));
+    after.style.clipPath=`inset(0 ${100-pct}% 0 0)`;
+    handle.style.left=pct+'%';
+  }
+  wrap.addEventListener('mousedown',e=>{drag=true;set(e.clientX);});
+  window.addEventListener('mousemove',e=>{if(drag)set(e.clientX);});
+  window.addEventListener('mouseup',()=>drag=false);
+  wrap.addEventListener('touchstart',e=>{drag=true;set(e.touches[0].clientX);},{passive:true});
+  window.addEventListener('touchmove',e=>{if(drag)set(e.touches[0].clientX);},{passive:true});
+  window.addEventListener('touchend',()=>drag=false);
+});
+
+// Language switcher (AZ/EN toggle)
+const langMap={
+  '#services':'Services','#gallery':'Gallery','#videos':'Videos','#contact':'Contact',
+  'Layihə başlat':'Start Project','Müraciət göndər':'Send Request',
+  'Ad Soyad *':'Full Name *','Telefon *':'Phone *','Xidmət növü':'Service type','Qeyd':'Note',
+  'Adınızı daxil edin':'Enter your name','+994 XX XXX XX XX':'+994 XX XXX XX XX',
+  'Sahə, mərtəbə, istəklər, büdcə…':'Area, floor, wishes, budget…',
+  'Müraciətiniz alındı. Ən qısa zamanda sizinlə əlaqə saxlayacağıq.':'Your request has been received. We will contact you shortly.'
+};
+const langMapEn=langMap;
+let isEn=false;
+function toggleLang(){
+  isEn=!isEn;
+  document.getElementById('langBtn').textContent=isEn?'AZ':'EN';
+}
+</script>
+</body>
+</html>

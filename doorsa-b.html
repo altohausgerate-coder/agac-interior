@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DOORSA — Minimalist Modern | Fərdi İç Qapı İstehsalı</title>
+<meta name="description" content="DOORSA — fərdi ölçüdə iç qapı istehsalı. Massiv ağac, MDF, lak. Dəqiq ölçü, səssiz mexanizm, təmiz montaj. Bakı.">
+<meta property="og:title" content="DOORSA — Minimalist Modern">
+<meta property="og:description" content="Dəqiqlik. Material. Səssizlik. Fərdi iç qapı istehsalı, Bakı.">
+<meta property="og:image" content="media/doorsa/d10.jpg">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="az_AZ">
+<meta name="theme-color" content="#FAFAF8">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"DOORSA","description":"Fərdi iç qapı istehsalı — Epoxy Azerbaijan","telephone":"+994519996822","email":"info@epoxyazerbaijan.com","address":{"@type":"PostalAddress","addressLocality":"Bakı","addressRegion":"Binəqədi","streetAddress":"Binəqədi şossesi, 2-ci mədən, korpus 73","addressCountry":"AZ"},"openingHours":"Mo-Sa 09:00-19:00","sameAs":["https://www.instagram.com/doorsa.az/"]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAFAF8;--bg2:#F1F0EC;
+  --ink:#141412;--mut:#77756F;--faint:#A8A6A0;
+  --acc:#3E6C74;--acc-deep:#2F565D;
+  --hair:rgba(20,20,18,.1);
+  --D:'Space Grotesk',sans-serif;
+  --S:'Inter Tight',-apple-system,sans-serif;
+  --ease:cubic-bezier(.25,.8,.25,1);
+  --gut:clamp(1.5rem,4.5vw,5rem);
+}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:var(--S);background:var(--bg);color:var(--ink);overflow-x:hidden;font-weight:300}
+img,video{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+::selection{background:var(--acc);color:#fff}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;padding:1.3rem var(--gut);background:rgba(250,250,248,0);transition:background .3s,border-color .3s,backdrop-filter .3s;border-bottom:1px solid transparent}
+.nav.scrolled{background:rgba(250,250,248,.9);backdrop-filter:blur(14px);border-color:var(--hair)}
+.nav-logo{font-family:var(--D);font-weight:500;font-size:1.05rem;letter-spacing:.18em}
+.nav-logo span{color:var(--acc)}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{font-size:.64rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--ink);padding:.6rem 1.4rem;transition:background .25s}
+.nav-cta:hover{background:var(--acc)}
+.ham{display:none;background:none;border:none;flex-direction:column;gap:5px;padding:.4rem;cursor:pointer}
+.ham span{width:24px;height:1.5px;background:var(--ink);display:block}
+.mob-nav{position:fixed;inset:0;z-index:850;background:var(--bg);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:1.6rem;padding:0 var(--gut);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.mob-nav.open{opacity:1;visibility:visible}
+.mob-nav a{font-family:var(--D);font-size:2rem;font-weight:400;color:var(--ink);display:flex;align-items:baseline;gap:1rem}
+.mob-nav a small{font-size:.7rem;color:var(--faint)}
+.mob-nav a:hover{color:var(--acc)}
+.mob-close{position:absolute;top:1.4rem;right:1.4rem;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--ink)}
+
+/* HERO */
+.hero{min-height:100dvh;display:grid;grid-template-columns:1.1fr .9fr;padding-top:76px}
+.hero-copy{display:flex;flex-direction:column;justify-content:center;padding:clamp(2rem,5vw,5rem) var(--gut)}
+.hero-meta{display:flex;align-items:center;gap:1rem;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:2rem}
+.hero-meta::before{content:'';width:32px;height:1px;background:var(--acc)}
+.hero-h1{font-family:var(--D);font-size:clamp(2.6rem,5.8vw,5.2rem);font-weight:400;line-height:1.02;letter-spacing:-.03em;margin-bottom:2rem}
+.hero-h1 em{font-style:normal;color:var(--acc)}
+.hero-sub{font-size:.95rem;color:var(--mut);line-height:1.85;max-width:42ch;margin-bottom:2.8rem}
+.hero-row{display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.7rem;font-size:.66rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;background:var(--ink);color:#fff;padding:.95rem 2.2rem;transition:background .25s,gap .25s}
+.btn:hover{background:var(--acc);gap:1.1rem}
+.btn svg{width:14px;height:14px}
+.link-u{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:3px;transition:color .2s,border-color .2s}
+.link-u:hover{color:var(--acc);border-color:var(--acc)}
+.hero-facts{display:flex;gap:2.6rem;margin-top:3.5rem;padding-top:2rem;border-top:1px solid var(--hair)}
+.hf b{font-family:var(--D);display:block;font-size:1.5rem;font-weight:500;line-height:1;margin-bottom:.4rem}
+.hf b i{font-style:normal;color:var(--acc)}
+.hf span{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.hero-visual{position:relative;overflow:hidden;background:var(--bg2)}
+.hero-visual img{width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transform:scale(1.05);transition:opacity 1.1s var(--ease),transform 1.6s var(--ease)}
+body.loaded .hero-visual img{opacity:1;transform:scale(1)}
+.hero-visual-tag{position:absolute;bottom:1.6rem;left:1.6rem;background:rgba(250,250,248,.92);backdrop-filter:blur(8px);padding:.8rem 1.2rem;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+.hero-visual-tag b{display:block;font-family:var(--D);font-size:.85rem;font-weight:500;letter-spacing:.02em;text-transform:none;margin-bottom:.2rem}
+
+/* TICKER */
+.ticker{border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);overflow:hidden;padding:1rem 0;background:var(--bg)}
+.ticker-track{display:flex;gap:3.5rem;white-space:nowrap;width:max-content;animation:tick 30s linear infinite}
+.ticker-track:hover{animation-play-state:paused}
+.tk{display:flex;align-items:center;gap:3.5rem;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
+.tk::after{content:'';width:5px;height:5px;background:var(--acc);border-radius:50%}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* SECTION */
+.sec{padding:clamp(5rem,9vw,9rem) var(--gut)}
+.sec-num{font-family:var(--D);font-size:.72rem;color:var(--acc);letter-spacing:.1em;margin-bottom:1rem}
+.h2{font-family:var(--D);font-size:clamp(1.9rem,3.8vw,3.2rem);font-weight:400;line-height:1.08;letter-spacing:-.02em}
+.h2 em{font-style:normal;color:var(--acc)}
+.lede{font-size:.9rem;color:var(--mut);line-height:1.9;max-width:52ch;margin-top:1.2rem}
+
+/* ABOUT */
+.about{display:grid;grid-template-columns:5fr 7fr;gap:clamp(2rem,6vw,6rem)}
+.about-sticky{position:sticky;top:110px;align-self:start}
+.about-body p{font-size:.95rem;color:var(--mut);line-height:2;margin-bottom:1.6rem;max-width:58ch}
+.about-body p strong{color:var(--ink);font-weight:500}
+.about-media{margin-top:2.4rem;overflow:hidden}
+.about-media img{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center 35%;transition:transform 1s var(--ease)}
+.about-media:hover img{transform:scale(1.02)}
+.about-media figcaption{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);padding:.9rem 0;border-bottom:1px solid var(--hair)}
+
+/* CATALOG */
+.cat-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-bottom:clamp(2rem,4vw,3.5rem)}
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hair);border:1px solid var(--hair)}
+.prod{background:var(--bg);padding:1.6rem;cursor:pointer;transition:background .3s}
+.prod:hover{background:#fff}
+.prod-img{overflow:hidden;margin-bottom:1.4rem;aspect-ratio:4/5;background:var(--bg2)}
+.prod-img img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+.prod:hover .prod-img img{transform:scale(1.04)}
+.prod-row{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+.prod-name{font-family:var(--D);font-size:1.05rem;font-weight:500;letter-spacing:-.01em}
+.prod-code{font-size:.6rem;letter-spacing:.12em;color:var(--faint)}
+.prod-desc{font-size:.74rem;color:var(--mut);line-height:1.7;margin-top:.5rem}
+.prod-foot{display:flex;align-items:center;gap:.5rem;margin-top:1.2rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);opacity:0;transform:translateX(-6px);transition:opacity .3s,transform .3s}
+.prod:hover .prod-foot{opacity:1;transform:none}
+.prod-foot svg{width:13px;height:13px}
+.prod-wide{grid-column:span 3;display:grid;grid-template-columns:1fr 1fr;gap:0;padding:0;background:var(--ink);color:#fff}
+.prod-wide .prod-img{aspect-ratio:auto;height:100%;margin:0}
+.prod-wide-body{padding:clamp(2rem,4vw,3.5rem);display:flex;flex-direction:column;justify-content:center}
+.prod-wide-body .prod-name{color:#fff;font-size:1.5rem}
+.prod-wide-body .prod-desc{color:rgba(255,255,255,.55);margin-top:1rem;max-width:44ch}
+.prod-wide-body .link-u{color:#fff;border-color:rgba(255,255,255,.4);margin-top:2rem;align-self:flex-start}
+.prod-wide-body .link-u:hover{color:var(--acc);border-color:var(--acc)}
+.prod-wide:hover{background:var(--ink)}
+
+/* SPECS */
+.specs{background:var(--bg2);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.specs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(2rem,4vw,4rem);margin-top:clamp(2.5rem,4vw,4rem)}
+.spec{border-top:2px solid var(--ink);padding-top:1.4rem}
+.spec-idx{font-family:var(--D);font-size:.72rem;color:var(--acc);margin-bottom:.9rem;letter-spacing:.08em}
+.spec h3{font-family:var(--D);font-size:1.05rem;font-weight:500;margin-bottom:.7rem;letter-spacing:-.01em}
+.spec p{font-size:.78rem;color:var(--mut);line-height:1.85}
+
+/* MATERIAL TABLE */
+.mtable{margin-top:clamp(2.5rem,4vw,4rem);border-top:1px solid var(--hair)}
+.mrow{display:grid;grid-template-columns:64px 1.2fr 2fr auto;gap:1.6rem;align-items:center;padding:1.4rem 0;border-bottom:1px solid var(--hair);transition:padding-left .3s var(--ease)}
+.mrow:hover{padding-left:.8rem}
+.mrow-dot{width:36px;height:36px;border-radius:50%;border:1px solid var(--hair)}
+.mrow-name{font-family:var(--D);font-size:1rem;font-weight:500}
+.mrow-desc{font-size:.76rem;color:var(--mut);line-height:1.7}
+.mrow-tag{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
+
+/* GALLERY */
+.ggrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:clamp(2.5rem,4vw,4rem)}
+.gg{overflow:hidden;position:relative;cursor:zoom-in;aspect-ratio:3/4;background:var(--bg2)}
+.gg img,.gg video{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.gg:hover img,.gg:hover video{transform:scale(1.04)}
+.gg-w{grid-column:span 2;aspect-ratio:3/2}
+
+/* QUOTES */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hair);border:1px solid var(--hair);margin-top:clamp(2.5rem,4vw,4rem)}
+.qt{background:var(--bg);padding:2.2rem;display:flex;flex-direction:column;gap:1.4rem}
+.qt-stars{color:var(--acc);font-size:.7rem;letter-spacing:.3em}
+.qt-text{font-size:.82rem;color:var(--mut);line-height:1.9;flex:1}
+.qt-who{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.qt-who b{display:block;font-family:var(--D);font-size:.85rem;font-weight:500;letter-spacing:0;text-transform:none;color:var(--ink);margin-bottom:.25rem}
+
+/* CONTACT */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,6vw,6rem)}
+.clist{margin-top:2.4rem;border-top:1px solid var(--hair)}
+.crow{display:grid;grid-template-columns:110px 1fr;gap:1.5rem;padding:1.3rem 0;border-bottom:1px solid var(--hair);font-size:.88rem}
+.crow dt{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);padding-top:.25rem}
+.crow dd{color:var(--mut);line-height:1.7}
+.crow dd a{color:var(--ink);transition:color .2s}
+.crow dd a:hover{color:var(--acc)}
+.bform{display:flex;flex-direction:column;gap:1.5rem}
+.bfld{display:flex;flex-direction:column;gap:.5rem}
+.bfld label{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.bfld input,.bfld select,.bfld textarea{width:100%;background:#fff;border:1px solid var(--hair);color:var(--ink);font-family:var(--S);font-size:.88rem;font-weight:300;padding:.85rem 1rem;outline:none;transition:border-color .25s;border-radius:0;-webkit-appearance:none}
+.bfld select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%233E6C74' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+.bfld input:focus,.bfld select:focus,.bfld textarea:focus{border-color:var(--acc)}
+.bfld input.err,.bfld textarea.err{border-color:#B0523C}
+.bfld textarea{resize:vertical;min-height:100px}
+.bform .btn{border:none;cursor:pointer;font-family:var(--S);justify-content:center}
+#formOk{display:none;padding:1rem 1.2rem;background:rgba(62,108,116,.08);border:1px solid rgba(62,108,116,.3);font-size:.8rem;color:var(--acc-deep)}
+
+/* CTA BAND */
+.cta-band{background:var(--ink);color:#fff;padding:clamp(4rem,8vw,7rem) var(--gut);text-align:center}
+.cta-band .h2{color:#fff}
+.cta-band p{font-size:.85rem;color:rgba(255,255,255,.5);margin:1.4rem auto 2.4rem;max-width:46ch;line-height:1.9}
+.cta-band .btn{background:#fff;color:var(--ink)}
+.cta-band .btn:hover{background:var(--acc);color:#fff}
+
+/* FOOTER */
+footer{padding:2.4rem var(--gut);display:flex;align-items:center;justify-content:space-between;gap:1.4rem;flex-wrap:wrap;border-top:1px solid var(--hair)}
+.ft-logo{font-family:var(--D);font-weight:500;letter-spacing:.18em;font-size:.9rem}
+.ft-logo span{color:var(--acc)}
+.ft-links{display:flex;gap:1.8rem}
+.ft-links a{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);transition:color .2s}
+.ft-links a:hover{color:var(--ink)}
+.ft-copy{font-size:.6rem;color:var(--faint);letter-spacing:.06em}
+
+/* LIGHTBOX */
+#lbox{position:fixed;inset:0;z-index:8500;background:rgba(20,20,18,.95);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+#lbox.open{opacity:1;visibility:visible}
+#lbox img,#lbox video{max-width:90vw;max-height:86vh;object-fit:contain}
+.lb-btn{position:absolute;background:none;border:none;color:rgba(255,255,255,.6);cursor:pointer;padding:1rem;transition:color .2s}
+.lb-btn:hover{color:#fff}
+.lb-x{top:1rem;right:1.2rem}
+.lb-p{left:.8rem;top:50%;transform:translateY(-50%)}
+.lb-n{right:.8rem;top:50%;transform:translateY(-50%)}
+
+/* WHATSAPP */
+.wa{position:fixed;bottom:1.6rem;right:1.6rem;z-index:600;width:48px;height:48px;border-radius:50%;background:#1FAF57;display:flex;align-items:center;justify-content:center;transition:transform .25s var(--ease)}
+.wa:hover{transform:scale(1.08)}
+.wa svg{width:23px;height:23px}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.rv.on{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}
+
+/* ── WOW: scroll progress ── */
+#sprog{position:fixed;top:0;left:0;height:2px;width:0;background:var(--acc);z-index:950}
+
+/* ── WOW: split headline reveal ── */
+.hero-h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+.hero-h1 .w>span{display:inline-block;transform:translateY(112%);transition:transform .85s var(--ease)}
+body.loaded .hero-h1 .w>span{transform:none}
+
+/* ── WOW: magnetic buttons + sheen ── */
+.btn,.nav-cta{position:relative;overflow:hidden;will-change:transform}
+.btn{transition:background .25s,gap .25s,transform .35s var(--ease)}
+.nav-cta{transition:background .25s,transform .35s var(--ease)}
+.btn::after,.nav-cta::after{content:'';position:absolute;top:0;left:-70%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);transform:skewX(-20deg);transition:left .7s var(--ease);pointer-events:none}
+.btn:hover::after,.nav-cta:hover::after{left:130%}
+
+/* ── WOW: 3D tilt cards + glare ── */
+.prod{position:relative;transition:background .3s,transform .45s var(--ease);will-change:transform}
+.glare{position:absolute;inset:0;pointer-events:none;background:radial-gradient(560px circle at var(--gx,50%) var(--gy,50%),rgba(62,108,116,.14),transparent 42%);opacity:0;transition:opacity .35s;z-index:2}
+.prod:hover .glare{opacity:1}
+
+/* ── WOW: gallery cursor pill ── */
+#gpill{position:fixed;top:0;left:0;z-index:500;pointer-events:none;background:var(--ink);color:#fff;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;padding:.6rem 1.1rem;white-space:nowrap;transform:translate3d(var(--px,-100px),var(--py,-100px),0) translate(-50%,-50%) scale(var(--ps,0));transition:transform .16s ease-out}
+
+/* ── WOW: 3D door ── */
+.door3d-sec{padding:clamp(4.5rem,8vw,8rem) var(--gut);background:var(--bg2);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,6vw,6rem);align-items:center}
+.door3d-stage{perspective:1500px;display:flex;flex-direction:column;align-items:center;gap:1.6rem;justify-self:center}
+.door3d{position:relative;width:min(280px,68vw);aspect-ratio:1/2.05;transform-style:preserve-3d;cursor:pointer}
+.door3d-jamb{position:absolute;inset:-13px;border:13px solid #fff;box-shadow:0 34px 90px rgba(20,20,18,.2),inset 0 0 0 1px rgba(20,20,18,.07);pointer-events:none}
+.door3d-room{position:absolute;inset:0;background:linear-gradient(165deg,var(--acc) 0%,var(--acc-deep) 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.3rem;text-align:center;padding:1.6rem;overflow:hidden}
+.door3d-room::after{content:'';position:absolute;inset:0;background:radial-gradient(120% 60% at 50% 0%,rgba(255,255,255,.16),transparent 55%)}
+.door3d-room p{font-family:var(--D);font-size:1.1rem;line-height:1.55;color:#fff;position:relative;z-index:1}
+.door3d-room .link-u{color:#fff;border-color:rgba(255,255,255,.5);position:relative;z-index:1}
+.door3d-room .link-u:hover{color:#fff;border-color:#fff}
+.door3d-panel{position:absolute;inset:0;background:linear-gradient(105deg,#F9F8F5 0%,#EDECEA 55%,#E4E2DD 100%);transform-origin:left center;transition:transform 1.15s cubic-bezier(.22,1,.32,1);box-shadow:2px 0 18px rgba(20,20,18,.18),inset 0 0 0 1px rgba(20,20,18,.09);transform-style:preserve-3d}
+.door3d-panel::before{content:'';position:absolute;inset:11% 13%;border:1px solid rgba(20,20,18,.13);box-shadow:inset 0 0 0 7px #E8E6E0,inset 0 0 0 8px rgba(20,20,18,.06)}
+.door3d-panel::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 30%,rgba(20,20,18,.22));opacity:0;transition:opacity 1.15s}
+.door3d-edge{position:absolute;top:0;left:0;width:34px;height:100%;background:linear-gradient(to right,#B8B4AC,#C8C4BC,#B0ADA5);transform-origin:left center;transform:rotateY(-90deg);box-shadow:inset -3px 0 10px rgba(20,20,18,.25),inset 3px 0 6px rgba(255,255,255,.15)}
+.door3d-handle{position:absolute;right:8%;top:50%;width:24%;height:5px;background:linear-gradient(180deg,#D4D1CA 0%,#A8A6A0 50%,#C0BDB6 100%);border-radius:2.5px;transform:translateY(-50%);box-shadow:0 2px 6px rgba(20,20,18,.35),0 1px 2px rgba(20,20,18,.2)}
+.door3d.open .door3d-panel{transform:rotateY(-82deg)}
+.door3d.open .door3d-panel::after{opacity:1}
+.door3d-hint{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);display:flex;align-items:center;gap:.7rem}
+.door3d-hint::before{content:'';width:24px;height:1px;background:var(--acc)}
+
+/* ── WOW: cinematic scroll video ── */
+.vcine{height:260vh;position:relative;background:var(--ink)}
+.vcine-sticky{position:sticky;top:0;height:100vh;overflow:hidden}
+.vcine-media{position:absolute;inset:0;transform:scale(var(--vs,.52));will-change:transform}
+.vcine-media video{width:100%;height:100%;object-fit:cover}
+.vcine-veil{position:absolute;inset:0;background:rgba(20,20,18,var(--vv,.45));pointer-events:none}
+.vcine-copy{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:1.2rem;pointer-events:none;opacity:var(--vo,1);transform:translateY(var(--vt,0));will-change:opacity,transform}
+.vcine-kicker{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.vcine-title{font-family:var(--D);font-size:clamp(2.4rem,6vw,5.5rem);font-weight:400;letter-spacing:-.03em;color:#fff;line-height:1.05}
+.vcine-title em{font-style:normal;color:var(--acc)}
+.vcine-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+
+/* ── WOW: montaj video block ── */
+.vmount{display:grid;grid-template-columns:5fr 7fr;gap:clamp(2rem,6vw,6rem);align-items:center}
+.vmount-media{overflow:hidden;position:relative}
+.vmount-media video{width:100%;aspect-ratio:4/5;object-fit:cover;transform:scale(1.12) translateY(var(--mp,0));will-change:transform}
+.vmount-badge{position:absolute;bottom:1.4rem;left:1.4rem;background:rgba(250,250,248,.92);backdrop-filter:blur(8px);padding:.75rem 1.1rem;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+.vmount-badge b{display:block;font-family:var(--D);font-size:.82rem;font-weight:500;letter-spacing:0;text-transform:none;margin-bottom:.15rem}
+.vmount-list{margin-top:2.2rem;display:flex;flex-direction:column}
+.vmount-li{display:flex;gap:1.2rem;padding:1.1rem 0;border-bottom:1px solid var(--hair);font-size:.82rem;color:var(--mut);line-height:1.7}
+.vmount-li:last-child{border-bottom:none}
+.vmount-li::before{content:'—';color:var(--acc);flex-shrink:0}
+
+/* ── WOW: wipe reveal ── */
+.wipe{clip-path:inset(0 0 100% 0);transition:clip-path 1.1s var(--ease)}
+.wipe.on{clip-path:inset(0 0 0% 0)}
+
+/* ── BACK TO TOP ── */
+#btt{position:fixed;bottom:6.5rem;right:2rem;z-index:500;width:42px;height:42px;border-radius:50%;background:var(--ink);color:var(--bg);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s;box-shadow:0 4px 16px rgba(20,20,18,.2)}
+#btt.show{opacity:1;transform:none}
+#btt:hover{background:var(--acc)}
+#nav-home{position:fixed;bottom:6.5rem;left:2rem;z-index:500;display:flex;align-items:center;gap:.45rem;padding:.55rem 1.1rem;background:rgba(20,20,18,.88);backdrop-filter:blur(8px);color:rgba(255,255,255,.8);font-size:.58rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,.1);opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s;text-decoration:none;pointer-events:none}
+#nav-home.show{opacity:1;transform:translateY(0);pointer-events:auto}
+#nav-home:hover{background:rgba(20,20,18,1);color:#fff}
+
+/* ── CONFIGURATOR ── */
+.cfg-panel{background:transparent}
+.cfg-title{font-family:var(--D);font-size:1rem;font-weight:400;color:var(--ink);margin-bottom:1.6rem;letter-spacing:.02em}
+.cfg-group{margin-bottom:1.4rem}
+.cfg-label{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:.7rem}
+.cfg-opts{display:flex;flex-wrap:wrap;gap:.5rem}
+.cfg-btn{font-family:var(--S);font-size:.62rem;font-weight:400;letter-spacing:.06em;padding:.4rem 1rem;border:1px solid var(--hair);background:var(--bg);color:var(--mut);cursor:pointer;transition:all .2s;border-radius:1px}
+.cfg-btn:hover{border-color:var(--ink);color:var(--ink)}
+.cfg-btn.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cfg-color{width:32px;height:32px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .2s,box-shadow .2s;padding:0}
+.cfg-color:hover{transform:scale(1.12)}
+.cfg-color.active{box-shadow:0 0 0 3px var(--ink),0 0 0 5px var(--bg);transform:scale(1.08)}
+.cfg-summary{margin-top:1.6rem;padding:1.2rem 1.4rem;background:var(--bg2);border:1px solid var(--hair)}
+.cfg-sum-label{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:.4rem}
+.cfg-sum-val{font-family:var(--D);font-size:1.05rem;font-weight:400;color:var(--ink)}
+
+/* ── LANG SWITCHER ── */
+.lang-sw{display:flex;align-items:center;gap:.25rem;list-style:none}
+.lang-sep{color:var(--mut);opacity:.4;font-size:.55rem}
+.lang{font-size:.62rem;letter-spacing:.08em;color:var(--mut);transition:color .2s}
+.lang:hover,.lang.active{color:var(--ink)}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .rv{opacity:1;transform:none}
+  .hero-visual img{opacity:1;transform:none}
+  .hero-h1 .w>span{transform:none}
+  #gpill{display:none}
+  .vcine{height:auto}
+  .vcine-sticky{position:static;height:60vh}
+  .vcine-media{transform:none}
+  .wipe{clip-path:none}
+  .vmount-media video{transform:none}
+}
+
+/* RESPONSIVE */
+@media(max-width:1000px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-visual{order:-1;height:52vw;min-height:300px}
+  .about{grid-template-columns:1fr}
+  .about-sticky{position:static}
+  .door3d-sec{grid-template-columns:1fr}
+  .vmount{grid-template-columns:1fr}
+  .vcine{height:200vh}
+  .cat-grid{grid-template-columns:1fr 1fr}
+  .prod-wide{grid-column:span 2;grid-template-columns:1fr}
+  .specs-grid{grid-template-columns:1fr}
+  .ggrid{grid-template-columns:1fr 1fr}
+  .quotes{grid-template-columns:1fr}
+  .contact{grid-template-columns:1fr}
+  .mrow{grid-template-columns:48px 1fr;grid-template-rows:auto auto}
+  .mrow-desc{grid-column:2}
+  .mrow-tag{display:none}
+}
+@media(max-width:640px){
+  .nav-links,.nav-cta{display:none}
+  .ham{display:flex}
+  .cat-grid{grid-template-columns:1fr}
+  .prod-wide{grid-column:span 1}
+  .hero-facts{gap:1.6rem;flex-wrap:wrap}
+  .ggrid{grid-template-columns:1fr}
+  .gg,.gg-w{grid-column:span 1;aspect-ratio:4/3}
+  footer{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<div id="sprog" aria-hidden="true"></div>
+<div id="gpill" aria-hidden="true">Bax</div>
+
+<nav class="nav" id="nav" aria-label="Əsas naviqasiya">
+  <a href="#" class="nav-logo">DOOR<span>SA</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">Haqqımızda</a></li>
+    <li><a href="#catalog">Kataloq</a></li>
+    <li><a href="#process">Proses</a></li>
+    <li><a href="#gallery">Qalereya</a></li>
+    <li><a href="#contact">Əlaqə</a></li>
+    <li class="lang-sw"><a href="#" class="lang active" onclick="return false">AZ</a><span class="lang-sep">/</span><a href="https://www.epoxyazerbaijan.az/en/doorsa.html" class="lang" target="_blank" rel="noopener">EN</a><span class="lang-sep">/</span><a href="https://www.epoxyazerbaijan.az/ru/doorsa.html" class="lang" target="_blank" rel="noopener">RU</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Sifariş ver</a>
+  <button class="ham" id="hamBtn" aria-label="Menyu aç"><span></span><span></span><span></span></button>
+</nav>
+
+<nav class="mob-nav" id="mobNav" aria-label="Mobil menyu">
+  <button class="mob-close" id="mobClose" aria-label="Menyunu bağla">✕</button>
+  <a href="#about"><small>01</small>Haqqımızda</a>
+  <a href="#catalog"><small>02</small>Kataloq</a>
+  <a href="#process"><small>03</small>Proses</a>
+  <a href="#gallery"><small>04</small>Qalereya</a>
+  <a href="#contact"><small>05</small>Əlaqə</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-copy">
+    <p class="hero-meta">İç qapı istehsalı — Bakı</p>
+    <h1 class="hero-h1"><span class="w"><span>Dəqiqlik.</span></span><br><span class="w"><span style="transition-delay:.14s">Material.</span></span><br><span class="w"><span style="transition-delay:.28s"><em>Səssizlik.</em></span></span></h1>
+    <p class="hero-sub">Fərdi ölçüdə istehsal edilən iç qapılar. Millimetr dəqiqliyi, səssiz mexanizm, təmiz montaj — qapının görməli olduğu bütün işlər.</p>
+    <div class="hero-row">
+      <a href="#catalog" class="btn">Kataloqa bax
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="#contact" class="link-u">Ölçü üçün usta çağır</a>
+    </div>
+    <div class="hero-facts">
+      <div class="hf"><b><span class="cnt" data-t="350">0</span><i>+</i></b><span>Layihə</span></div>
+      <div class="hf"><b><span class="cnt" data-t="6">0</span></b><span>Material növü</span></div>
+      <div class="hf"><b><span class="cnt" data-t="100">0</span><i>%</i></b><span>Fərdi ölçü</span></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <img src="media/doorsa/d10.jpg" alt="Ağ panel divarlı dəhliz və klassik qapı — DOORSA montaj işi" fetchpriority="high">
+    <div class="hero-visual-tag"><b>Wainscot layihəsi</b>Bakı · 2025</div>
+  </div>
+</header>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="tk">Fərdi ölçü</span><span class="tk">Massiv ağac</span><span class="tk">MDF lak</span><span class="tk">Səssiz mexanizm</span><span class="tk">RAL rəng seçimi</span><span class="tk">Montaj daxil</span><span class="tk">Zəmanət</span>
+    <span class="tk">Fərdi ölçü</span><span class="tk">Massiv ağac</span><span class="tk">MDF lak</span><span class="tk">Səssiz mexanizm</span><span class="tk">RAL rəng seçimi</span><span class="tk">Montaj daxil</span><span class="tk">Zəmanət</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="sec" id="about">
+  <div class="about">
+    <div class="about-sticky">
+      <p class="sec-num rv">01 — Haqqımızda</p>
+      <h2 class="h2 rv d1">Qapı bağlananda<br>eşidilməməlidir.<br><em>Prinsipimiz budur.</em></h2>
+    </div>
+    <div class="about-body">
+      <p class="rv">DOORSA — <strong>Epoxy Azerbaijan şirkətlər qrupunun</strong> iç qapı istehsalı istiqamətidir. Fabrikimiz Bakıda yerləşir; ölçüdən montaja qədər bütün proses öz komandamızın əlindədir.</p>
+      <p class="rv d1">Standart ölçü anlayışımız yoxdur — hər qapı konkret divar açımına görə istehsal olunur. Materialı birlikdə seçirik: massiv ağac, MDF, lak, melamin. Rəng — istənilən RAL kodu ilə.</p>
+      <figure class="about-media rv d2">
+        <img src="media/doorsa/d7.jpg" alt="DOORSA qurucuları fabrik şouruumunda" loading="lazy">
+        <figcaption>Qurucu komanda — Epoxy Azerbaijan qrupu</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOG -->
+<section class="sec" id="catalog" style="padding-top:0">
+  <div class="cat-head">
+    <div>
+      <p class="sec-num rv">02 — Kataloq</p>
+      <h2 class="h2 rv d1">Dörd dizayn xətti</h2>
+    </div>
+    <p class="lede rv d2" style="margin-top:0;max-width:34ch">Hamısı fərdi ölçüdə, seçdiyiniz material və rəngdə istehsal olunur.</p>
+  </div>
+  <div class="cat-grid">
+    <article class="prod rv" data-lb="0">
+      <div class="prod-img"><img src="media/doorsa/d13.jpg" alt="Fluted yivli qapı — bej lak, qızılı dəstək" loading="lazy"></div>
+      <div class="prod-row"><h3 class="prod-name">Fluted</h3><span class="prod-code">DS-01</span></div>
+      <p class="prod-desc">Yivli panel, klassik pərvaz. Qızılı və ya nikel armatur seçimi.</p>
+      <div class="prod-foot">Bax <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+    </article>
+    <article class="prod rv d1" data-lb="1">
+      <div class="prod-img"><img src="media/doorsa/d3.jpg" alt="Shaker ağ qapı — minimal panel" loading="lazy"></div>
+      <div class="prod-row"><h3 class="prod-name">Shaker</h3><span class="prod-code">DS-02</span></div>
+      <p class="prod-desc">Tək panel, təmiz xətlər. Müasir interyerlər üçün standart seçim.</p>
+      <div class="prod-foot">Bax <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+    </article>
+    <article class="prod rv d2" data-lb="2">
+      <div class="prod-img"><img src="media/doorsa/d8.jpg" alt="Fransız şüşəli qapı — panel divar fonunda" loading="lazy"></div>
+      <div class="prod-row"><h3 class="prod-name">Fransız</h3><span class="prod-code">DS-03</span></div>
+      <p class="prod-desc">Fatset şüşə bölmələri. İşığı ötürür, məkanı böyüdür.</p>
+      <div class="prod-foot">Bax <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+    </article>
+    <article class="prod prod-wide rv" data-lb="3">
+      <div class="prod-img"><img src="media/doorsa/d11.jpg" alt="Firuzəyi RAL rəngli qapı — fərdi rəng xətti" loading="lazy"></div>
+      <div class="prod-wide-body">
+        <div class="prod-row"><h3 class="prod-name">Colour — fərdi rəng xətti</h3><span class="prod-code" style="color:rgba(255,255,255,.4)">DS-04</span></div>
+        <p class="prod-desc">İstənilən RAL kodu ilə mat və ya yarımparlaq lak. Bu firuzəyi — müştəri seçimidir; sizinki hansı rəngdir?</p>
+        <a href="#contact" class="link-u">Rəng kataloqu istə</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 3D DOOR — SIGNATURE -->
+<section class="door3d-sec" id="signature">
+  <div>
+    <p class="sec-num rv">İnteraktiv</p>
+    <h2 class="h2 rv d1">Qapını özün <em>aç</em></h2>
+    <p class="lede rv d2">Hər layihə bir qapının arxasında başlayır. Ustamız ölçüyə gəlir, siz sadəcə hansı otağın qapısından başlayacağımızı deyirsiniz.</p>
+    <div class="hero-row rv d3" style="margin-top:2.4rem">
+      <a href="#contact" class="btn">Layihəyə başla
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+    <div class="cfg-panel rv d2" style="margin-top:2.8rem;padding-top:2.4rem;border-top:1px solid var(--hair)">
+      <p class="cfg-title">Qapını konfiqurasiya et</p>
+      <div class="cfg-group">
+        <p class="cfg-label">Material</p>
+        <div class="cfg-opts" id="cfgMat">
+          <button class="cfg-btn active" data-grad="linear-gradient(105deg,#F9F8F5 0%,#EDECEA 55%,#E4E2DD 100%)">MDF</button>
+          <button class="cfg-btn" data-grad="linear-gradient(105deg,#C4955A 0%,#A8743A 50%,#8B5E2A 100%)">Massiv ağac</button>
+          <button class="cfg-btn" data-grad="linear-gradient(105deg,#2C2C2C 0%,#1A1A1A 50%,#111 100%)">Melamin</button>
+          <button class="cfg-btn" data-grad="linear-gradient(105deg,#E8E4DC 0%,#D4CEBC 55%,#C8C2AE 100%)">LDSP</button>
+        </div>
+      </div>
+      <div class="cfg-group">
+        <p class="cfg-label">Rəng</p>
+        <div class="cfg-opts" id="cfgColor">
+          <button class="cfg-color active" data-color="white" data-name="Ağ" style="background:#F9F8F5;border:2px solid #ccc" title="Ağ"></button>
+          <button class="cfg-color" data-color="beige" data-name="Bej" style="background:#E8DDD0" title="Bej"></button>
+          <button class="cfg-color" data-color="gray" data-name="Boz" style="background:#9E9E9E" title="Boz"></button>
+          <button class="cfg-color" data-color="anthracite" data-name="Antrasit" style="background:#3A3A3A" title="Antrasit"></button>
+          <button class="cfg-color" data-color="black" data-name="Qara" style="background:#111" title="Qara"></button>
+          <button class="cfg-color" data-color="walnut" data-name="Qoz" style="background:#8B5E2A" title="Qoz"></button>
+          <button class="cfg-color" data-color="teal" data-name="Firuzəyi" style="background:#3E6C74" title="Firuzəyi"></button>
+          <button class="cfg-color" data-color="sage" data-name="Yaşıl" style="background:#7A9E7E" title="Yaşıl"></button>
+        </div>
+      </div>
+      <div class="cfg-group">
+        <p class="cfg-label">Dizayn</p>
+        <div class="cfg-opts" id="cfgStyle">
+          <button class="cfg-btn active">Shaker</button>
+          <button class="cfg-btn">Düz</button>
+          <button class="cfg-btn">Fransız</button>
+        </div>
+      </div>
+      <div class="cfg-summary">
+        <p class="cfg-sum-label">Seçilmiş konfiqurasiya:</p>
+        <p class="cfg-sum-val" id="cfgSummary">MDF · Ağ · Shaker</p>
+        <a href="#contact" class="btn" style="margin-top:1.2rem;display:inline-flex">Bu konfiqurasiyada sifariş ver
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="door3d-stage rv d1">
+    <div class="door3d" id="door3d" role="button" tabindex="0" aria-label="3D qapını aç və ya bağla">
+      <div class="door3d-room">
+        <p>Sizin layihəniz<br>bu qapının arxasındadır</p>
+        <a href="#contact" class="link-u">Usta çağır</a>
+      </div>
+      <div class="door3d-panel"><div class="door3d-edge"></div><div class="door3d-handle"></div></div>
+      <div class="door3d-jamb"></div>
+    </div>
+    <p class="door3d-hint">Üzərinə gəl və ya toxun</p>
+  </div>
+</section>
+
+<!-- PROCESS / SPECS -->
+<section class="sec specs" id="process">
+  <p class="sec-num rv">03 — Proses</p>
+  <h2 class="h2 rv d1">Üç addım, <em>bir standart</em></h2>
+  <div class="specs-grid">
+    <div class="spec rv">
+      <p class="spec-idx">Addım / 01</p>
+      <h3>Ölçü və məsləhət</h3>
+      <p>Ustamız ünvana gəlir, divar açımlarını lazerlə ölçür. Material, rəng və armatur seçimində məsləhət — pulsuz.</p>
+    </div>
+    <div class="spec rv d1">
+      <p class="spec-idx">Addım / 02</p>
+      <h3>İstehsal</h3>
+      <p>Öz fabrikimizdə, 10–15 iş günü ərzində. Hər mərhələdə keyfiyyət nəzarəti: karkas, örtük, lak, armatur.</p>
+    </div>
+    <div class="spec rv d2">
+      <p class="spec-idx">Addım / 03</p>
+      <h3>Montaj və zəmanət</h3>
+      <p>Təmiz montaj — toz və zibil arxada qalmır. Mexanizm tənzimlənməsi və zəmanət sənədi təhvil verilir.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MATERIALS -->
+<section class="sec" id="materials">
+  <p class="sec-num rv">04 — Materiallar</p>
+  <h2 class="h2 rv d1">Nədən <em>hazırlayırıq</em></h2>
+  <div class="mtable">
+    <div class="mrow rv"><div class="mrow-dot" style="background:linear-gradient(135deg,#3B1F10,#6B3A1E)"></div><div class="mrow-name">Massiv ağac</div><div class="mrow-desc">Təbii tekstura, illərlə formasını saxlayır. Premium seqment üçün.</div><div class="mrow-tag">Premium</div></div>
+    <div class="mrow rv"><div class="mrow-dot" style="background:linear-gradient(135deg,#E8E0D5,#C8BBB0)"></div><div class="mrow-name">MDF</div><div class="mrow-desc">Hamar səth — lak və boyanın ideal əsası. Deformasiyaya davamlı.</div><div class="mrow-tag">Ən populyar</div></div>
+    <div class="mrow rv"><div class="mrow-dot" style="background:linear-gradient(135deg,#F8F8F6,#E8E5E0);border:1px solid var(--hair)"></div><div class="mrow-name">Lak örtük</div><div class="mrow-desc">Mat, yarımparlaq və parlaq. İstənilən RAL rəng kodu ilə.</div><div class="mrow-tag">Rəng seçimi</div></div>
+    <div class="mrow rv"><div class="mrow-dot" style="background:linear-gradient(135deg,#8A7A6A,#6E5E4E)"></div><div class="mrow-name">Melamin</div><div class="mrow-desc">Cızılmaya davamlı örtük. Ofis və kommersiya obyektləri üçün.</div><div class="mrow-tag">Davamlı</div></div>
+    <div class="mrow rv"><div class="mrow-dot" style="background:linear-gradient(135deg,#CFC8BE,#B0A89E)"></div><div class="mrow-name">LDSP</div><div class="mrow-desc">Əlverişli qiymət, geniş dekor seçimi. Texniki otaqlar üçün.</div><div class="mrow-tag">Ekonom</div></div>
+    <div class="mrow rv"><div class="mrow-dot" style="background:linear-gradient(135deg,#4A4A4A,#2A2A2A)"></div><div class="mrow-name">Metal armatur</div><div class="mrow-desc">Polad petlə və kilid mexanizmləri. Səssiz bağlanma sistemləri.</div><div class="mrow-tag">Standart</div></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="sec" id="gallery" style="padding-top:0">
+  <p class="sec-num rv">05 — Qalereya</p>
+  <h2 class="h2 rv d1">İşlərimizdən</h2>
+  <div class="ggrid">
+    <div class="gg gg-w rv" data-lb="4"><img src="media/doorsa/d16.jpg" alt="Yivli qapılar və çilçıraqlı dəhliz" loading="lazy"></div>
+    <div class="gg rv d1" data-lb="5"><img src="media/doorsa/d12.jpg" alt="Firuzəyi qapılar — koridor görünüşü" loading="lazy"></div>
+    <div class="gg rv d2" data-lb="6"><img src="media/doorsa/d4.jpg" alt="Ağ qapı — hamam girişi" loading="lazy"></div>
+    <div class="gg rv" data-lb="7"><img src="media/doorsa/d15.jpg" alt="Bej qapılı dəhliz" loading="lazy"></div>
+    <div class="gg rv d1" data-lb="8"><img src="media/doorsa/d1.jpg" alt="Bürünc dəstək — detal" loading="lazy"></div>
+    <div class="gg gg-w rv d2" data-lb="9"><img src="media/doorsa/d9.jpg" alt="Divar paneli və kristal çıraq" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- CINEMATIC VIDEO — scroll ilə böyüyür -->
+<section class="vcine" id="video" aria-label="İstehsal videosu">
+  <div class="vcine-sticky">
+    <div class="vcine-media" id="vcineMedia">
+      <video id="vcineVid" src="media/doorsa/dv1.mp4" muted loop playsinline preload="metadata"></video>
+    </div>
+    <div class="vcine-veil" id="vcineVeil"></div>
+    <div class="vcine-copy" id="vcineCopy">
+      <p class="vcine-kicker">Fabrikdən — evinizə</p>
+      <h2 class="vcine-title">İstehsal<br><em>hərəkətdə</em></h2>
+    </div>
+    <p class="vcine-hint">Sürüşdürməyə davam et</p>
+  </div>
+</section>
+
+<!-- MONTAJ VIDEO -->
+<section class="sec" id="montaj">
+  <div class="vmount">
+    <div>
+      <p class="sec-num rv">06 — Montaj</p>
+      <h2 class="h2 rv d1">Təmiz iş,<br><em>səssiz nəticə</em></h2>
+      <p class="lede rv d2">Montaj günü evinizdə toz, zibil və yarımçıq detal qalmır. Mexanizm yerində tənzimlənir, qapı təhvil sənədi ilə birlikdə verilir.</p>
+      <div class="vmount-list">
+        <div class="vmount-li rv">Lazer ölçüyə uyğun dəqiq oturtma</div>
+        <div class="vmount-li rv d1">Səssiz bağlanma mexanizminin tənzimi</div>
+        <div class="vmount-li rv d2">İş yerinin tam təmizlənməsi və zəmanət sənədi</div>
+      </div>
+    </div>
+    <div class="vmount-media wipe" id="vmountMedia">
+      <video id="vmountVid" src="media/doorsa/dv2.mp4" muted loop playsinline preload="metadata" aria-label="Montaj prosesi videosu"></video>
+      <div class="vmount-badge"><b>Montaj günü</b>Bakı · real çəkiliş</div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTES -->
+<section class="sec" id="reviews" style="padding-top:0">
+  <p class="sec-num rv">07 — Rəylər</p>
+  <h2 class="h2 rv d1">Müştərilər <em>deyir</em></h2>
+  <div class="quotes">
+    <div class="qt rv">
+      <div class="qt-stars">★★★★★</div>
+      <p class="qt-text">Ölçüyə gələn usta 20 dəqiqəyə hər şeyi dəqiqləşdirdi. Qapılar deyilən gündə hazır oldu, montajdan sonra ev tərtəmiz qaldı.</p>
+      <div class="qt-who"><b>Rəşad Məmmədov</b>Yasamal · 7 qapı</div>
+    </div>
+    <div class="qt rv d1">
+      <div class="qt-stars">★★★★★</div>
+      <p class="qt-text">Kataloqdan kənar rəng istədik — RAL kodu ilə dəqiq həmin rəngi aldıq. Firuzəyi qapılar evin vizit kartına çevrilib.</p>
+      <div class="qt-who"><b>Nigar Əliyeva</b>Nərimanov · Fərdi rəng</div>
+    </div>
+    <div class="qt rv d2">
+      <div class="qt-stars">★★★★★</div>
+      <p class="qt-text">Villaya 14 qapı və divar panelləri sifariş etdik. Bir il sonra kiçik tənzimləmə lazım oldu — zəmanətlə dərhal həll etdilər.</p>
+      <div class="qt-who"><b>Elvin Quliyev</b>Badamdar · Villa</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec" id="contact" style="padding-top:0">
+  <div class="contact">
+    <div>
+      <p class="sec-num rv">08 — Əlaqə</p>
+      <h2 class="h2 rv d1">Ölçü üçün<br><em>usta çağırın</em></h2>
+      <p class="lede rv d2">Və ya fabrik-şouruma gəlin — materialları və hazır nümunələri yerində görün.</p>
+      <dl class="clist">
+        <div class="crow rv"><dt>Telefon</dt><dd><a href="tel:+994519996822">+994 51 999 68 22</a></dd></div>
+        <div class="crow rv"><dt>E-poçt</dt><dd><a href="mailto:info@epoxyazerbaijan.com">info@epoxyazerbaijan.com</a></dd></div>
+        <div class="crow rv"><dt>Ünvan</dt><dd>Bakı, Binəqədi rayonu, Binəqədi şossesi, 2-ci mədən, korpus 73</dd></div>
+        <div class="crow rv"><dt>İş saatları</dt><dd>B.e – Şənbə · 09:00 – 19:00</dd></div>
+        <div class="crow rv"><dt>Sosial</dt><dd><a href="https://www.instagram.com/doorsa.az/" target="_blank" rel="noopener">Instagram ↗</a></dd></div>
+      </dl>
+    </div>
+    <form class="bform rv d2" id="cform" novalidate>
+      <div class="bfld">
+        <label for="fn">Ad Soyad *</label>
+        <input type="text" id="fn" name="name" autocomplete="name" placeholder="Adınızı daxil edin">
+      </div>
+      <div class="bfld">
+        <label for="fp">Telefon *</label>
+        <input type="tel" id="fp" name="phone" autocomplete="tel" placeholder="+994 XX XXX XX XX">
+      </div>
+      <div class="bfld">
+        <label for="fcat">Dizayn xətti</label>
+        <select id="fcat" name="type">
+          <option value="">Seçin…</option>
+          <option>Fluted — DS-01</option>
+          <option>Shaker — DS-02</option>
+          <option>Fransız — DS-03</option>
+          <option>Colour — DS-04</option>
+          <option>Fərdi dizayn</option>
+        </select>
+      </div>
+      <div class="bfld">
+        <label for="fm">Qeyd</label>
+        <textarea id="fm" name="note" placeholder="Neçə qapı, hansı material, təxmini ölçülər…"></textarea>
+      </div>
+      <button type="submit" class="btn">Müraciət göndər</button>
+      <div id="formOk" role="status">Müraciətiniz alındı. Ən qısa zamanda əlaqə saxlayacağıq.</div>
+    </form>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2 class="h2 rv">Qapınız hazırdır —<br>sadəcə ölçüsünü bilmirik.</h2>
+  <p class="rv d1">İlk addım 20 dəqiqəlik ölçü görüşüdür. Pulsuz, öhdəliksiz.</p>
+  <a href="tel:+994519996822" class="btn rv d2">+994 51 999 68 22</a>
+</div>
+
+<footer>
+  <div class="ft-logo">DOOR<span>SA</span></div>
+  <div class="ft-links">
+    <a href="https://www.instagram.com/doorsa.az/" target="_blank" rel="noopener">Instagram</a>
+    <a href="index.html">Epoxy Azerbaijan</a>
+    <a href="site.html">Agach Interiors</a>
+  </div>
+  <div class="ft-copy">© 2026 DOORSA</div>
+</footer>
+
+<a class="wa" href="https://wa.me/994519996822?text=Salam%2C%20Doorsa%20qap%C4%B1lar%C4%B1%20bar%C9%99d%C9%99%20m%C9%99lumat%20almaq%20istəyirəm." target="_blank" rel="noopener" aria-label="WhatsApp ilə yaz">
+  <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
+
+<div id="lbox" role="dialog" aria-modal="true" aria-label="Şəkil böyüdücü">
+  <button class="lb-btn lb-x" id="lbX" aria-label="Bağla"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <button class="lb-btn lb-p" id="lbP" aria-label="Əvvəlki"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg></button>
+  <div id="lbMedia"></div>
+  <button class="lb-btn lb-n" id="lbN" aria-label="Növbəti"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+</div>
+
+<button id="btt" aria-label="Yuxarı qayıt" onclick="window.scrollTo({top:0,behavior:'smooth'})"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg></button>
+<a id="nav-home" href="index.html"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>Epoxy Azerbaijan</a>
+<script>
+window.addEventListener('load',()=>document.body.classList.add('loaded'));
+
+// NAV + SCROLL PROGRESS + BTT + NAV-HOME (consolidated rAF)
+const nav=document.getElementById('nav');
+const sprog=document.getElementById('sprog');
+const btt=document.getElementById('btt');
+const navHome=document.getElementById('nav-home');
+let _st=false;
+function _rScroll(){
+  const sy=scrollY;
+  nav.classList.toggle('scrolled',sy>40);
+  sprog.style.width=(sy/(document.body.scrollHeight-innerHeight))*100+'%';
+  if(btt)btt.classList.toggle('show',sy>500);
+  if(navHome)navHome.classList.toggle('show',sy>200);
+  _st=false;
+}
+addEventListener('scroll',()=>{if(!_st){_st=true;requestAnimationFrame(_rScroll);}},{passive:true});
+
+// MOBILE NAV
+const mobNav=document.getElementById('mobNav');
+document.getElementById('hamBtn').addEventListener('click',()=>mobNav.classList.add('open'));
+document.getElementById('mobClose').addEventListener('click',()=>mobNav.classList.remove('open'));
+mobNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mobNav.classList.remove('open')));
+
+// REVEAL
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});
+},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv,.wipe').forEach(el=>io.observe(el));
+
+// LIGHTBOX
+(function(){
+  const items=[...document.querySelectorAll('[data-lb]')];
+  const srcs=items.map(el=>{
+    const v=el.querySelector('video');
+    return v?{t:'v',s:v.src}:{t:'i',s:el.querySelector('img').src,a:el.querySelector('img').alt};
+  });
+  const lb=document.getElementById('lbox'),med=document.getElementById('lbMedia');
+  let cur=0;
+  function render(){
+    const it=srcs[cur];
+    med.innerHTML=it.t==='v'
+      ?`<video src="${it.s}" muted autoplay loop playsinline></video>`
+      :`<img src="${it.s}" alt="${it.a||''}">`;
+  }
+  function open(i){cur=i;render();lb.classList.add('open');document.body.style.overflow='hidden';}
+  function close(){lb.classList.remove('open');document.body.style.overflow='';med.innerHTML='';}
+  items.forEach((el,i)=>el.addEventListener('click',()=>open(i)));
+  document.getElementById('lbX').addEventListener('click',close);
+  document.getElementById('lbP').addEventListener('click',()=>{cur=(cur-1+srcs.length)%srcs.length;render();});
+  document.getElementById('lbN').addEventListener('click',()=>{cur=(cur+1)%srcs.length;render();});
+  lb.addEventListener('click',e=>{if(e.target===lb)close();});
+  addEventListener('keydown',e=>{
+    if(!lb.classList.contains('open'))return;
+    if(e.key==='Escape')close();
+    if(e.key==='ArrowLeft'){cur=(cur-1+srcs.length)%srcs.length;render();}
+    if(e.key==='ArrowRight'){cur=(cur+1)%srcs.length;render();}
+  });
+})();
+
+// ── WOW EFFECTS ──────────────────────────────────────
+const fine=matchMedia('(pointer:fine)').matches;
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+
+// Counters
+const cio=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const el=e.target,t=+el.dataset.t,dur=1300,st=performance.now();
+    (function tick(now){
+      const p=Math.min((now-st)/dur,1);
+      el.textContent=Math.round(t*(1-Math.pow(1-p,3)));
+      if(p<1)requestAnimationFrame(tick);
+    })(st);
+    cio.unobserve(el);
+  });
+},{threshold:.6});
+document.querySelectorAll('.cnt').forEach(el=>cio.observe(el));
+
+// Magnetic buttons
+if(fine&&!reduce){
+  document.querySelectorAll('.btn,.nav-cta').forEach(b=>{
+    b.addEventListener('pointermove',e=>{
+      const r=b.getBoundingClientRect();
+      const x=(e.clientX-r.left-r.width/2)/r.width;
+      const y=(e.clientY-r.top-r.height/2)/r.height;
+      b.style.transform=`translate(${x*10}px,${y*7}px)`;
+    });
+    b.addEventListener('pointerleave',()=>{b.style.transform=''});
+  });
+}
+
+// 3D tilt + glare on catalog cards
+if(fine&&!reduce){
+  document.querySelectorAll('.prod:not(.prod-wide)').forEach(c=>{
+    const g=document.createElement('div');g.className='glare';c.appendChild(g);
+    c.addEventListener('pointermove',e=>{
+      const r=c.getBoundingClientRect();
+      const px=(e.clientX-r.left)/r.width,py=(e.clientY-r.top)/r.height;
+      c.style.setProperty('--gx',px*100+'%');
+      c.style.setProperty('--gy',py*100+'%');
+      c.style.transform=`perspective(950px) rotateX(${(py-.5)*-6.5}deg) rotateY(${(px-.5)*6.5}deg) translateY(-3px)`;
+    });
+    c.addEventListener('pointerleave',()=>{c.style.transform=''});
+  });
+}
+
+// Gallery cursor pill
+const gpill=document.getElementById('gpill');
+if(fine&&!reduce&&gpill){
+  document.querySelectorAll('.gg').forEach(g=>{
+    g.addEventListener('pointerenter',()=>gpill.style.setProperty('--ps','1'));
+    g.addEventListener('pointerleave',()=>gpill.style.setProperty('--ps','0'));
+    g.addEventListener('pointermove',e=>{
+      gpill.style.setProperty('--px',e.clientX+'px');
+      gpill.style.setProperty('--py',e.clientY+'px');
+    });
+  });
+}
+
+// Cinematic scroll video (dv1): scale .52 → 1, veil & title fade
+(function(){
+  const sec=document.querySelector('.vcine');
+  if(!sec)return;
+  const media=document.getElementById('vcineMedia');
+  const veil=document.getElementById('vcineVeil');
+  const copy=document.getElementById('vcineCopy');
+  if(!reduce){
+    let ticking=false;
+    function update(){
+      const r=sec.getBoundingClientRect();
+      const total=r.height-innerHeight;
+      const p=Math.min(Math.max(-r.top/total,0),1);
+      const e=1-Math.pow(1-p,2); // ease-out
+      media.style.transform=`scale(${.52+e*.48})`;
+      veil.style.setProperty('--vv',(.45*(1-e)).toFixed(3));
+      veil.style.background=`rgba(20,20,18,${(.45*(1-e)).toFixed(3)})`;
+      copy.style.opacity=Math.max(1-p*1.6,0);
+      copy.style.transform=`translateY(${p*-70}px)`;
+      ticking=false;
+    }
+    addEventListener('scroll',()=>{
+      if(!ticking){ticking=true;requestAnimationFrame(update);}
+    },{passive:true});
+    update();
+  }else{
+    media.style.transform='none';
+  }
+})();
+
+// Montaj video (dv2): gentle scroll parallax
+(function(){
+  const wrap=document.getElementById('vmountMedia');
+  const vid=document.getElementById('vmountVid');
+  if(!wrap||!vid||reduce)return;
+  let ticking=false;
+  addEventListener('scroll',()=>{
+    if(ticking)return;ticking=true;
+    requestAnimationFrame(()=>{
+      const r=wrap.getBoundingClientRect();
+      if(r.bottom>0&&r.top<innerHeight){
+        const c=(r.top+r.height/2-innerHeight/2)/innerHeight;
+        vid.style.setProperty('--mp',(c*-34).toFixed(1)+'px');
+      }
+      ticking=false;
+    });
+  },{passive:true});
+})();
+
+// Videolar yalnız görünəndə oynasın
+const vio=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    const v=e.target;
+    if(e.isIntersecting){v.play().catch(()=>{});}
+    else v.pause();
+  });
+},{threshold:.25});
+document.querySelectorAll('video').forEach(v=>vio.observe(v));
+
+// 3D door
+(function(){
+  const d=document.getElementById('door3d');
+  if(!d)return;
+  if(fine){
+    d.addEventListener('pointerenter',()=>d.classList.add('open'));
+    d.addEventListener('pointerleave',()=>d.classList.remove('open'));
+  }
+  d.addEventListener('click',e=>{
+    if(e.target.closest('a'))return;
+    d.classList.toggle('open');
+  });
+  d.addEventListener('keydown',e=>{
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();d.classList.toggle('open');}
+  });
+})();
+
+// FORM
+document.getElementById('cform').addEventListener('submit',async function(e){
+  e.preventDefault();
+  const fn=document.getElementById('fn'),fp=document.getElementById('fp');
+  let ok=true;
+  [fn,fp].forEach(f=>{f.classList.toggle('err',!f.value.trim());if(!f.value.trim())ok=false;});
+  if(!ok)return;
+  const btn=this.querySelector('[type="submit"]');
+  if(btn)btn.disabled=true;
+  try{
+    const r=await fetch('https://formspree.io/f/xpwzgkqr',{method:'POST',body:new FormData(this),headers:{Accept:'application/json'}});
+    if(!r.ok)throw new Error();
+  }catch{
+    const vals=`Ad: ${fn.value}\nTelefon: ${fp.value}`;
+    window.location.href=`mailto:info@epoxyazerbaijan.com?subject=Doorsa%20M%C3%BCraci%C9%99ti&body=${encodeURIComponent(vals)}`;
+  }
+  document.getElementById('formOk').style.display='block';
+  this.querySelectorAll('input,select,textarea').forEach(f=>f.value='');
+  if(btn)btn.disabled=false;
+  setTimeout(()=>document.getElementById('formOk').style.display='none',6000);
+});
+
+// DOOR CONFIGURATOR
+(function(){
+  const panel=document.querySelector('.door3d-panel');
+  if(!panel)return;
+  const colorMap={
+    white:'linear-gradient(105deg,#F9F8F5 0%,#EDECEA 55%,#E4E2DD 100%)',
+    beige:'linear-gradient(105deg,#EEE0CF 0%,#DCCDB8 55%,#CEBDA5 100%)',
+    gray:'linear-gradient(105deg,#C8C8C8 0%,#B0B0B0 55%,#989898 100%)',
+    anthracite:'linear-gradient(105deg,#4A4A4A 0%,#363636 55%,#2A2A2A 100%)',
+    black:'linear-gradient(105deg,#222 0%,#111 50%,#0A0A0A 100%)',
+    walnut:'linear-gradient(105deg,#C4955A 0%,#A8743A 50%,#8B5E2A 100%)',
+    teal:'linear-gradient(105deg,#4E8A93 0%,#3E6C74 50%,#2F565D 100%)',
+    sage:'linear-gradient(105deg,#9ABE9E 0%,#7A9E7E 50%,#5E8262 100%)'
+  };
+  let selMat='MDF',selColor='Ağ',selStyle='Shaker';
+  let currentGrad=colorMap.white;
+  let colorSelected=false;
+  function updateDoor(){
+    panel.style.background=currentGrad;
+    panel.style.transition='background .5s ease';
+    document.getElementById('cfgSummary').textContent=`${selMat} · ${selColor} · ${selStyle}`;
+  }
+  document.querySelectorAll('#cfgMat .cfg-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('#cfgMat .cfg-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      selMat=btn.textContent.trim();
+      if(!colorSelected){currentGrad=btn.dataset.grad||currentGrad;}
+      updateDoor();
+    });
+  });
+  document.querySelectorAll('#cfgColor .cfg-color').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('#cfgColor .cfg-color').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      selColor=btn.dataset.name||btn.dataset.color;
+      currentGrad=colorMap[btn.dataset.color]||currentGrad;
+      colorSelected=true;
+      updateDoor();
+    });
+  });
+  document.querySelectorAll('#cfgStyle .cfg-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('#cfgStyle .cfg-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      selStyle=btn.textContent.trim();
+      updateDoor();
+    });
+  });
+  updateDoor();
+})();
+
+</script>
+</body>
+</html>
