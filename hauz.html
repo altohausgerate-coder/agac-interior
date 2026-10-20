@@ -3,24 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<script src="js/i18n.js"></script>
+<script src="js/i18n/hauz.js"></script>
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>HAUZ Furniture — Premium Ev Mebelləri | Epoxy Azerbaijan</title>
 <meta name="description" content="HAUZ Furniture — Klassik, Neoklassik, Modern, Avanqard, Loft və İndustrial üslubda premium ev mebelləri. Mətbəx, yataq, qonaq, dəhliz, uşaq otağı.">
 <meta property="og:title" content="HAUZ Furniture — Premium Ev Mebelləri">
 <meta property="og:description" content="Fərdi dizaynda yüksək keyfiyyətli ev mebelləri. Bakı, Azərbaycan.">
 <meta property="og:image" content="media/hauz/h27.jpg">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LocalBusiness","name":"HAUZ Furniture","description":"Premium ev mebeli fabriki — Epoxy Azerbaijan","telephone":"+994519996822","email":"info@epoxyazerbaijan.com","address":{"@type":"PostalAddress","addressLocality":"Bakı","addressRegion":"Binəqədi","streetAddress":"Binəqədi şossesi, 2-ci mədən, korpus 73","addressCountry":"AZ"},"openingHours":"Mo-Sa 09:00-19:00"}
 </script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#F8F7F4;--bg2:#F0EFEB;--dark:#111010;--mid:#1E1C18;
-  --muted:#78776F;--line:rgba(17,16,16,.09);
-  --acc:#9B7B3A;--S:'Plus Jakarta Sans',-apple-system,sans-serif;
+  --bg:#ffffff;--bg2:#ffffff;--dark:#191A1C;--mid:#191A1C;
+  --muted:#50545B;--border:#E8E8E8;--line:rgba(25,26,28,.08);
+  --acc:#191A1C;--S:'Roboto Condensed',sans-serif;
   --D:'Cormorant Garamond',Georgia,serif;
 }
 html{scroll-behavior:smooth}
@@ -38,27 +44,28 @@ a{text-decoration:none;color:inherit}
 
 @media(pointer:fine){
   #cur{position:fixed;z-index:9998;pointer-events:none;width:10px;height:10px;border-radius:50%;background:#fff;top:0;left:0;transform:translate(-50%,-50%);transition:width .2s cubic-bezier(.16,1,.3,1),height .2s cubic-bezier(.16,1,.3,1),opacity .2s;box-shadow:0 0 0 1.5px rgba(0,0,0,.35)}
-  #cur.big{width:36px;height:36px;background:rgba(255,255,255,.18);box-shadow:0 0 0 1.5px rgba(0,0,0,.2)}
+  #cur.big{width:60px;height:60px;background:rgba(17,16,16,.82);box-shadow:0 0 0 1px rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;}
   #cur.hidden{opacity:0}
   body,a,button,[role="button"],.bn,.cat-card,.vid-item{cursor:none}
 }
 @media(pointer:coarse){body{cursor:auto}#cur{display:none}}
 
 /* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:800;padding:1.4rem clamp(1.5rem,4vw,4rem);display:flex;align-items:center;justify-content:space-between;transition:background .4s,backdrop-filter .4s}
-.nav.scrolled{background:rgba(248,247,244,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav-logo{font-family:var(--D);font-size:1.4rem;font-weight:300;letter-spacing:.15em;color:var(--dark)}
-.nav-logo em{font-style:italic;color:var(--acc)}
-.nav-links{display:flex;gap:2.5rem;list-style:none}
-.nav-links a{font-size:.62rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);transition:color .2s}
-.nav-links a:hover{color:var(--dark)}
-.nav-cta{font-size:.6rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:.55rem 1.4rem;border:1px solid var(--dark);position:relative;overflow:hidden;transition:color .3s}
-.nav-cta::before{content:'';position:absolute;inset:0;background:var(--dark);transform:translateX(-101%);transition:transform .38s cubic-bezier(.16,1,.3,1)}
-.nav-cta span{position:relative;z-index:1}
-.nav-cta:hover::before{transform:translateX(0)}
-.nav-cta:hover{color:#fff}
-.ham{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:.4rem}
-.ham span{display:block;width:22px;height:1px;background:var(--dark);transition:transform .3s,opacity .3s}
+.nav{position:fixed;top:0;left:0;right:0;z-index:800;background:#fff;border-bottom:1px solid var(--border);height:58px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 28px}
+.nav-left{display:flex;align-items:center;gap:8px}
+.nav-lang{font-family:var(--S);font-size:13px;letter-spacing:.08em;color:var(--muted);padding:0;background:none;border:none;cursor:pointer;transition:color .2s}
+.nav-lang.active,.nav-lang:hover{color:var(--dark)}
+.nav-sep{color:var(--border);user-select:none;font-size:13px}
+.nav-logo{text-align:center;line-height:1.15;text-decoration:none;color:inherit}
+.logo-main{display:block;font-family:var(--D);font-size:17px;font-weight:400;letter-spacing:.14em;text-transform:uppercase}
+.logo-sub{display:block;font-family:var(--S);font-size:8.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.nav-right{display:flex;align-items:center;justify-content:flex-end;gap:20px}
+.nav-link{font-family:var(--S);font-size:13px;letter-spacing:.07em;color:var(--dark);transition:color .2s}
+.nav-link:hover{color:var(--muted)}
+.nav-cta{font-size:.58rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;padding:.48rem 1.2rem;border:1px solid var(--dark);color:var(--dark);transition:background .25s,color .25s}
+.nav-cta:hover{background:var(--dark);color:#fff}
+.ham{display:flex;flex-direction:column;gap:5px;background:none;border:none;padding:4px;cursor:pointer}
+.ham span{display:block;width:20px;height:1.5px;background:var(--dark)}
 
 .mob-nav{position:fixed;inset:0;z-index:700;background:var(--dark);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
 .mob-nav.open{opacity:1;visibility:visible}
@@ -109,10 +116,10 @@ a{text-decoration:none;color:inherit}
 
 /* SECTION COMMON */
 .sec-pad{padding:clamp(5rem,8vw,9rem) clamp(1.5rem,4vw,4rem)}
-.sec-head{margin-bottom:clamp(3rem,5vw,5rem)}
-.sec-tag{font-size:.57rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-bottom:.8rem}
+.sec-head{margin-bottom:clamp(3rem,5vw,5rem);text-align:center}
+.sec-tag{font-family:var(--D);font-size:clamp(18px,1.6vw,22px);font-weight:400;letter-spacing:.28em;text-transform:uppercase;color:var(--dark);margin-bottom:.8rem}
 .sec-h2{font-family:var(--D);font-size:clamp(2rem,4vw,3.2rem);font-weight:300;font-style:italic;color:var(--dark);line-height:1.15}
-.sec-sub{font-size:.83rem;font-weight:300;color:var(--muted);max-width:50ch;line-height:1.85;margin-top:1rem}
+.sec-sub{font-size:.83rem;font-weight:300;color:var(--muted);max-width:50ch;line-height:1.85;margin-top:1rem;margin-left:auto;margin-right:auto}
 
 /* CATEGORIES */
 .cats-sec{background:var(--bg)}
@@ -172,6 +179,9 @@ a{text-decoration:none;color:inherit}
 .style-tag:hover{border-color:var(--acc);color:var(--acc)}
 
 /* PROCESS */
+.care-band{margin-top:4rem;padding:2rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:2.5rem;flex-wrap:wrap}
+.care-band-tag{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.care-band-txt{font-variant-numeric:lining-nums;font-family:var(--D);font-size:clamp(1.15rem,1.8vw,1.5rem);font-weight:300;color:var(--dark);line-height:1.4}
 .proc-sec{background:var(--bg);padding:clamp(5rem,8vw,9rem) clamp(1.5rem,4vw,4rem)}
 .proc-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:3rem;margin-top:4rem;counter-reset:step}
 .proc-step{counter-increment:step;position:relative}
@@ -252,7 +262,7 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
 /* RESPONSIVE */
 @media(max-width:1100px){.cats-grid{grid-template-columns:repeat(2,1fr)}.cats-row2{grid-template-columns:repeat(3,1fr)}.mat-grid{grid-template-columns:repeat(4,1fr)}.mat-item:nth-child(4){border-right:none}.mat-item:nth-child(5){border-top:1px solid var(--line)}}
 @media(max-width:900px){.info-band{grid-template-columns:1fr 1fr}.info-item:nth-child(2){border-right:none}.info-item:nth-child(3){border-top:1px solid rgba(255,255,255,.06)}.stats-sec{grid-template-columns:1fr 1fr}.stat-item:nth-child(2){border-right:none}.proc-steps{grid-template-columns:1fr 1fr;gap:2rem}.contact-sec{grid-template-columns:1fr;gap:3rem}.vid-grid{grid-template-columns:repeat(2,1fr)}.footer{grid-template-columns:1fr;text-align:center}}
-@media(max-width:600px){.nav-links,.nav-cta{display:none}.ham{display:flex}.cats-grid{grid-template-columns:1fr}.cats-row2{grid-template-columns:1fr 1fr}.mat-grid{grid-template-columns:repeat(2,1fr)}.stats-sec{grid-template-columns:1fr 1fr}.proc-steps{grid-template-columns:1fr}.gal-masonry{columns:2}.vid-grid{grid-template-columns:1fr}.info-band{grid-template-columns:1fr}.info-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.06)}.info-item:last-child{border-bottom:none}footer{grid-template-columns:1fr;text-align:center}.ft-right{text-align:center}}
+@media(max-width:600px){.nav-link,.nav-cta,.nav-lang,.nav-sep{display:none}.ham{display:flex}.cats-grid{grid-template-columns:1fr}.cats-row2{grid-template-columns:1fr 1fr}.mat-grid{grid-template-columns:repeat(2,1fr)}.stats-sec{grid-template-columns:1fr 1fr}.proc-steps{grid-template-columns:1fr}.gal-masonry{columns:2}.vid-grid{grid-template-columns:1fr}.info-band{grid-template-columns:1fr}.info-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.06)}.info-item:last-child{border-bottom:none}footer{grid-template-columns:1fr;text-align:center}.ft-right{text-align:center}}
 /* TextRoll */
 .txr-w{display:inline-block;perspective:500px;transform-style:preserve-3d;vertical-align:bottom}
 .txr-c{display:inline-block;opacity:0;transform:rotateX(-90deg);transform-origin:50% 100%;animation:txrIn .55s cubic-bezier(.16,1,.3,1) forwards;backface-visibility:hidden}
@@ -272,19 +282,18 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
 .bn:hover .bn-info{transform:translateY(0);opacity:1}
 .bn-title{font-family:var(--D);font-size:1.05rem;font-weight:300;font-style:italic;color:#fff;line-height:1.2}
 .bn-desc{font-size:.57rem;color:rgba(255,255,255,.5);margin-top:.2rem;letter-spacing:.08em;text-transform:uppercase}
-/* Zoom Parallax */
-.zp-sec{height:300vh;position:relative;background:var(--dark)}
-.zp-sticky{position:sticky;top:0;height:100vh;overflow:hidden}
-.zp-label{position:absolute;top:2.5rem;left:50%;transform:translateX(-50%);z-index:10;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.28);white-space:nowrap;pointer-events:none}
-.zp-layer{position:absolute;inset:0;will-change:transform}
-.zp-layer img{width:100%;height:100%;object-fit:cover;display:block}
-.zp-l0{transform-origin:50% 50%}
-.zp-l1{transform-origin:calc(50% + 5vw) calc(50% - 30vh)}
-.zp-l2{transform-origin:calc(50% - 25vw) calc(50% - 10vh)}
-.zp-l3{transform-origin:calc(50% + 27.5vw) 50%}
-.zp-l4{transform-origin:calc(50% + 5vw) calc(50% + 27.5vh)}
-.zp-l5{transform-origin:calc(50% - 22.5vw) calc(50% + 27.5vh)}
-.zp-l6{transform-origin:calc(50% + 25vw) calc(50% + 22.5vh)}
+/* Showcase Marquee */
+.showcase-sec{background:var(--dark);padding:clamp(4rem,6vw,7rem) 0;overflow:hidden}
+.showcase-label{text-align:center;font-size:.57rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:2.8rem}
+.mq-row{overflow:hidden;margin-bottom:10px}
+.mq-row:last-child{margin-bottom:0}
+.mq-track{display:flex;gap:10px;width:max-content;animation:mqLeft 38s linear infinite}
+.mq-row.rev .mq-track{animation-direction:reverse;animation-duration:42s}
+.mq-track:hover{animation-play-state:paused}
+.mq-item{flex-shrink:0;width:380px;height:255px;overflow:hidden;cursor:zoom-in}
+.mq-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .75s cubic-bezier(.16,1,.3,1)}
+.mq-item:hover img{transform:scale(1.06)}
+@keyframes mqLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 </style>
 </head>
 <body>
@@ -296,7 +305,7 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
   <div class="loader-sub">Furniture</div>
 </div>
 
-<div id="cur"></div>
+<div id="cur"><span id="cur-lbl" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:.45rem;letter-spacing:.16em;text-transform:uppercase;color:#fff;opacity:0;transition:opacity .2s;white-space:nowrap;position:absolute;pointer-events:none;"></span></div>
 
 <nav class="mob-nav" id="mobNav">
   <button class="mob-close" id="mobClose">✕</button>
@@ -307,18 +316,29 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
   <a href="index.html" style="font-size:.9rem;letter-spacing:.14em;color:rgba(255,255,255,.25);margin-top:2rem">← Epoxy Azerbaijan</a>
 </nav>
 
-<header class="nav" id="nav">
-  <a href="index.html" class="nav-logo">HAUZ <em>Furniture</em></a>
-  <ul class="nav-links">
-    <li><a href="#categories">Kateqoriyalar</a></li>
-    <li><a href="#gallery">Qalereya</a></li>
-    <li><a href="#videos">Videolar</a></li>
-    <li><a href="#contact">Əlaqə</a></li>
-    <li class="lang-sw"><a href="#" class="lang active" onclick="return false">AZ</a><span class="lang-sep">/</span><a href="https://www.epoxyazerbaijan.az/en/hauz-furniture.html" class="lang" target="_blank" rel="noopener">EN</a><span class="lang-sep">/</span><a href="https://www.epoxyazerbaijan.az/ru/hauz-furniture.html" class="lang" target="_blank" rel="noopener">RU</a></li>
-  </ul>
-  <a href="#contact" class="nav-cta"><span>Sifariş ver</span></a>
-  <button class="ham" id="hamBtn" aria-label="Menu"><span></span><span></span><span></span></button>
-</header>
+<nav class="nav" id="nav">
+  <div class="nav-left">
+    <button type="button" class="nav-lang active" data-lang="az">AZ</button>
+    <span class="nav-sep">/</span>
+    <button type="button" class="nav-lang" data-lang="en">EN</button>
+    <span class="nav-sep">/</span>
+    <button type="button" class="nav-lang" data-lang="ru">RU</button>
+    <span class="nav-sep">/</span>
+    <button type="button" class="nav-lang" data-lang="ar">AR</button>
+  </div>
+  <a href="index.html" class="nav-logo">
+    <span class="logo-main">HAUZ Furniture</span>
+    <span class="logo-sub">Epoxy Azerbaijan</span>
+  </a>
+  <div class="nav-right">
+    <a href="#categories" class="nav-link">Kateqoriyalar</a>
+    <a href="#gallery" class="nav-link">Qalereya</a>
+    <a href="#videos" class="nav-link">Videolar</a>
+    <a href="#contact" class="nav-link">Əlaqə</a>
+    <a href="#contact" class="nav-cta">Sifariş ver</a>
+    <button class="ham" id="hamBtn" aria-label="Menyu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
 
 <!-- HERO -->
 <section class="hero" id="hero">
@@ -363,18 +383,48 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
   </div>
 </div>
 
-<!-- ZOOM PARALLAX -->
-<section class="zp-sec" id="showcase">
-  <div class="zp-sticky">
-    <div class="zp-label">Premium ev mebelləri · Sürüşdür</div>
-    <div class="zp-layer zp-l0"><img src="media/hauz/h3.jpg" alt="HAUZ premium mebel"></div>
-    <div class="zp-layer zp-l1"><img src="media/hauz/h9.jpg" alt="Yataq otağı dəsti"></div>
-    <div class="zp-layer zp-l2"><img src="media/hauz/h7.jpg" alt="Dəhliz mebeli set"></div>
-    <div class="zp-layer zp-l3"><img src="media/hauz/h25.jpg" alt="Mətbəx kabinetləri"></div>
-    <div class="zp-layer zp-l4"><img src="media/hauz/h39.jpg" alt="Açıq rəf sistemi"></div>
-    <div class="zp-layer zp-l5"><img src="media/hauz/h17.jpg" alt="Sanuzəl mebeli"></div>
-    <div class="zp-layer zp-l6"><img src="media/hauz/h43.jpg" alt="Uşaq otağı çarpayısı"></div>
+<!-- SHOWCASE MARQUEE -->
+<section class="showcase-sec" id="showcase">
+  <p class="showcase-label">Premium ev mebelləri — Tamamlanmış layihələr</p>
+
+  <div class="mq-row">
+    <div class="mq-track">
+      <div class="mq-item"><img src="media/hauz/h27.jpg" alt="HAUZ mebel"></div>
+      <div class="mq-item"><img src="media/hauz/h3.jpg" alt="HAUZ premium mebel"></div>
+      <div class="mq-item"><img src="media/hauz/h9.jpg" alt="Yataq otağı dəsti"></div>
+      <div class="mq-item"><img src="media/hauz/h20.jpg" alt="Mətbəx"></div>
+      <div class="mq-item"><img src="media/hauz/h8.jpg" alt="Yataq otağı"></div>
+      <div class="mq-item"><img src="media/hauz/h31.jpg" alt="Qonaq otağı"></div>
+      <div class="mq-item"><img src="media/hauz/h4.jpg" alt="Dəhliz"></div>
+      <div class="mq-item"><img src="media/hauz/h27.jpg" alt="HAUZ mebel"></div>
+      <div class="mq-item"><img src="media/hauz/h3.jpg" alt="HAUZ premium mebel"></div>
+      <div class="mq-item"><img src="media/hauz/h9.jpg" alt="Yataq otağı dəsti"></div>
+      <div class="mq-item"><img src="media/hauz/h20.jpg" alt="Mətbəx"></div>
+      <div class="mq-item"><img src="media/hauz/h8.jpg" alt="Yataq otağı"></div>
+      <div class="mq-item"><img src="media/hauz/h31.jpg" alt="Qonaq otağı"></div>
+      <div class="mq-item"><img src="media/hauz/h4.jpg" alt="Dəhliz"></div>
+    </div>
   </div>
+
+  <div class="mq-row rev">
+    <div class="mq-track">
+      <div class="mq-item"><img src="media/hauz/h7.jpg" alt="Dəhliz mebeli"></div>
+      <div class="mq-item"><img src="media/hauz/h25.jpg" alt="Mətbəx kabinetləri"></div>
+      <div class="mq-item"><img src="media/hauz/h39.jpg" alt="Qarderob sistemi"></div>
+      <div class="mq-item"><img src="media/hauz/h17.jpg" alt="Sanuzəl mebeli"></div>
+      <div class="mq-item"><img src="media/hauz/h43.jpg" alt="Uşaq otağı"></div>
+      <div class="mq-item"><img src="media/hauz/h5.jpg" alt="Dəhliz 2"></div>
+      <div class="mq-item"><img src="media/hauz/h21.jpg" alt="Mətbəx 2"></div>
+      <div class="mq-item"><img src="media/hauz/h7.jpg" alt="Dəhliz mebeli"></div>
+      <div class="mq-item"><img src="media/hauz/h25.jpg" alt="Mətbəx kabinetləri"></div>
+      <div class="mq-item"><img src="media/hauz/h39.jpg" alt="Qarderob sistemi"></div>
+      <div class="mq-item"><img src="media/hauz/h17.jpg" alt="Sanuzəl mebeli"></div>
+      <div class="mq-item"><img src="media/hauz/h43.jpg" alt="Uşaq otağı"></div>
+      <div class="mq-item"><img src="media/hauz/h5.jpg" alt="Dəhliz 2"></div>
+      <div class="mq-item"><img src="media/hauz/h21.jpg" alt="Mətbəx 2"></div>
+    </div>
+  </div>
+
 </section>
 
 <!-- CATEGORIES -->
@@ -638,6 +688,10 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
       <p class="proc-p">Mebellərinizi ünvanınıza çatdırır, peşəkar komandamız tərəfindən quraşdırılır.</p>
     </div>
   </div>
+  <div class="care-band reveal">
+    <span class="care-band-tag">Qulluq xidməti</span>
+    <p class="care-band-txt">Məhsul alındıqdan sonra 1 il ərzində mebelə qulluq 1 dəfə ödənişsizdir.</p>
+  </div>
 </section>
 
 <!-- CONTACT -->
@@ -717,7 +771,9 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
 
 <button id="btt" aria-label="Yuxarı qayıt" onclick="window.scrollTo({top:0,behavior:'smooth'})"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg></button>
 <a id="nav-home" href="index.html"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>Epoxy Azerbaijan</a>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/lenis.min.js"></script>
+<script>(function(){if(!matchMedia('(prefers-reduced-motion:no-preference)').matches)return;window.lenis=new Lenis({lerp:.1,smoothWheel:true,smoothTouch:false});function r(t){window.lenis.raf(t);requestAnimationFrame(r);}requestAnimationFrame(r);})();</script>
+<script src="js/three.min.js"></script>
 <script>
 window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('loader').classList.add('hide'),700)});
 
@@ -744,16 +800,23 @@ document.getElementById('mobClose').addEventListener('click',()=>mobNav.classLis
 function closeMob(){mobNav.classList.remove('open')}
 
 (function(){
-  const cur=document.getElementById('cur');if(!cur)return;
+  if(matchMedia('(pointer:coarse)').matches)return;
+  const cur=document.getElementById('cur');const lbl=document.getElementById('cur-lbl');if(!cur)return;
   let tx=0,ty=0,cx=0,cy=0;
   document.addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY},{passive:true});
   document.addEventListener('mouseleave',()=>cur.classList.add('hidden'));
   document.addEventListener('mouseenter',()=>cur.classList.remove('hidden'));
-  document.querySelectorAll('a,button,[role="button"],.bn,.cat-card,.vid-item,.style-tag,.proc-step').forEach(el=>{
-    el.addEventListener('mouseenter',()=>cur.classList.add('big'));
+  document.querySelectorAll('a,button,[role="button"],.style-tag,.proc-step').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cur.classList.add('big');if(lbl){lbl.textContent='';lbl.style.opacity='0';}});
     el.addEventListener('mouseleave',()=>cur.classList.remove('big'));
   });
-  (function raf(){cx+=(tx-cx)*.15;cy+=(ty-cy)*.15;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(raf);})();
+  document.querySelectorAll('.bn,.cat-card,.vid-item').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cur.classList.add('big');if(lbl){lbl.textContent='Bax';lbl.style.opacity='1';}});
+    el.addEventListener('mouseleave',()=>{cur.classList.remove('big');if(lbl){lbl.textContent='';lbl.style.opacity='0';}});
+  });
+  let _rafId=0,_moving=false;
+  function raf(){cx+=(tx-cx)*.15;cy+=(ty-cy)*.15;cur.style.left=cx+'px';cur.style.top=cy+'px';if(Math.abs(tx-cx)>.2||Math.abs(ty-cy)>.2){_rafId=requestAnimationFrame(raf);}else{_moving=false;}}
+  document.addEventListener('mousemove',()=>{if(!_moving){_moving=true;_rafId=requestAnimationFrame(raf);}},{passive:true});
 })();
 
 (function(){
@@ -786,7 +849,10 @@ function closeMob(){mobNav.classList.remove('open')}
   scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2,2),mat));
   window.addEventListener('resize',()=>{renderer.setSize(innerWidth,innerHeight);mat.uniforms.uR.value.set(innerWidth,innerHeight);});
   window.addEventListener('scroll',()=>{mat.uniforms.uS.value=scrollY},{passive:true});
-  (function animate(t){requestAnimationFrame(animate);mat.uniforms.uT.value=t*.001;renderer.render(scene,cam);})(0);
+  let _go=true;
+  function _animate(t){if(!_go)return;requestAnimationFrame(_animate);mat.uniforms.uT.value=t*.001;renderer.render(scene,cam);}
+  new IntersectionObserver(e=>{_go=e[0].isIntersecting;if(_go)_animate(performance.now());}).observe(canvas.parentElement||canvas);
+  _animate(0);
 })();
 
 
@@ -800,9 +866,11 @@ document.querySelectorAll('.proc-step').forEach(el=>procObs.observe(el));
 const cntObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(!e.isIntersecting)return;
-    const el=e.target,target=+el.dataset.target,dur=1600,step=16,inc=target/(dur/step);
-    let v=0;
-    const t=setInterval(()=>{v=Math.min(v+inc,target);el.textContent=Math.round(v);if(v>=target)clearInterval(t)},step);
+    const el=e.target,target=+el.dataset.target,dur=1800;
+    const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+    let start=null;
+    function step(ts){if(!start)start=ts;const p=Math.min((ts-start)/dur,1);el.textContent=Math.round(ease(p)*target);if(p<1)requestAnimationFrame(step);}
+    requestAnimationFrame(step);
     cntObs.unobserve(el);
   });
 },{threshold:.5});
@@ -812,8 +880,8 @@ const imgs=[...document.querySelectorAll('.bn img')].map(i=>i.src);
 let cur_idx=0;
 const lbox=document.getElementById('lbox');
 const lboxMedia=document.getElementById('lboxMedia');
-function showLbox(idx){cur_idx=idx;lboxMedia.innerHTML=`<img src="${imgs[idx]}" alt="">`;lbox.classList.add('open');document.body.style.overflow='hidden';}
-function closeLbox(){lbox.classList.remove('open');document.body.style.overflow='';}
+function showLbox(idx){cur_idx=idx;lboxMedia.innerHTML=`<img src="${imgs[idx]}" alt="">`;lbox.classList.add('open');document.body.style.overflow='hidden';window.lenis?.stop();}
+function closeLbox(){lbox.classList.remove('open');document.body.style.overflow='';window.lenis?.start();}
 // Bento drag + delegated click
 (function(){
   const w=document.getElementById('bentoWrap');
@@ -873,24 +941,22 @@ setTimeout(()=>{
   txRoll(document.getElementById('txrL1'),0,70);
   txRoll(document.getElementById('txrL2'),260,65);
 },1400);
-// Zoom Parallax — rAF throttled, cached height
+// Marquee lightbox click
 (function(){
-  const sec=document.querySelector('.zp-sec');
-  if(!sec)return;
-  const layers=sec.querySelectorAll('.zp-layer');
-  const startS=[0.25,0.2,0.167,0.2,0.167,0.125,0.111];
-  const lbl=sec.querySelector('.zp-label');
-  let zpH=sec.offsetHeight-innerHeight;
-  window.addEventListener('resize',()=>{zpH=sec.offsetHeight-innerHeight;},{passive:true});
-  let zt=false;
-  function tick(){
-    const p=Math.max(0,Math.min(1,-sec.getBoundingClientRect().top/zpH));
-    layers.forEach((l,i)=>{const s0=startS[i%startS.length];l.style.transform=`scale(${s0+(1-s0)*p})`;});
-    if(lbl)lbl.style.opacity=String(Math.max(0,1-p*4));
-    zt=false;
-  }
-  window.addEventListener('scroll',()=>{if(!zt){zt=true;requestAnimationFrame(tick);}},{passive:true});
-  tick();
+  document.querySelectorAll('.mq-item').forEach(item=>{
+    item.addEventListener('click',()=>{
+      const src=item.querySelector('img')?.src;
+      if(!src)return;
+      const lbox=document.getElementById('lbox');
+      const lboxMedia=document.getElementById('lboxMedia');
+      if(lbox&&lboxMedia){
+        lboxMedia.innerHTML=`<img src="${src}" alt="">`;
+        lbox.classList.add('open');
+        document.body.style.overflow='hidden';
+        window.lenis?.stop();
+      }
+    });
+  });
 })();
 </script>
 </body>

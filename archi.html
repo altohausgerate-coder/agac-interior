@@ -3,21 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<script src="js/i18n.js"></script>
+<script src="js/i18n/archi.js"></script>
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>ARCHİ Studio — İnteryer Dizaynı & Təmir | Epoxy Azerbaijan</title>
 <meta name="description" content="ARCHİ Studio — İnteryer dizaynı, fasad dizaynı, memarlıq, təmir və tikinti xidmətləri. Açarı təhvil layihələr. Bakı, Azərbaycan.">
 <meta property="og:title" content="ARCHİ Studio — Dizayn & Təmir">
 <meta property="og:image" content="media/archi/ar5.jpg">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#F6F5F1;--bg2:#EFEDE8;--dark:#111110;--mid:#1E1C17;
-  --muted:#7A7870;--line:rgba(17,16,16,.08);
-  --acc:#4A7B6F;--acc2:#3A6058;
-  --S:'Plus Jakarta Sans',-apple-system,sans-serif;
+  --bg:#ffffff;--bg2:#ffffff;--dark:#191A1C;--mid:#191A1C;
+  --muted:#50545B;--border:#E8E8E8;--line:rgba(25,26,28,.08);
+  --acc:#191A1C;--acc2:#191A1C;
+  --S:'Roboto Condensed',sans-serif;
   --D:'Cormorant Garamond',Georgia,serif;
 }
 html{scroll-behavior:smooth}
@@ -42,28 +48,22 @@ a{text-decoration:none;color:inherit}
 @media(pointer:coarse){body{cursor:auto}#cur{display:none}}
 
 /* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:800;padding:1.4rem clamp(1.5rem,4vw,4rem);display:flex;align-items:center;justify-content:space-between;transition:background .4s,backdrop-filter .4s}
-.nav.scrolled{background:rgba(246,245,241,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav-logo{font-family:var(--D);font-size:1.4rem;font-weight:300;letter-spacing:.18em;color:#fff;transition:color .3s}
-.nav-logo em{font-style:italic;color:rgba(255,255,255,.55)}
-.nav.scrolled .nav-logo{color:var(--dark)}
-.nav.scrolled .nav-logo em{color:var(--acc)}
-.nav-links{display:flex;gap:2.5rem;list-style:none}
-.nav-links a{font-size:.61rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);transition:color .2s}
-.nav.scrolled .nav-links a{color:var(--muted)}
-.nav-links a:hover{color:#fff}
-.nav.scrolled .nav-links a:hover{color:var(--dark)}
-.nav-cta{font-size:.59rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:.5rem 1.3rem;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.7);position:relative;overflow:hidden;transition:color .3s,border-color .3s}
-.nav.scrolled .nav-cta{border-color:var(--dark);color:var(--dark)}
-.nav-cta::before{content:'';position:absolute;inset:0;background:#fff;transform:translateX(-101%);transition:transform .35s cubic-bezier(.16,1,.3,1)}
-.nav.scrolled .nav-cta::before{background:var(--dark)}
-.nav-cta span{position:relative;z-index:1}
-.nav-cta:hover::before{transform:translateX(0)}
-.nav-cta:hover{color:var(--dark)}
-.nav.scrolled .nav-cta:hover{color:#fff}
-.ham{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:.4rem}
-.ham span{display:block;width:22px;height:1px;background:#fff;transition:.3s}
-.nav.scrolled .ham span{background:var(--dark)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:800;background:#fff;border-bottom:1px solid var(--border);height:58px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 28px}
+.nav-left{display:flex;align-items:center;gap:8px}
+.nav-lang{font-family:var(--S);font-size:13px;letter-spacing:.08em;color:var(--muted);padding:0;background:none;border:none;cursor:pointer;transition:color .2s}
+.nav-lang.active,.nav-lang:hover{color:var(--dark)}
+.nav-sep{color:var(--border);user-select:none;font-size:13px}
+.nav-logo{text-align:center;line-height:1.15;text-decoration:none;color:inherit}
+.logo-main{display:block;font-family:var(--D);font-size:17px;font-weight:400;letter-spacing:.14em;text-transform:uppercase}
+.logo-sub{display:block;font-family:var(--S);font-size:8.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.nav-right{display:flex;align-items:center;justify-content:flex-end;gap:20px}
+.nav-link{font-family:var(--S);font-size:13px;letter-spacing:.07em;color:var(--dark);transition:color .2s}
+.nav-link:hover{color:var(--muted)}
+.nav-cta{font-size:.58rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;padding:.48rem 1.2rem;border:1px solid var(--dark);color:var(--dark);transition:background .25s,color .25s}
+.nav-cta:hover{background:var(--dark);color:#fff}
+.nav-cta span{position:relative}
+.ham{display:flex;flex-direction:column;gap:5px;background:none;border:none;padding:4px;cursor:pointer}
+.ham span{display:block;width:20px;height:1.5px;background:var(--dark)}
 
 .mob-nav{position:fixed;inset:0;z-index:700;background:var(--dark);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.2rem;opacity:0;visibility:hidden;transition:.4s}
 .mob-nav.open{opacity:1;visibility:visible}
@@ -147,7 +147,7 @@ a{text-decoration:none;color:inherit}
              linear-gradient(to top,rgba(17,16,16,.3) 0%,transparent 35%);
 }
 .hero-badge{
-  position:absolute;top:2rem;right:2rem;
+  position:absolute;bottom:2rem;right:2rem;
   padding:.6rem 1.2rem;
   border:1px solid rgba(255,255,255,.2);
   backdrop-filter:blur(8px);
@@ -205,8 +205,8 @@ a{text-decoration:none;color:inherit}
 
 /* SERVICES — TYPOGRAPHIC LIST */
 .svc-sec{background:var(--bg2);padding:clamp(5rem,8vw,9rem) 0}
-.svc-head{padding:0 clamp(1.5rem,4vw,4rem);margin-bottom:clamp(3rem,5vw,5rem)}
-.svc-tag{font-size:.56rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-bottom:.8rem}
+.svc-head{padding:0 clamp(1.5rem,4vw,4rem);margin-bottom:clamp(3rem,5vw,5rem);text-align:center}
+.svc-tag{font-family:var(--D);font-size:clamp(18px,1.6vw,22px);font-weight:400;letter-spacing:.28em;text-transform:uppercase;color:var(--dark);margin-bottom:.8rem}
 .svc-h{font-family:var(--D);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;font-style:italic;color:var(--dark);line-height:1.15}
 
 .svc-list{border-top:1px solid var(--line)}
@@ -221,7 +221,7 @@ a{text-decoration:none;color:inherit}
 
 /* GALLERY */
 .gal-sec{padding:clamp(5rem,8vw,9rem) 0}
-.gal-head{padding:0 clamp(1.5rem,4vw,4rem);margin-bottom:clamp(2rem,4vw,4rem);display:flex;align-items:flex-end;justify-content:space-between}
+.gal-head{padding:0 clamp(1.5rem,4vw,4rem);margin-bottom:clamp(2rem,4vw,4rem);text-align:center}
 .gal-masonry{columns:4 230px;column-gap:3px;padding:0 3px}
 .gi{overflow:hidden;margin-bottom:3px;break-inside:avoid;display:block;cursor:zoom-in}
 .gi img{width:100%;height:auto;transition:transform .75s cubic-bezier(.16,1,.3,1)}
@@ -254,7 +254,7 @@ a{text-decoration:none;color:inherit}
 
 /* PROCESS */
 .proc-sec{background:var(--bg);padding:clamp(5rem,8vw,9rem) clamp(1.5rem,4vw,4rem)}
-.proc-head{margin-bottom:4rem}
+.proc-head{margin-bottom:4rem;text-align:center}
 .proc-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line)}
 .proc-step{padding:2.5rem 2rem;border-right:1px solid var(--line);position:relative;counter-increment:proc}
 .proc-step:last-child{border-right:none}
@@ -284,9 +284,9 @@ a{text-decoration:none;color:inherit}
 
 /* CONTACT */
 .contact-sec{background:var(--bg2);padding:clamp(5rem,8vw,9rem) clamp(1.5rem,4vw,4rem);display:grid;grid-template-columns:1fr 1fr;gap:7rem}
-.sec-tag{font-size:.56rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-bottom:.8rem}
+.sec-tag{font-family:var(--D);font-size:clamp(18px,1.6vw,22px);font-weight:400;letter-spacing:.28em;text-transform:uppercase;color:var(--dark);margin-bottom:.8rem}
 .sec-h2{font-family:var(--D);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;font-style:italic;color:var(--dark);line-height:1.15}
-.sec-sub{font-size:.82rem;font-weight:300;color:var(--muted);max-width:44ch;line-height:1.85;margin-top:1rem}
+.sec-sub{font-size:.82rem;font-weight:300;color:var(--muted);max-width:44ch;line-height:1.85;margin-top:1rem;margin-left:auto;margin-right:auto}
 .cinfo-list{margin-top:2.5rem;display:flex;flex-direction:column;gap:1.4rem}
 .cinfo-row{display:flex;align-items:flex-start;gap:.9rem}
 .cinfo-icon{width:17px;height:17px;flex-shrink:0;margin-top:.2rem;color:var(--acc);opacity:.8}
@@ -343,20 +343,19 @@ footer{background:var(--dark);padding:3rem clamp(1.5rem,4vw,4rem) 2rem;border-to
 /* RESPONSIVE */
 @media(max-width:1100px){.hero{grid-template-columns:1fr}.hero-l{min-height:50vh;justify-content:flex-end;padding-top:7rem}.hero-r{min-height:50vh}.mat-grid{grid-template-columns:1fr 1fr}.intro-sec{grid-template-columns:1fr;gap:3rem}.intro-img-badge{right:0}.feature-sec{grid-template-columns:1fr}.feat-img img,.feat-img{height:350px}}
 @media(max-width:900px){.svc-item{grid-template-columns:4rem 1fr;min-height:4.5rem}.svc-desc{display:none}.info-band{grid-template-columns:1fr 1fr 1fr}.info-item:nth-child(3){border-right:none}.stats-sec{grid-template-columns:1fr 1fr}.stat-item:nth-child(2){border-right:none}.proc-steps{grid-template-columns:1fr 1fr;border-right:none}.proc-step{border-bottom:1px solid var(--line)}.proc-step:nth-child(2){border-right:none}.contact-sec{grid-template-columns:1fr;gap:3rem}.vid-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:600px){.nav-links,.nav-cta{display:none}.ham{display:flex}.hero-h1{font-size:2.2rem}.gal-masonry{columns:2}.info-band{grid-template-columns:1fr}.info-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}.info-item:last-child{border-bottom:none}.stats-sec{grid-template-columns:1fr 1fr}.proc-steps{grid-template-columns:1fr}.mat-grid{grid-template-columns:1fr}.vid-grid{grid-template-columns:1fr 1fr}footer{text-align:center}.ft-row{flex-direction:column;align-items:center}}
-/* Zoom Parallax */
-.zp-sec{height:300vh;position:relative;background:var(--dark)}
-.zp-sticky{position:sticky;top:0;height:100vh;overflow:hidden}
-.zp-label{position:absolute;top:2.5rem;left:50%;transform:translateX(-50%);z-index:10;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.28);white-space:nowrap;pointer-events:none}
-.zp-layer{position:absolute;inset:0;will-change:transform}
-.zp-layer img{width:100%;height:100%;object-fit:cover;display:block}
-.zp-l0{transform-origin:50% 50%}
-.zp-l1{transform-origin:calc(50% + 5vw) calc(50% - 30vh)}
-.zp-l2{transform-origin:calc(50% - 25vw) calc(50% - 10vh)}
-.zp-l3{transform-origin:calc(50% + 27.5vw) 50%}
-.zp-l4{transform-origin:calc(50% + 5vw) calc(50% + 27.5vh)}
-.zp-l5{transform-origin:calc(50% - 22.5vw) calc(50% + 27.5vh)}
-.zp-l6{transform-origin:calc(50% + 25vw) calc(50% + 22.5vh)}
+@media(max-width:600px){.nav-link,.nav-cta,.nav-lang,.nav-sep{display:none}.ham{display:flex}.hero-h1{font-size:2.2rem}.hero-badge{display:none}.gal-masonry{columns:2}.info-band{grid-template-columns:1fr}.info-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}.info-item:last-child{border-bottom:none}.stats-sec{grid-template-columns:1fr 1fr}.proc-steps{grid-template-columns:1fr}.mat-grid{grid-template-columns:1fr}.vid-grid{grid-template-columns:1fr 1fr}footer{text-align:center}.ft-row{flex-direction:column;align-items:center}}
+/* Showcase Marquee */
+.showcase-sec{background:var(--dark);padding:clamp(4rem,6vw,7rem) 0;overflow:hidden}
+.showcase-label{text-align:center;font-size:.57rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:2.8rem}
+.mq-row{overflow:hidden;margin-bottom:10px}
+.mq-row:last-child{margin-bottom:0}
+.mq-track{display:flex;gap:10px;width:max-content;animation:mqLeft 38s linear infinite}
+.mq-row.rev .mq-track{animation-direction:reverse;animation-duration:42s}
+.mq-track:hover{animation-play-state:paused}
+.mq-item{flex-shrink:0;width:380px;height:255px;overflow:hidden;cursor:zoom-in}
+.mq-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .75s cubic-bezier(.16,1,.3,1)}
+.mq-item:hover img{transform:scale(1.06)}
+@keyframes mqLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* BACK TO TOP */
 #btt{position:fixed;bottom:5.5rem;right:2rem;z-index:600;width:42px;height:42px;border-radius:50%;background:var(--dark);border:1px solid rgba(255,255,255,.12);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s}
@@ -386,7 +385,7 @@ footer{background:var(--dark);padding:3rem clamp(1.5rem,4vw,4rem) 2rem;border-to
 
 <div id="sprog"></div>
 <div id="loader"><div class="loader-brand">ARCHİ</div><div class="loader-sub">Studio</div></div>
-<div id="cur"></div>
+<div id="cur"><span id="cur-lbl" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:.45rem;letter-spacing:.16em;text-transform:uppercase;color:#fff;opacity:0;transition:opacity .2s;white-space:nowrap;position:absolute;pointer-events:none;"></span></div>
 
 <nav class="mob-nav" id="mobNav">
   <button class="mob-close" id="mobClose">✕</button>
@@ -397,18 +396,29 @@ footer{background:var(--dark);padding:3rem clamp(1.5rem,4vw,4rem) 2rem;border-to
   <a href="index.html" style="font-size:.9rem;letter-spacing:.14em;color:rgba(255,255,255,.22);margin-top:2rem">← Epoxy Azerbaijan</a>
 </nav>
 
-<header class="nav" id="nav">
-  <a href="index.html" class="nav-logo">ARCHİ <em>Studio</em></a>
-  <ul class="nav-links">
-    <li><a href="#services">Xidmətlər</a></li>
-    <li><a href="#gallery">Qalereya</a></li>
-    <li><a href="#videos">Videolar</a></li>
-    <li><a href="#contact">Əlaqə</a></li>
-    <li><button class="lang-sw" id="langBtn" onclick="toggleLang()">EN</button></li>
-  </ul>
-  <a href="#contact" class="nav-cta"><span>Layihə başlat</span></a>
-  <button class="ham" id="hamBtn" aria-label="Menu"><span></span><span></span><span></span></button>
-</header>
+<nav class="nav" id="nav">
+  <div class="nav-left">
+    <button type="button" class="nav-lang active" data-lang="az">AZ</button>
+    <span class="nav-sep">/</span>
+    <button type="button" class="nav-lang" data-lang="en">EN</button>
+    <span class="nav-sep">/</span>
+    <button type="button" class="nav-lang" data-lang="ru">RU</button>
+    <span class="nav-sep">/</span>
+    <button type="button" class="nav-lang" data-lang="ar">AR</button>
+  </div>
+  <a href="index.html" class="nav-logo">
+    <span class="logo-main">ARCHİ Studio</span>
+    <span class="logo-sub">Epoxy Azerbaijan</span>
+  </a>
+  <div class="nav-right">
+    <a href="#services" class="nav-link">Xidmətlər</a>
+    <a href="#gallery" class="nav-link">Qalereya</a>
+    <a href="#videos" class="nav-link">Videolar</a>
+    <a href="#contact" class="nav-link">Əlaqə</a>
+    <a href="#contact" class="nav-cta"><span>Layihə başlat</span></a>
+    <button class="ham" id="hamBtn" aria-label="Menyu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
 
 <!-- ─── HERO: SPLIT ─────────────────────────────────── -->
 <section class="hero" id="hero">
@@ -464,18 +474,48 @@ footer{background:var(--dark);padding:3rem clamp(1.5rem,4vw,4rem) 2rem;border-to
   </div>
 </div>
 
-<!-- ZOOM PARALLAX -->
-<section class="zp-sec" id="showcase">
-  <div class="zp-sticky">
-    <div class="zp-label">Dizayn &amp; Memarlıq · Sürüşdür</div>
-    <div class="zp-layer zp-l0"><img src="media/archi/ar26.jpg" alt="ARCHİ Studio layihəsi"></div>
-    <div class="zp-layer zp-l1"><img src="media/archi/ar2.jpg" alt="Yataq otağı dizaynı"></div>
-    <div class="zp-layer zp-l2"><img src="media/archi/ar4.jpg" alt="Dəhliz interyer"></div>
-    <div class="zp-layer zp-l3"><img src="media/archi/ar28.jpg" alt="Qarderob dizaynı"></div>
-    <div class="zp-layer zp-l4"><img src="media/archi/ar17.jpg" alt="Yataq otağı"></div>
-    <div class="zp-layer zp-l5"><img src="media/archi/ar23.jpg" alt="Fasad həlli"></div>
-    <div class="zp-layer zp-l6"><img src="media/archi/ar29.jpg" alt="Memarlıq detay"></div>
+<!-- SHOWCASE MARQUEE -->
+<section class="showcase-sec" id="showcase">
+  <p class="showcase-label">Dizayn &amp; Memarlıq — Tamamlanmış layihələr</p>
+
+  <div class="mq-row">
+    <div class="mq-track">
+      <div class="mq-item"><img src="media/archi/ar26.jpg" alt="ARCHİ Studio layihəsi"></div>
+      <div class="mq-item"><img src="media/archi/ar2.jpg" alt="Yataq otağı dizaynı"></div>
+      <div class="mq-item"><img src="media/archi/ar5.jpg" alt="Qonaq otağı"></div>
+      <div class="mq-item"><img src="media/archi/ar14.jpg" alt="İnteryer həlli"></div>
+      <div class="mq-item"><img src="media/archi/ar19.jpg" alt="Dəhliz dizaynı"></div>
+      <div class="mq-item"><img src="media/archi/ar24.jpg" alt="Mətbəx dizaynı"></div>
+      <div class="mq-item"><img src="media/archi/ar28.jpg" alt="Qarderob dizaynı"></div>
+      <div class="mq-item"><img src="media/archi/ar26.jpg" alt="ARCHİ Studio layihəsi"></div>
+      <div class="mq-item"><img src="media/archi/ar2.jpg" alt="Yataq otağı dizaynı"></div>
+      <div class="mq-item"><img src="media/archi/ar5.jpg" alt="Qonaq otağı"></div>
+      <div class="mq-item"><img src="media/archi/ar14.jpg" alt="İnteryer həlli"></div>
+      <div class="mq-item"><img src="media/archi/ar19.jpg" alt="Dəhliz dizaynı"></div>
+      <div class="mq-item"><img src="media/archi/ar24.jpg" alt="Mətbəx dizaynı"></div>
+      <div class="mq-item"><img src="media/archi/ar28.jpg" alt="Qarderob dizaynı"></div>
+    </div>
   </div>
+
+  <div class="mq-row rev">
+    <div class="mq-track">
+      <div class="mq-item"><img src="media/archi/ar4.jpg" alt="Dəhliz interyer"></div>
+      <div class="mq-item"><img src="media/archi/ar17.jpg" alt="Yataq otağı"></div>
+      <div class="mq-item"><img src="media/archi/ar23.jpg" alt="Fasad həlli"></div>
+      <div class="mq-item"><img src="media/archi/ar29.jpg" alt="Memarlıq detay"></div>
+      <div class="mq-item"><img src="media/archi/ar9.jpg" alt="Sanuzəl dizaynı"></div>
+      <div class="mq-item"><img src="media/archi/ar12.jpg" alt="Uşaq otağı"></div>
+      <div class="mq-item"><img src="media/archi/ar18.jpg" alt="Ofis dizaynı"></div>
+      <div class="mq-item"><img src="media/archi/ar4.jpg" alt="Dəhliz interyer"></div>
+      <div class="mq-item"><img src="media/archi/ar17.jpg" alt="Yataq otağı"></div>
+      <div class="mq-item"><img src="media/archi/ar23.jpg" alt="Fasad həlli"></div>
+      <div class="mq-item"><img src="media/archi/ar29.jpg" alt="Memarlıq detay"></div>
+      <div class="mq-item"><img src="media/archi/ar9.jpg" alt="Sanuzəl dizaynı"></div>
+      <div class="mq-item"><img src="media/archi/ar12.jpg" alt="Uşaq otağı"></div>
+      <div class="mq-item"><img src="media/archi/ar18.jpg" alt="Ofis dizaynı"></div>
+    </div>
+  </div>
+
 </section>
 
 <!-- INTRO -->
@@ -806,7 +846,9 @@ footer{background:var(--dark);padding:3rem clamp(1.5rem,4vw,4rem) 2rem;border-to
   <button class="lbox-next" id="lboxNext"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg></button>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/lenis.min.js"></script>
+<script>(function(){if(!matchMedia('(prefers-reduced-motion:no-preference)').matches)return;window.lenis=new Lenis({lerp:.1,smoothWheel:true,smoothTouch:false});function r(t){window.lenis.raf(t);requestAnimationFrame(r);}requestAnimationFrame(r);})();</script>
+<script src="js/three.min.js"></script>
 <script>
 // Loader
 window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),700));
@@ -844,7 +886,9 @@ function closeMob(){mobNav.classList.remove('open')}
   document.addEventListener('mouseenter',()=>cur.classList.remove('hidden'));
   const bigEls=document.querySelectorAll('a,button,[role="button"],.bn,.svc-item,.vid-item,.mat-card,.feat-img,.proc-step');
   bigEls.forEach(el=>{el.addEventListener('mouseenter',()=>cur.classList.add('big'));el.addEventListener('mouseleave',()=>cur.classList.remove('big'));});
-  (function raf(){cx+=(tx-cx)*.15;cy+=(ty-cy)*.15;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(raf);})();
+  let _rafId=0,_moving=false;
+  function raf(){cx+=(tx-cx)*.15;cy+=(ty-cy)*.15;cur.style.left=cx+'px';cur.style.top=cy+'px';if(Math.abs(tx-cx)>.2||Math.abs(ty-cy)>.2){_rafId=requestAnimationFrame(raf);}else{_moving=false;}}
+  document.addEventListener('mousemove',()=>{if(!_moving){_moving=true;_rafId=requestAnimationFrame(raf);}},{passive:true});
 })();
 
 // Three.js — architectural blueprint shader on hero left panel
@@ -886,7 +930,10 @@ function closeMob(){mobNav.classList.remove('open')}
     const nw=el?el.offsetWidth:innerWidth*.42;const nh=innerHeight;
     renderer.setSize(nw,nh);mat.uniforms.uR.value.set(nw,nh);
   });
-  (function animate(t){requestAnimationFrame(animate);mat.uniforms.uT.value=t*.001;renderer.render(scene,cam);})(0);
+  let _go=true;
+  function _animate(t){if(!_go)return;requestAnimationFrame(_animate);mat.uniforms.uT.value=t*.001;renderer.render(scene,cam);}
+  new IntersectionObserver(e=>{_go=e[0].isIntersecting;if(_go)_animate(performance.now());}).observe(canvas.parentElement||canvas);
+  _animate(0);
 })();
 
 
@@ -922,8 +969,8 @@ const imgs=[...document.querySelectorAll('.bn img')].map(i=>i.src);
 let curIdx=0;
 const lbox=document.getElementById('lbox');
 const lboxMedia=document.getElementById('lboxMedia');
-function openLbox(i){curIdx=i;lboxMedia.innerHTML=`<img src="${imgs[i]}" alt="">`;lbox.classList.add('open');document.body.style.overflow='hidden';}
-function closeLbox(){lbox.classList.remove('open');document.body.style.overflow='';}
+function openLbox(i){curIdx=i;lboxMedia.innerHTML=`<img src="${imgs[i]}" alt="">`;lbox.classList.add('open');document.body.style.overflow='hidden';window.lenis?.stop();}
+function closeLbox(){lbox.classList.remove('open');document.body.style.overflow='';window.lenis?.start();}
 // Bento drag + delegated click
 (function(){
   const w=document.getElementById('bentoWrap');
@@ -980,24 +1027,22 @@ setTimeout(()=>{
   txRoll(document.getElementById('txrL1'),0,60);
   txRoll(document.getElementById('txrL2'),230,55);
 },1400);
-// Zoom Parallax — rAF throttled, cached height
+// Marquee lightbox click
 (function(){
-  const sec=document.querySelector('.zp-sec');
-  if(!sec)return;
-  const layers=sec.querySelectorAll('.zp-layer');
-  const startS=[0.25,0.2,0.167,0.2,0.167,0.125,0.111];
-  const lbl=sec.querySelector('.zp-label');
-  let zpH=sec.offsetHeight-innerHeight;
-  window.addEventListener('resize',()=>{zpH=sec.offsetHeight-innerHeight;},{passive:true});
-  let zt=false;
-  function tick(){
-    const p=Math.max(0,Math.min(1,-sec.getBoundingClientRect().top/zpH));
-    layers.forEach((l,i)=>{const s0=startS[i%startS.length];l.style.transform=`scale(${s0+(1-s0)*p})`;});
-    if(lbl)lbl.style.opacity=String(Math.max(0,1-p*4));
-    zt=false;
-  }
-  window.addEventListener('scroll',()=>{if(!zt){zt=true;requestAnimationFrame(tick);}},{passive:true});
-  tick();
+  document.querySelectorAll('.mq-item').forEach(item=>{
+    item.addEventListener('click',()=>{
+      const src=item.querySelector('img')?.src;
+      if(!src)return;
+      const lbox=document.getElementById('lbox');
+      const lboxMedia=document.getElementById('lboxMedia');
+      if(lbox&&lboxMedia){
+        lboxMedia.innerHTML=`<img src="${src}" alt="">`;
+        lbox.classList.add('open');
+        document.body.style.overflow='hidden';
+        window.lenis?.stop();
+      }
+    });
+  });
 })();
 
 // Before/After slider
@@ -1019,21 +1064,6 @@ document.querySelectorAll('[data-ba]').forEach(wrap=>{
   window.addEventListener('touchend',()=>drag=false);
 });
 
-// Language switcher (AZ/EN toggle)
-const langMap={
-  '#services':'Services','#gallery':'Gallery','#videos':'Videos','#contact':'Contact',
-  'Layihə başlat':'Start Project','Müraciət göndər':'Send Request',
-  'Ad Soyad *':'Full Name *','Telefon *':'Phone *','Xidmət növü':'Service type','Qeyd':'Note',
-  'Adınızı daxil edin':'Enter your name','+994 XX XXX XX XX':'+994 XX XXX XX XX',
-  'Sahə, mərtəbə, istəklər, büdcə…':'Area, floor, wishes, budget…',
-  'Müraciətiniz alındı. Ən qısa zamanda sizinlə əlaqə saxlayacağıq.':'Your request has been received. We will contact you shortly.'
-};
-const langMapEn=langMap;
-let isEn=false;
-function toggleLang(){
-  isEn=!isEn;
-  document.getElementById('langBtn').textContent=isEn?'AZ':'EN';
-}
 </script>
 </body>
 </html>

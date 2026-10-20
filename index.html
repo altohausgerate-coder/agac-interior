@@ -3,9 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="js/i18n.js"></script>
+<script src="js/i18n/index.js"></script>
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>Epoxy Azerbaijan Group</title>
 <meta name="description" content="Epoxy Azerbaijan Group — Agach Interiors, HAUZ Furniture, ARCHI Studio, Doorsa">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -57,6 +63,10 @@ html,body{width:100%;height:100%;overflow:hidden;background:#080706;cursor:none}
   transition:color .2s;
 }
 .top-link:hover{color:#fff}
+.top-langs{display:flex;align-items:center;gap:.55rem}
+.top-lang.active{color:rgba(255,255,255,.85)}
+.top-sep{font-family:var(--S);font-size:.5rem;color:rgba(255,255,255,.2)}
+@media(max-width:480px){.top-right a.top-link[href^="tel:"]{display:none}.top-group{white-space:nowrap}}
 
 /* ── PANELS GRID ────────────────────── */
 .grid{
@@ -70,6 +80,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#080706;cursor:none}
   flex:1;
   overflow:hidden;
   cursor:none;
+  contain:layout style paint;
   transition:flex .7s cubic-bezier(.16,1,.3,1);
   border-right:1px solid rgba(255,255,255,.06);
 }
@@ -82,13 +93,12 @@ html,body{width:100%;height:100%;overflow:hidden;background:#080706;cursor:none}
   position:absolute;inset:0;
   background-size:cover;background-position:center;
   transform:scale(1.06);
-  transition:transform .9s cubic-bezier(.16,1,.3,1),filter .7s;
+  transition:transform .9s cubic-bezier(.16,1,.3,1);
   filter:saturate(.75) brightness(.78);
   will-change:transform;
 }
 .panel:hover .panel-img{
   transform:scale(1);
-  filter:saturate(.95) brightness(.9);
 }
 
 /* overlay */
@@ -96,19 +106,15 @@ html,body{width:100%;height:100%;overflow:hidden;background:#080706;cursor:none}
   position:absolute;inset:0;
   background:linear-gradient(
     to top,
-    rgba(4,3,2,.75) 0%,
-    rgba(4,3,2,.18) 55%,
+    rgba(4,3,2,.72) 0%,
+    rgba(4,3,2,.15) 55%,
     rgba(4,3,2,.04) 100%
   );
-  transition:background .7s;
+  opacity:1;
+  transition:opacity .6s;
 }
 .panel:hover .panel-overlay{
-  background:linear-gradient(
-    to top,
-    rgba(4,3,2,.65) 0%,
-    rgba(4,3,2,.1) 60%,
-    rgba(4,3,2,.0) 100%
-  );
+  opacity:.85;
 }
 
 /* grain per panel */
@@ -243,14 +249,16 @@ body.exit{animation:exitAnim .5s ease forwards}
   .grid{flex-direction:column;height:auto}
   .panel{
     flex:none!important;
-    height:50vh;min-height:260px;
+    height:65vh;min-height:320px;
     border-right:none;
     border-bottom:1px solid rgba(255,255,255,.06);
   }
   .panel:last-child{border-bottom:none}
-  .panel-img{transform:scale(1)!important;filter:saturate(.7) brightness(.6)!important}
+  .panel-img{transform:scale(1)!important;filter:saturate(.8) brightness(.7)!important}
   .panel-sub{max-height:80px!important;opacity:1!important}
   .panel-cta,.panel-soon{opacity:1!important;transform:translateY(0)!important}
+  .panel-name{font-size:clamp(2rem,6vw,2.6rem)!important}
+  .panel-tag{color:rgba(255,255,255,.6)!important;opacity:1!important}
   .grid:has(.panel:hover) .panel:not(:hover){flex:none}
   .grid:has(.panel:hover) .panel:hover{flex:none}
   .bottom-strip{display:none}
@@ -265,6 +273,7 @@ body.exit{animation:exitAnim .5s ease forwards}
 <header class="top">
   <span class="top-group">Epoxy Azerbaijan Group</span>
   <nav class="top-right">
+    <span class="top-langs"><button type="button" class="top-link top-lang active" data-lang="az">AZ</button><span class="top-sep">/</span><button type="button" class="top-link top-lang" data-lang="en">EN</button><span class="top-sep">/</span><button type="button" class="top-link top-lang" data-lang="ru">RU</button><span class="top-sep">/</span><button type="button" class="top-link top-lang" data-lang="ar">AR</button></span>
     <a href="tel:+994519996822" class="top-link">+994 51 999 68 22</a>
   </nav>
 </header>
@@ -281,7 +290,7 @@ body.exit{animation:exitAnim .5s ease forwards}
       <span class="panel-num">01</span>
       <span class="panel-tag">Massiv Mebel</span>
       <h2 class="panel-name">Agach<br><em>Interiors</em></h2>
-      <p class="panel-sub">Massiv ağac və epoxy reçinedən fərdi mebel. Bakı.</p>
+      <p class="panel-sub">Massiv ağac və epoksi qətranından fərdi mebel. Bakı.</p>
       <a href="site.html" class="panel-cta" id="agachLink">
         Sayta keç
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -352,14 +361,17 @@ body.exit{animation:exitAnim .5s ease forwards}
 (function(){
   const c=document.getElementById('cur');
   if(!c||!matchMedia('(pointer:fine)').matches)return;
-  let mx=window.innerWidth/2,my=window.innerHeight/2,cx=mx,cy=my,rafId;
-  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;},{passive:true});
+  let mx=window.innerWidth/2,my=window.innerHeight/2,cx=mx,cy=my,rafId=0,moving=false;
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX;my=e.clientY;
+    if(!moving){moving=true;rafId=requestAnimationFrame(loop);}
+  },{passive:true});
   function loop(){
     cx+=(mx-cx)*.2;cy+=(my-cy)*.2;
     c.style.transform=`translate(calc(${cx}px - 50%), calc(${cy}px - 50%))`;
-    rafId=requestAnimationFrame(loop);
+    if(Math.abs(mx-cx)>.2||Math.abs(my-cy)>.2){rafId=requestAnimationFrame(loop);}
+    else{moving=false;}
   }
-  rafId=requestAnimationFrame(loop);
   document.querySelectorAll('.panel,.top-link,a').forEach(el=>{
     el.addEventListener('mouseenter',()=>c.classList.add('big'));
     el.addEventListener('mouseleave',()=>c.classList.remove('big'));
