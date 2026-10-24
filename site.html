@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html lang="az">
+<html lang="az" translate="no">
 <head>
 <meta charset="UTF-8">
+<!-- saytın öz 4 dili var; brauzerin avto-tərcüməsi brend adını pozur ("Agach Interiors" → "Ağac Interior") -->
+<meta name="google" content="notranslate">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="js/i18n.js"></script>
 <script src="js/i18n/site.js"></script>
@@ -10,9 +12,9 @@
 <link rel="icon" type="image/png" sizes="96x96" href="favicon-96.png">
 <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<title>Agach Interiors — Fərdi Ağac İnteryer Həlləri | Bakı</title>
+<title>Agach Interiors — Fərdi ağac interyer həlləri | Bakı</title>
 <meta name="description" content="Bakıda premium ağac interyer həlləri. Fərdi qapılar, divar panelləri, pilləkənlər, mebel. Epoxy Azerbaijan qrupu.">
-<meta property="og:title" content="Agach Interiors — Fərdi Ağac Mebel | Bakı">
+<meta property="og:title" content="Agach Interiors — Fərdi ağac mebeli | Bakı">
 <meta property="og:description" content="Massiv ağac və epoksi qətranından fərdi mebel. Bakı, Binəqədi. Pulsuz çatdırılma. 2 il zəmanət.">
 <meta property="og:image" content="media/agach/hero-s.webp">
 <meta property="og:type" content="website">
@@ -41,13 +43,16 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 :root{
-  --bg:   #FAFAF8;
-  --bg2:  #F3F2EF;
-  --dark: #111110;
+  /* tünd ağac mövzusu: bölmələr yarımşəffaf tünddür, arxada səhifə boyu palıd fonu görünür.
+     --dark burada "əsas mətn rəngi"dir (açıq krem) */
+  --bg:   rgba(20,13,8,.5);
+  --bg2:  rgba(28,19,12,.62);
+  --dark: #f1ece3;
   --mid:  #1C2A18;
-  --muted:#6B6B68;
-  --line: rgba(17,17,16,.1);
-  --acc:  #8B6A45;
+  --ink:  #16100b; /* tünd panellər (əvvəl --dark idi) */
+  --muted:#b8ad9c;
+  --line: rgba(241,236,227,.13);
+  --acc:  #c9a172;
   --nav:  68px;
   --D:    'Cormorant Garamond',Georgia,serif;
   --S:    'Plus Jakarta Sans',-apple-system,sans-serif;
@@ -59,7 +64,14 @@ html{-webkit-font-smoothing:antialiased}
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
 .lenis.lenis-stopped{overflow:hidden}
-body{font-family:var(--S);color:var(--dark);background:var(--bg);overflow-x:hidden}
+body{font-family:var(--S);color:var(--dark);background:transparent;overflow-x:hidden}
+/* səhifə fonu: açıq ash ağacı, yumşaq krem örtüklə (sabit qalır, bölmələr üstündən sürüşür) */
+html{background:#2a1a0e}
+/* hero şəklinin masa üstü hissəsi böyüdülüb: isti palıd damarı (ayrıca şəkil faylı lazım deyil) */
+body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:url(media/agach/hero.webp) center/cover no-repeat;
+  transform:scale(2.4);transform-origin:84% 90%}
+body::after{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:rgba(16,10,5,.3)}
 
 /* ─ NAV ─────────────────────────────────────────────── */
 .nav{
@@ -69,7 +81,7 @@ body{font-family:var(--S);color:var(--dark);background:var(--bg);overflow-x:hidd
   transition:background .3s,border-color .3s;
   border-bottom:1px solid transparent;
 }
-.nav.s{background:rgba(250,250,248,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-color:var(--line)}
+.nav.s{background:rgba(22,15,10,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-color:var(--line)}
 
 .nav-left,.nav-right{display:flex;align-items:center;gap:2rem;list-style:none}
 .nav-right{justify-content:flex-end}
@@ -108,7 +120,7 @@ body{font-family:var(--S);color:var(--dark);background:var(--bg);overflow-x:hidd
 
 /* ─ HERO ────────────────────────────────────────────── */
 .hero{position:relative;min-height:100dvh;overflow:hidden}
-.hero-bg{position:absolute;inset:0}
+.hero-bg{position:absolute;top:0;left:0;right:0;height:100dvh;overflow:hidden}
 .hero-bg video,.hero-bg img{
   width:100%;height:100%;object-fit:cover;object-position:center 30%;
   display:block;
@@ -167,7 +179,7 @@ body{font-family:var(--S);color:var(--dark);background:var(--bg);overflow-x:hidd
 .hero-cta:active{transform:scale(.99)}
 
 /* ─ CATEGORIES ──────────────────────────────────────── */
-.cats{background:var(--dark)}
+.cats{background:var(--ink)}
 .cat-grid{
   display:grid;grid-template-columns:repeat(3,1fr);
   height:clamp(380px,55vw,620px);
@@ -359,7 +371,7 @@ body{font-family:var(--S);color:var(--dark);background:var(--bg);overflow-x:hidd
   display:grid;grid-template-columns:1fr 1fr;
   min-height:580px;border-top:1px solid var(--line);
 }
-.feat-photo{overflow:hidden;background:var(--dark);display:flex;align-items:center;justify-content:center;padding:clamp(2rem,4vw,3.5rem)}
+.feat-photo{overflow:hidden;background:var(--ink);display:flex;align-items:center;justify-content:center;padding:clamp(2rem,4vw,3.5rem)}
 .feat-photo video{display:block;height:min(78vh,720px);aspect-ratio:9/16;width:auto;max-width:100%;object-fit:cover;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
 .feat-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.16,1,.3,1)}
 .feat-photo:hover img{transform:scale(1.03)}
@@ -381,14 +393,14 @@ body{font-family:var(--S);color:var(--dark);background:var(--bg);overflow-x:hidd
   display:inline-flex;align-items:center;gap:.4rem;
   font-family:var(--S);font-size:.75rem;font-weight:500;
   letter-spacing:.08em;text-transform:uppercase;text-decoration:none;
-  color:var(--dark);border:1px solid rgba(17,17,16,.3);
+  color:var(--dark);border:1px solid rgba(241,236,227,.3);
   padding:.65rem 1.6rem;border-radius:1px;align-self:flex-start;
   position:relative;overflow:hidden;white-space:nowrap;
   transition:color .3s,border-color .3s;
 }
 .btn-outline::before{
   content:'';position:absolute;inset:0;
-  background:var(--dark);
+  background:var(--ink);
   transform:translateX(-101%);
   transition:transform .38s cubic-bezier(.16,1,.3,1);
 }
@@ -402,7 +414,7 @@ body{font-family:var(--S);color:var(--dark);background:var(--bg);overflow-x:hidd
   display:inline-flex;align-items:center;gap:.4rem;
   font-family:var(--S);font-size:.75rem;font-weight:500;
   letter-spacing:.08em;text-transform:uppercase;text-decoration:none;
-  background:var(--dark);color:var(--bg);
+  background:var(--dark);color:#111110;
   padding:.65rem 1.6rem;border-radius:1px;border:1px solid var(--dark);
   position:relative;overflow:hidden;white-space:nowrap;
   transition:color .3s;
@@ -414,6 +426,7 @@ body{font-family:var(--S);color:var(--dark);background:var(--bg);overflow-x:hidd
   transition:transform .38s cubic-bezier(.16,1,.3,1);
 }
 .btn-solid span,.btn-solid:not(:has(span)){position:relative;z-index:1}
+.btn-solid:hover{color:#fff}
 .btn-solid:hover::before{transform:translateX(0)}
 .btn-solid:active{opacity:.85}
 .btn-solid:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
@@ -431,7 +444,7 @@ body{font-family:var(--S);color:var(--dark);background:var(--bg);overflow-x:hidd
 .gal-filters{display:flex;gap:.5rem;flex-wrap:wrap}
 .gf{font-family:var(--S);font-size:.65rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:none;border:1px solid var(--line);color:var(--muted);padding:.4rem 1.1rem;cursor:pointer;transition:all .25s;border-radius:1px}
 .gf:hover{border-color:var(--dark);color:var(--dark)}
-.gf.active{background:var(--dark);color:var(--bg);border-color:var(--dark)}
+.gf.active{background:var(--dark);color:#111110;border-color:var(--dark)}
 .gi[hidden]{display:none!important}
 .gallery-grid{
   display:grid;
@@ -468,7 +481,7 @@ body{font-family:var(--S);color:var(--dark);background:var(--bg);overflow-x:hidd
 .step{background:var(--bg2);padding:2.5rem 2rem 3rem}
 .step-n{
   font-family:var(--D);font-size:2.8rem;font-weight:300;
-  color:rgba(17,17,16,.1);line-height:1;margin-bottom:1.5rem;
+  color:rgba(241,236,227,.1);line-height:1;margin-bottom:1.5rem;
 }
 .step-title{
   font-family:var(--D);font-size:1.35rem;font-weight:400;
@@ -517,7 +530,7 @@ body{font-family:var(--S);color:var(--dark);background:var(--bg);overflow-x:hidd
   display:inline-flex;align-items:center;gap:.4rem;
   font-family:var(--S);font-size:.75rem;font-weight:500;
   letter-spacing:.08em;text-transform:uppercase;text-decoration:none;
-  background:#fff;color:var(--dark);
+  background:#fff;color:#111110;
   padding:.75rem 2.2rem;border-radius:1px;
   transition:background .2s,transform .15s;white-space:nowrap;
 }
@@ -557,17 +570,17 @@ a.det-v:hover{color:var(--acc)}
   padding:.7rem 0;outline:none;width:100%;
   transition:border-color .2s;
 }
-.fi::placeholder,.fta::placeholder{color:rgba(17,17,16,.3)}
+.fi::placeholder,.fta::placeholder{color:rgba(241,236,227,.3)}
 .fi:focus,.fta:focus{border-color:var(--dark)}
 .fta{resize:none;min-height:100px}
 .fsub{
   margin-top:.8rem;font-family:var(--S);font-size:.75rem;font-weight:500;
   letter-spacing:.08em;text-transform:uppercase;cursor:pointer;
-  background:var(--dark);color:var(--bg);border:none;
+  background:var(--dark);color:#111110;border:none;
   padding:.78rem 2.2rem;border-radius:1px;
   transition:background .2s,transform .15s;
 }
-.fsub:hover{background:var(--mid);transform:translateY(-1px)}
+.fsub:hover{background:var(--mid);color:#fff;transform:translateY(-1px)}
 .fsub:active{transform:scale(.99)}
 
 /* ─ FOOTER ──────────────────────────────────────────── */
@@ -587,7 +600,7 @@ footer{
   text-decoration:none;transition:color .2s;
 }
 .foot-links a:hover{color:var(--dark)}
-.foot-copy{font-size:.7rem;font-weight:300;color:rgba(17,17,16,.3)}
+.foot-copy{font-size:.7rem;font-weight:300;color:rgba(241,236,227,.3)}
 
 /* ─ BRANDS ──────────────────────────────────────────── */
 .brand-cards{
@@ -651,7 +664,7 @@ footer{
   color:var(--dark);border-color:var(--dark);font-weight:500;
 }
 .brand-item:not(.active):hover{
-  color:var(--dark);border-color:rgba(17,17,16,.3);
+  color:var(--dark);border-color:rgba(241,236,227,.3);
 }
 
 /* ─ MATERIALS ───────────────────────────────────────── */
@@ -712,7 +725,7 @@ footer{
   border-top:1px solid var(--line);border-bottom:1px solid var(--line);
 }
 .info-item{
-  background:var(--dark);padding:2rem var(--gutter);
+  background:var(--ink);padding:2rem var(--gutter);
   display:flex;align-items:flex-start;gap:1rem;
 }
 .info-icon{width:22px;height:22px;flex-shrink:0;margin-top:.15rem;opacity:.75}
@@ -789,7 +802,7 @@ footer{
   position:fixed;top:0;left:0;height:2px;width:0%;z-index:9999;
   background:var(--acc);transition:width .05s linear;pointer-events:none;
 }
-#btt{position:fixed;bottom:6.5rem;right:2rem;z-index:500;width:42px;height:42px;border-radius:50%;background:var(--dark);color:var(--bg);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s;box-shadow:0 4px 16px rgba(17,17,16,.2)}
+#btt{position:fixed;bottom:6.5rem;right:2rem;z-index:500;width:42px;height:42px;border-radius:50%;background:var(--dark);color:#111110;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s;box-shadow:0 4px 16px rgba(17,17,16,.2)}
 #btt.show{opacity:1;transform:none}
 #btt:hover{background:var(--acc)}
 #nav-home{position:fixed;bottom:6.5rem;left:2rem;z-index:500;display:flex;align-items:center;gap:.45rem;padding:.55rem 1.1rem;background:rgba(17,17,16,.88);backdrop-filter:blur(8px);color:rgba(255,255,255,.8);font-size:.58rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,.1);opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s;text-decoration:none;pointer-events:none}
@@ -807,7 +820,7 @@ footer{
 /* ─ PAGE LOADER ──────────────────────────────────────── */
 #loader{
   position:fixed;inset:0;z-index:10000;
-  background:var(--dark);display:flex;align-items:center;justify-content:center;
+  background:var(--ink);display:flex;align-items:center;justify-content:center;
   flex-direction:column;gap:.8rem;
   transition:opacity .6s ease,visibility .6s ease;
 }
@@ -870,7 +883,7 @@ footer{
 .nav.mob-open .ham span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px);width:22px}
 .mob-nav{
   display:none;position:fixed;inset:0;z-index:199;
-  background:rgba(250,250,248,.97);backdrop-filter:blur(20px);
+  background:rgba(22,15,10,.97);backdrop-filter:blur(20px);
   flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;
   opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s;
 }
@@ -885,13 +898,13 @@ footer{
 /* ─ STATS COUNTER ────────────────────────────────────── */
 .stats-sec{
   padding:5rem var(--gutter);
-  background:var(--dark);
+  background:var(--ink);
   display:grid;grid-template-columns:repeat(4,1fr);
   gap:1px;background-color:rgba(255,255,255,.06);
   border-top:1px solid rgba(255,255,255,.06);
 }
 .stat-item{
-  background:var(--dark);padding:3rem 2.5rem;
+  background:var(--ink);padding:3rem 2.5rem;
   display:flex;flex-direction:column;gap:.5rem;
 }
 .stat-num{
@@ -1034,7 +1047,7 @@ footer{
 .nav.s .lang{color:var(--muted)}
 .nav.s .lang:hover,.nav.s .lang.active{color:var(--dark)}
 /* ─ EPOXY 2.0 BÖLMƏLƏRİ (nx-) ───────────────────────── */
-.nx{--gold:#b39463;--gold-soft:rgba(179,148,99,.45);--ph:#efebe4;--fg:var(--dark);--line-2:rgba(17,17,16,.2);--ease:cubic-bezier(.16,1,.3,1);position:relative}
+.nx{--gold:#b39463;--gold-soft:rgba(179,148,99,.45);--ph:#2a1f16;--fg:var(--dark);--line-2:rgba(241,236,227,.24);--ease:cubic-bezier(.16,1,.3,1);position:relative}
 .nx-dark,.nx-tbl{--bg:#0e0d0c;--fg:#f1ece3;--muted:#aaa397;--line:rgba(241,236,227,.12);--line-2:rgba(241,236,227,.24);--ph:#22201d;background:var(--bg);color:var(--fg)}
 .nx-wrap{width:100%;max-width:1520px;margin:0 auto;padding-inline:var(--gutter)}
 .nx-h2{font-family:var(--D);font-weight:300;font-size:clamp(2.4rem,4.4vw,4.6rem);line-height:1.05;letter-spacing:-.01em;text-wrap:balance}
@@ -1056,7 +1069,7 @@ footer{
 .nx-sec-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:32px;margin-bottom:clamp(44px,5vw,88px)}
 .nx-sec-l{display:grid;gap:22px}
 .nx-btn{display:inline-flex;align-items:center;gap:16px;height:54px;padding:0 26px;border:1px solid var(--line-2);border-radius:999px;font-family:var(--S);font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--fg);text-decoration:none;transition:background .5s var(--ease),color .5s var(--ease),border-color .5s var(--ease)}
-.nx-btn:hover{background:var(--dark);border-color:var(--dark);color:#fff}
+.nx-btn:hover{background:var(--dark);border-color:var(--dark);color:#111110}
 .nx-btn-light:hover{background:var(--gold);border-color:var(--gold);color:#fff}
 
 /* seçilmiş işlər: üfüqi kolleksiya */
@@ -1176,9 +1189,10 @@ footer{
 [dir=rtl] .nx-tbl-progress span{transform-origin:right}
 
 /* masa ayaqlıqları: ağ studiya fonunda 3D kolleksiya, yanında model və örtük seçimi */
-.nx-legs{padding:var(--sec) 0;background:var(--bg2);--line:rgba(17,17,16,.1)}
+.nx-legs{padding:var(--sec) 0;background:var(--bg2);--line:rgba(241,236,227,.13)}
 .legs-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(36px,6vw,110px);align-items:start}
-.legs-stage{position:sticky;top:calc(var(--nav) + 12px);height:min(calc(100vh - var(--nav) - 36px),820px);min-height:520px;overflow:hidden;isolation:isolate;
+/* 3D pəncərə açıq fondadır: içində köhnə tünd mətn rəngləri qalır */
+.legs-stage{--dark:#111110;--muted:#6b6b68;--line-2:rgba(17,17,16,.22);color:var(--dark);position:sticky;top:calc(var(--nav) + 12px);height:min(calc(100vh - var(--nav) - 36px),820px);min-height:520px;overflow:hidden;isolation:isolate;
   background:radial-gradient(70% 46% at 50% 74%,#fff 0%,rgba(255,255,255,0) 100%),linear-gradient(#f4f2ee 0%,#eceae5 58%,#e3e0da 100%)}
 .legs-stage::after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 120px rgba(80,64,44,.08)}
 .legs-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y}
@@ -1211,11 +1225,11 @@ footer{
 .legs-kind{font-size:.62rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);opacity:.8;margin:18px 0 10px}
 .legs-kind:first-of-type{margin-top:0}
 .legs-models{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.lm{display:flex;align-items:baseline;gap:8px;height:100%;padding:13px 12px;border:1px solid var(--line);background:rgba(255,255,255,.5);transition:border-color .5s var(--ease),background-color .5s var(--ease),box-shadow .5s var(--ease)}
+.lm{display:flex;align-items:baseline;gap:8px;height:100%;padding:13px 12px;border:1px solid var(--line);background:rgba(255,255,255,.04);transition:border-color .5s var(--ease),background-color .5s var(--ease),box-shadow .5s var(--ease)}
 .lm-n{font-family:var(--D);font-size:.85rem;font-style:italic;color:var(--gold)}
 .lm-t{font-family:var(--D);font-size:1.15rem;line-height:1.15}
-.legs-set label:hover .lm{border-color:var(--line-2);background:#fff}
-input:checked+.lm{border-color:var(--dark);background:#fff;box-shadow:0 18px 30px -22px rgba(40,30,20,.45)}
+.legs-set label:hover .lm{border-color:var(--line-2);background:rgba(255,255,255,.08)}
+input:checked+.lm{border-color:var(--dark);background:rgba(255,255,255,.12);box-shadow:0 18px 30px -22px rgba(40,30,20,.45)}
 .legs-swatches{display:flex;flex-wrap:wrap;gap:14px}
 .legs-swatches .sw{display:block;width:46px;height:46px;border-radius:50%;background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.35),transparent 55%),var(--c);
   box-shadow:inset 0 0 0 1px rgba(0,0,0,.12),inset 0 -6px 10px rgba(0,0,0,.1);transition:box-shadow .5s var(--ease),transform .5s var(--ease)}
@@ -1282,13 +1296,15 @@ input:checked+.lm{border-color:var(--dark);background:#fff;box-shadow:0 18px 30p
 }
 
 /* ── Əməkdaşlar: loqo zolağı (soldan sağa) ── */
-/* fon: isti palıd tonu + ağac damarı naxışı (media/agach/wood-grain.svg) */
-.nx-partners{--wood:#E8DCC8;background:var(--wood);border-block:1px solid rgba(139,106,69,.22);padding:clamp(30px,3.8vw,56px) 0;overflow:hidden;isolation:isolate}
-.nx-partners::before{content:'';position:absolute;inset:0;z-index:-1;background:url(media/agach/wood-grain.svg) center/cover no-repeat;opacity:.32;pointer-events:none}
-.nx-partners::after{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(120% 90% at 50% 50%,transparent 40%,rgba(139,106,69,.14));pointer-events:none}
-.nx-partners .nx-label{color:#5a4630}
+/* fon: hero şəklinin güzgü əksi — kəsik yerində hero-nun alt sətri ilə eyni sətirdən başlayır, tikiş görünmür */
+.nx-partners{position:relative;z-index:3;overflow:hidden;isolation:isolate;padding:clamp(28px,3.4vw,48px) 0 clamp(36px,4.6vw,64px)}
+.nx-partners-bg{position:absolute;top:0;left:0;right:0;height:100dvh;z-index:-1;pointer-events:none}
+.nx-partners-bg::before{content:'';position:absolute;inset:0;background:url(media/agach/hero.webp) center 30%/cover no-repeat;transform:scaleY(-1)}
+.nx-partners-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,8,6,.82) 0%,rgba(10,8,6,.5) 30%,rgba(10,8,6,.55) 100%),linear-gradient(to right,rgba(10,8,6,.35) 0%,rgba(10,8,6,0) 55%)}
+@media(max-width:760px){.nx-partners-bg::before{background-image:url(media/agach/hero-m.webp)}}
+.nx-partners .nx-label{color:rgba(255,255,255,.88)}
 .nx-partners-head{display:flex;justify-content:center;margin-bottom:clamp(20px,2.6vw,34px);padding-inline:var(--gutter)}
-.nx-partners-view{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.nx-partners-view{direction:ltr;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
 .nx-partners-track{display:flex;width:max-content;direction:ltr;animation:nxPartners var(--dur,48s) linear infinite}
 .nx-partners-view:hover .nx-partners-track{animation-play-state:paused}
 .nx-partners-list{display:flex;align-items:center;gap:clamp(18px,2vw,32px);padding-inline-end:clamp(18px,2vw,32px);margin:0;padding-inline-start:0;list-style:none;flex-shrink:0}
@@ -1385,7 +1401,7 @@ input:checked+.lm{border-color:var(--dark);background:#fff;box-shadow:0 18px 30p
 <!-- HERO ─────────────────────────────────────────────── -->
 <section class="hero">
   <div class="hero-bg">
-    <picture><source media="(max-width: 760px)" srcset="media/agach/hero-m.webp"><img src="media/agach/hero.webp" srcset="media/agach/hero-s.webp 1440w, media/agach/hero.webp 2560w" sizes="100vw" width="2560" height="1600" fetchpriority="high" alt="Agach Interiors — massiv ağac coffee table"></picture>
+    <picture><source media="(max-width: 760px)" srcset="media/agach/hero-m.webp"><img src="media/agach/hero.webp" srcset="media/agach/hero-s.webp 1440w, media/agach/hero.webp 2560w" sizes="100vw" width="2560" height="1600" fetchpriority="high" alt="Agach Interiors — massiv ağac qəhvə masası"></picture>
     <canvas id="grain"></canvas>
   </div>
   <div class="hero-content">
@@ -1400,27 +1416,27 @@ input:checked+.lm{border-color:var(--dark);background:#fff;box-shadow:0 18px 30p
       </div>
     </div>
   </div>
-</section>
-
-<!-- ƏMƏKDAŞLAR: loqo zolağı ─────────────────────────────
-     Loqo əlavə etmək / dəyişmək: media/partners/ qovluğuna fayl qoy,
-     aşağıdakı siyahıya <li><img ...></li> sətri əlavə et. Dövr üçün kopya JS ilə yaranır. -->
-<section class="nx nx-partners" aria-label="Əməkdaşlıq etdiyimiz şirkətlər">
-  <div class="nx-partners-head"><p class="nx-label r"><span>Əməkdaşlıq etdiyimiz şirkətlər</span></p></div>
-  <div class="nx-partners-view">
-    <div class="nx-partners-track">
-      <ul class="nx-partners-list">
-        <li><img src="media/partners/blum.svg" alt="Blum" width="100" height="50" style="--h:44px" loading="lazy"></li>
-        <li><img src="media/partners/egger.svg" alt="EGGER" width="287" height="78" style="--h:38px" loading="lazy"></li>
-        <li><img src="media/partners/hettich.svg" alt="Hettich" width="411" height="257" style="--h:52px" loading="lazy"></li>
-        <li><img src="media/partners/kronospan.svg" alt="Kronospan" width="370" height="74" style="--h:30px" loading="lazy"></li>
-        <li><img src="media/partners/osmo.svg" alt="Osmo" width="135" height="65" style="--h:46px" loading="lazy"></li>
-        <li><img src="media/partners/haefele.svg" alt="Häfele" width="893" height="153" style="--h:28px" loading="lazy"></li>
-        <li><img src="media/partners/rubio.svg" alt="Rubio Monocoat" width="83" height="50" style="--h:50px" loading="lazy"></li>
-        <li><img src="media/partners/grass.svg" alt="GRASS" width="124" height="20" style="--h:26px" loading="lazy"></li>
-      </ul>
+  <!-- ƏMƏKDAŞLAR: loqo zolağı ─────────────────────────────
+       Loqo əlavə etmək / dəyişmək: media/partners/ qovluğuna fayl qoy,
+       aşağıdakı siyahıya <li><img ...></li> sətri əlavə et. Dövr üçün kopya JS ilə yaranır. -->
+  <section class="nx nx-partners" aria-label="Əməkdaşlıq etdiyimiz şirkətlər">
+    <div class="nx-partners-bg" aria-hidden="true"></div>
+    <div class="nx-partners-head"><p class="nx-label r"><span>Əməkdaşlıq etdiyimiz şirkətlər</span></p></div>
+    <div class="nx-partners-view">
+      <div class="nx-partners-track">
+        <ul class="nx-partners-list">
+          <li><img src="media/partners/blum.svg" alt="Blum" width="100" height="50" style="--h:44px"></li>
+          <li><img src="media/partners/egger.svg" alt="EGGER" width="287" height="78" style="--h:38px"></li>
+          <li><img src="media/partners/hettich.svg" alt="Hettich" width="411" height="257" style="--h:52px"></li>
+          <li><img src="media/partners/kronospan.svg" alt="Kronospan" width="370" height="74" style="--h:30px"></li>
+          <li><img src="media/partners/osmo.svg" alt="Osmo" width="135" height="65" style="--h:46px"></li>
+          <li><img src="media/partners/haefele.svg" alt="Häfele" width="893" height="153" style="--h:28px"></li>
+          <li><img src="media/partners/rubio.svg" alt="Rubio Monocoat" width="83" height="50" style="--h:50px"></li>
+          <li><img src="media/partners/grass.svg" alt="GRASS" width="124" height="20" style="--h:26px"></li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </section>
 </section>
 
 <!-- SEÇİLMİŞ İŞLƏR (Epoxy 2.0) ───────────────────────── -->
@@ -1458,8 +1474,8 @@ input:checked+.lm{border-color:var(--dark);background:#fff;box-shadow:0 18px 30p
         <div class="nx-card-cap"><span class="nx-n">06</span><div><h3 class="nx-h3">Şahmat masası</h3><p>Ağac · epoksi · əl işi fiqurlar</p></div></div>
       </article>
       <article class="nx-card">
-        <button class="nx-card-media" type="button" data-zoom="media/agach/img64.webp" aria-label="Nard dəsti, böyüt"><img src="media/agach/img64.webp" srcset="media/agach/img64-s.webp 760w, media/agach/img64.webp 1600w" sizes="(max-width: 760px) 80vw, 30vw" width="1600" height="2000" alt="Nard dəsti · Zeytun ağacı · rəngli epoksi" loading="lazy" decoding="async"></button>
-        <div class="nx-card-cap"><span class="nx-n">07</span><div><h3 class="nx-h3">Nard dəsti</h3><p>Zeytun ağacı · rəngli epoksi</p></div></div>
+        <button class="nx-card-media" type="button" data-zoom="media/agach/img64.webp" aria-label="Nərd dəsti, böyüt"><img src="media/agach/img64.webp" srcset="media/agach/img64-s.webp 760w, media/agach/img64.webp 1600w" sizes="(max-width: 760px) 80vw, 30vw" width="1600" height="2000" alt="Nərd dəsti · Zeytun ağacı · rəngli epoksi" loading="lazy" decoding="async"></button>
+        <div class="nx-card-cap"><span class="nx-n">07</span><div><h3 class="nx-h3">Nərd dəsti</h3><p>Zeytun ağacı · rəngli epoksi</p></div></div>
       </article>
       <article class="nx-card">
         <button class="nx-card-media" type="button" data-zoom="media/agach/e01.webp" aria-label="Kök ağacı masası, böyüt"><img src="media/agach/e01.webp" srcset="media/agach/e01-s.webp 760w, media/agach/e01.webp 1600w" sizes="(max-width: 760px) 80vw, 30vw" width="1600" height="2000" alt="Kök ağacı masası · Təbii kənar · polad tor ayaq" loading="lazy" decoding="async"></button>
@@ -1493,7 +1509,7 @@ input:checked+.lm{border-color:var(--dark);background:#fff;box-shadow:0 18px 30p
   </div>
   <div>
     <h2 class="intro-h r">Ağacdan sənət —<em style="display:block;font-style:italic"> fərdi mebel istehsalı</em></h2>
-    <p class="intro-body r d1" style="margin-top:1.5rem">"Agach Interiors" Epoxy Azerbaijan Co. şirkətlər qrupunun brendidir və massiv mebel istehsalı bölməsidir. Taxta xammaldan hazırlanan Fasad işləri, Uzləmələr, Mətbəx mebeli, Hamam otağı, Qonaq otağı, Yataq otağı, Dəhliz mebelləri, Bağ mebelləri, Açıq sahə mebelləri, Klinika, Ofis və İstehsalat fabriki mebelləri istehsalı sahəmizə daxildir. Qrupa həmçinin ARCHI Studio, HAUZ Furniture və Doorsa brendləri daxildir.</p>
+    <p class="intro-body r d1" style="margin-top:1.5rem">"Agach Interiors" Epoxy Azerbaijan Co. şirkətlər qrupunun brendidir və massiv mebel istehsalı bölməsidir. Taxta xammaldan hazırlanan fasad işləri, üzləmələr, mətbəx mebeli, hamam otağı, qonaq otağı, yataq otağı, dəhliz mebelləri, bağ mebelləri, açıq sahə mebelləri, klinika, ofis və istehsalat fabriki mebelləri istehsalı sahəmizə daxildir. Qrupa həmçinin ARCHI Studio, HAUZ Furniture və Doorsa brendləri daxildir.</p>
     <div class="care-note r d2">
       <span class="care-note-tag">Qulluq xidməti</span>
       <p>Məhsul alındıqdan sonra 1 il ərzində mebelə qulluq 1 dəfə ödənişsizdir.</p>
@@ -1544,7 +1560,7 @@ input:checked+.lm{border-color:var(--dark);background:#fff;box-shadow:0 18px 30p
     <div class="svc svc-main r">
       <div class="svc-img">
         <img src="media/img/img12.jpg"
-             alt="Epoxy qonaq masası" loading="lazy">
+             alt="Epoksi qonaq masası" loading="lazy">
       </div>
       <div class="svc-body">
         <p class="svc-type">Əsas istiqamət</p>
@@ -1570,8 +1586,8 @@ input:checked+.lm{border-color:var(--dark);background:#fff;box-shadow:0 18px 30p
       </div>
       <div class="svc-body">
         <p class="svc-type">Xidmət</p>
-        <h3 class="svc-name">Fasad və Uzləmə</h3>
-        <p class="svc-desc">Taxta fasad işləri, divar üzlənməsi, panel konstruksiyaları.</p>
+        <h3 class="svc-name">Fasad və üzləmə</h3>
+        <p class="svc-desc">Taxta fasad işləri, divar üzləməsi, panel konstruksiyaları.</p>
       </div>
     </div>
 
@@ -1579,12 +1595,12 @@ input:checked+.lm{border-color:var(--dark);background:#fff;box-shadow:0 18px 30p
     <div class="svc r d2">
       <div class="svc-img">
         <img src="media/img/img11.jpg"
-             alt="Epoxy mebel" loading="lazy">
+             alt="Epoksi mebel" loading="lazy">
       </div>
       <div class="svc-body">
         <p class="svc-type">Xidmət</p>
         <h3 class="svc-name">Epoksi Qətranı</h3>
-        <p class="svc-desc">Ağac + epoxy kombinasiyası. Stollar, tezgahlar, dekorativ elementlər.</p>
+        <p class="svc-desc">Ağac + epoksi kombinasiyası. Stollar, tezgahlar, dekorativ elementlər.</p>
       </div>
     </div>
 
@@ -1631,42 +1647,42 @@ input:checked+.lm{border-color:var(--dark);background:#fff;box-shadow:0 18px 30p
       <div class="nx-filters r d2" role="group" aria-label="Qalereya">
         <button type="button" aria-pressed="true" data-f="*">Hamısı <sup>51</sup></button>
         <button type="button" aria-pressed="false" data-f="0">Masa və mebel <sup>17</sup></button>
-        <button type="button" aria-pressed="false" data-f="1">Nard və şahmat <sup>8</sup></button>
+        <button type="button" aria-pressed="false" data-f="1">Nərd və şahmat <sup>8</sup></button>
         <button type="button" aria-pressed="false" data-f="2">Dekor <sup>12</sup></button>
         <button type="button" aria-pressed="false" data-f="3">Emalatxana <sup>14</sup></button>
       </div>
     </header>
     <div class="nx-masonry" id="masonry">
       <button class="nx-tile" type="button" data-zoom="media/agach/e10.webp" data-cat="0" aria-label="Masa və mebel, böyüt"><span class="nx-tile-img"><img src="media/agach/e10.webp" srcset="media/agach/e10-s.webp 760w, media/agach/e10.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Masa və mebel" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Masa və mebel</span><span class="nx-n">01</span></span></button>
-      <button class="nx-tile" type="button" data-zoom="media/agach/e12.webp" data-cat="1" aria-label="Nard və şahmat, böyüt"><span class="nx-tile-img"><img src="media/agach/e12.webp" srcset="media/agach/e12-s.webp 760w, media/agach/e12.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Nard və şahmat" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Nard və şahmat</span><span class="nx-n">02</span></span></button>
+      <button class="nx-tile" type="button" data-zoom="media/agach/e12.webp" data-cat="1" aria-label="Nərd və şahmat, böyüt"><span class="nx-tile-img"><img src="media/agach/e12.webp" srcset="media/agach/e12-s.webp 760w, media/agach/e12.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Nərd və şahmat" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Nərd və şahmat</span><span class="nx-n">02</span></span></button>
       <button class="nx-tile" type="button" data-zoom="media/agach/img67.webp" data-cat="2" aria-label="Dekor, böyüt"><span class="nx-tile-img"><img src="media/agach/img67.webp" srcset="media/agach/img67-s.webp 760w, media/agach/img67.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Dekor" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Dekor</span><span class="nx-n">03</span></span></button>
       <button class="nx-tile" type="button" data-zoom="media/agach/w07.webp" data-cat="3" aria-label="Emalatxana, böyüt"><span class="nx-tile-img"><img src="media/agach/w07.webp" srcset="media/agach/w07-s.webp 760w, media/agach/w07.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Emalatxana" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Emalatxana</span><span class="nx-n">04</span></span></button>
       <button class="nx-tile" type="button" data-zoom="media/agach/e01.webp" data-cat="0" aria-label="Masa və mebel, böyüt"><span class="nx-tile-img"><img src="media/agach/e01.webp" srcset="media/agach/e01-s.webp 760w, media/agach/e01.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Masa və mebel" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Masa və mebel</span><span class="nx-n">05</span></span></button>
-      <button class="nx-tile" type="button" data-zoom="media/agach/img26.webp" data-cat="1" aria-label="Nard və şahmat, böyüt"><span class="nx-tile-img"><img src="media/agach/img26.webp" srcset="media/agach/img26-s.webp 760w, media/agach/img26.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Nard və şahmat" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Nard və şahmat</span><span class="nx-n">06</span></span></button>
+      <button class="nx-tile" type="button" data-zoom="media/agach/img26.webp" data-cat="1" aria-label="Nərd və şahmat, böyüt"><span class="nx-tile-img"><img src="media/agach/img26.webp" srcset="media/agach/img26-s.webp 760w, media/agach/img26.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Nərd və şahmat" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Nərd və şahmat</span><span class="nx-n">06</span></span></button>
       <button class="nx-tile" type="button" data-zoom="media/agach/e14.webp" data-cat="2" aria-label="Dekor, böyüt"><span class="nx-tile-img"><img src="media/agach/e14.webp" srcset="media/agach/e14-s.webp 760w, media/agach/e14.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Dekor" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Dekor</span><span class="nx-n">07</span></span></button>
       <button class="nx-tile" type="button" data-zoom="media/agach/w04.webp" data-cat="3" aria-label="Emalatxana, böyüt"><span class="nx-tile-img"><img src="media/agach/w04.webp" srcset="media/agach/w04-s.webp 760w, media/agach/w04.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Emalatxana" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Emalatxana</span><span class="nx-n">08</span></span></button>
       <button class="nx-tile" type="button" data-zoom="media/agach/img19.webp" data-cat="0" aria-label="Masa və mebel, böyüt"><span class="nx-tile-img"><img src="media/agach/img19.webp" srcset="media/agach/img19-s.webp 760w, media/agach/img19.webp 1170w" sizes="(max-width: 760px) 50vw, 33vw" width="1170" height="1463" alt="Agach Interiors · Masa və mebel" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Masa və mebel</span><span class="nx-n">09</span></span></button>
-      <button class="nx-tile" type="button" data-zoom="media/agach/e07.webp" data-cat="1" aria-label="Nard və şahmat, böyüt"><span class="nx-tile-img"><img src="media/agach/e07.webp" srcset="media/agach/e07-s.webp 760w, media/agach/e07.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Nard və şahmat" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Nard və şahmat</span><span class="nx-n">10</span></span></button>
+      <button class="nx-tile" type="button" data-zoom="media/agach/e07.webp" data-cat="1" aria-label="Nərd və şahmat, böyüt"><span class="nx-tile-img"><img src="media/agach/e07.webp" srcset="media/agach/e07-s.webp 760w, media/agach/e07.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Nərd və şahmat" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Nərd və şahmat</span><span class="nx-n">10</span></span></button>
       <button class="nx-tile" type="button" data-zoom="media/agach/e15.webp" data-cat="2" aria-label="Dekor, böyüt"><span class="nx-tile-img"><img src="media/agach/e15.webp" srcset="media/agach/e15-s.webp 760w, media/agach/e15.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Dekor" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Dekor</span><span class="nx-n">11</span></span></button>
       <button class="nx-tile" type="button" data-zoom="media/agach/img54.webp" data-cat="3" aria-label="Emalatxana, böyüt"><span class="nx-tile-img"><img src="media/agach/img54.webp" srcset="media/agach/img54-s.webp 760w, media/agach/img54.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Emalatxana" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Emalatxana</span><span class="nx-n">12</span></span></button>
       <button class="nx-tile is-more" type="button" data-zoom="media/agach/e04.webp" data-cat="0" aria-label="Masa və mebel, böyüt"><span class="nx-tile-img"><img src="media/agach/e04.webp" srcset="media/agach/e04-s.webp 760w, media/agach/e04.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Masa və mebel" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Masa və mebel</span><span class="nx-n">13</span></span></button>
-      <button class="nx-tile is-more" type="button" data-zoom="media/agach/e13.webp" data-cat="1" aria-label="Nard və şahmat, böyüt"><span class="nx-tile-img"><img src="media/agach/e13.webp" srcset="media/agach/e13-s.webp 760w, media/agach/e13.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Nard və şahmat" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Nard və şahmat</span><span class="nx-n">14</span></span></button>
+      <button class="nx-tile is-more" type="button" data-zoom="media/agach/e13.webp" data-cat="1" aria-label="Nərd və şahmat, böyüt"><span class="nx-tile-img"><img src="media/agach/e13.webp" srcset="media/agach/e13-s.webp 760w, media/agach/e13.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Nərd və şahmat" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Nərd və şahmat</span><span class="nx-n">14</span></span></button>
       <button class="nx-tile is-more" type="button" data-zoom="media/agach/e06.webp" data-cat="2" aria-label="Dekor, böyüt"><span class="nx-tile-img"><img src="media/agach/e06.webp" srcset="media/agach/e06-s.webp 760w, media/agach/e06.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Dekor" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Dekor</span><span class="nx-n">15</span></span></button>
       <button class="nx-tile is-more" type="button" data-zoom="media/agach/w11.webp" data-cat="3" aria-label="Emalatxana, böyüt"><span class="nx-tile-img"><img src="media/agach/w11.webp" srcset="media/agach/w11-s.webp 760w, media/agach/w11.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Emalatxana" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Emalatxana</span><span class="nx-n">16</span></span></button>
       <button class="nx-tile is-more" type="button" data-zoom="media/agach/img14.webp" data-cat="0" aria-label="Masa və mebel, böyüt"><span class="nx-tile-img"><img src="media/agach/img14.webp" srcset="media/agach/img14-s.webp 760w, media/agach/img14.webp 1440w" sizes="(max-width: 760px) 50vw, 33vw" width="1440" height="1799" alt="Agach Interiors · Masa və mebel" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Masa və mebel</span><span class="nx-n">17</span></span></button>
-      <button class="nx-tile is-more" type="button" data-zoom="media/agach/img47.webp" data-cat="1" aria-label="Nard və şahmat, böyüt"><span class="nx-tile-img"><img src="media/agach/img47.webp" srcset="media/agach/img47-s.webp 760w, media/agach/img47.webp 1170w" sizes="(max-width: 760px) 50vw, 33vw" width="1170" height="1463" alt="Agach Interiors · Nard və şahmat" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Nard və şahmat</span><span class="nx-n">18</span></span></button>
+      <button class="nx-tile is-more" type="button" data-zoom="media/agach/img47.webp" data-cat="1" aria-label="Nərd və şahmat, böyüt"><span class="nx-tile-img"><img src="media/agach/img47.webp" srcset="media/agach/img47-s.webp 760w, media/agach/img47.webp 1170w" sizes="(max-width: 760px) 50vw, 33vw" width="1170" height="1463" alt="Agach Interiors · Nərd və şahmat" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Nərd və şahmat</span><span class="nx-n">18</span></span></button>
       <button class="nx-tile is-more" type="button" data-zoom="media/agach/img63.webp" data-cat="2" aria-label="Dekor, böyüt"><span class="nx-tile-img"><img src="media/agach/img63.webp" srcset="media/agach/img63-s.webp 760w, media/agach/img63.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Dekor" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Dekor</span><span class="nx-n">19</span></span></button>
       <button class="nx-tile is-more" type="button" data-zoom="media/agach/w05.webp" data-cat="3" aria-label="Emalatxana, böyüt"><span class="nx-tile-img"><img src="media/agach/w05.webp" srcset="media/agach/w05-s.webp 760w, media/agach/w05.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Emalatxana" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Emalatxana</span><span class="nx-n">20</span></span></button>
       <button class="nx-tile is-more" type="button" data-zoom="media/agach/img22.webp" data-cat="0" aria-label="Masa və mebel, böyüt"><span class="nx-tile-img"><img src="media/agach/img22.webp" srcset="media/agach/img22-s.webp 760w, media/agach/img22.webp 1080w" sizes="(max-width: 760px) 50vw, 33vw" width="1080" height="1080" alt="Agach Interiors · Masa və mebel" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Masa və mebel</span><span class="nx-n">21</span></span></button>
-      <button class="nx-tile is-more" type="button" data-zoom="media/agach/e16.webp" data-cat="1" aria-label="Nard və şahmat, böyüt"><span class="nx-tile-img"><img src="media/agach/e16.webp" srcset="media/agach/e16-s.webp 760w, media/agach/e16.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Nard və şahmat" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Nard və şahmat</span><span class="nx-n">22</span></span></button>
+      <button class="nx-tile is-more" type="button" data-zoom="media/agach/e16.webp" data-cat="1" aria-label="Nərd və şahmat, böyüt"><span class="nx-tile-img"><img src="media/agach/e16.webp" srcset="media/agach/e16-s.webp 760w, media/agach/e16.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Nərd və şahmat" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Nərd və şahmat</span><span class="nx-n">22</span></span></button>
       <button class="nx-tile is-more" type="button" data-zoom="media/agach/e09.webp" data-cat="2" aria-label="Dekor, böyüt"><span class="nx-tile-img"><img src="media/agach/e09.webp" srcset="media/agach/e09-s.webp 760w, media/agach/e09.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Dekor" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Dekor</span><span class="nx-n">23</span></span></button>
       <button class="nx-tile is-more" type="button" data-zoom="media/agach/w02.webp" data-cat="3" aria-label="Emalatxana, böyüt"><span class="nx-tile-img"><img src="media/agach/w02.webp" srcset="media/agach/w02-s.webp 760w, media/agach/w02.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Emalatxana" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Emalatxana</span><span class="nx-n">24</span></span></button>
       <button class="nx-tile is-more" type="button" data-zoom="media/agach/e02.webp" data-cat="0" aria-label="Masa və mebel, böyüt"><span class="nx-tile-img"><img src="media/agach/e02.webp" srcset="media/agach/e02-s.webp 760w, media/agach/e02.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Masa və mebel" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Masa və mebel</span><span class="nx-n">25</span></span></button>
-      <button class="nx-tile is-more" type="button" data-zoom="media/agach/img27.webp" data-cat="1" aria-label="Nard və şahmat, böyüt"><span class="nx-tile-img"><img src="media/agach/img27.webp" srcset="media/agach/img27-s.webp 760w, media/agach/img27.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Nard və şahmat" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Nard və şahmat</span><span class="nx-n">26</span></span></button>
+      <button class="nx-tile is-more" type="button" data-zoom="media/agach/img27.webp" data-cat="1" aria-label="Nərd və şahmat, böyüt"><span class="nx-tile-img"><img src="media/agach/img27.webp" srcset="media/agach/img27-s.webp 760w, media/agach/img27.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Nərd və şahmat" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Nərd və şahmat</span><span class="nx-n">26</span></span></button>
       <button class="nx-tile is-more" type="button" data-zoom="media/agach/img43.webp" data-cat="2" aria-label="Dekor, böyüt"><span class="nx-tile-img"><img src="media/agach/img43.webp" srcset="media/agach/img43-s.webp 760w, media/agach/img43.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Dekor" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Dekor</span><span class="nx-n">27</span></span></button>
       <button class="nx-tile is-more" type="button" data-zoom="media/agach/w13.webp" data-cat="3" aria-label="Emalatxana, böyüt"><span class="nx-tile-img"><img src="media/agach/w13.webp" srcset="media/agach/w13-s.webp 760w, media/agach/w13.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Emalatxana" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Emalatxana</span><span class="nx-n">28</span></span></button>
       <button class="nx-tile is-more" type="button" data-zoom="media/agach/img38.webp" data-cat="0" aria-label="Masa və mebel, böyüt"><span class="nx-tile-img"><img src="media/agach/img38.webp" srcset="media/agach/img38-s.webp 760w, media/agach/img38.webp 1170w" sizes="(max-width: 760px) 50vw, 33vw" width="1170" height="1462" alt="Agach Interiors · Masa və mebel" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Masa və mebel</span><span class="nx-n">29</span></span></button>
-      <button class="nx-tile is-more" type="button" data-zoom="media/agach/e08.webp" data-cat="1" aria-label="Nard və şahmat, böyüt"><span class="nx-tile-img"><img src="media/agach/e08.webp" srcset="media/agach/e08-s.webp 760w, media/agach/e08.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Nard və şahmat" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Nard və şahmat</span><span class="nx-n">30</span></span></button>
+      <button class="nx-tile is-more" type="button" data-zoom="media/agach/e08.webp" data-cat="1" aria-label="Nərd və şahmat, böyüt"><span class="nx-tile-img"><img src="media/agach/e08.webp" srcset="media/agach/e08-s.webp 760w, media/agach/e08.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Nərd və şahmat" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Nərd və şahmat</span><span class="nx-n">30</span></span></button>
       <button class="nx-tile is-more" type="button" data-zoom="media/agach/img65.webp" data-cat="2" aria-label="Dekor, böyüt"><span class="nx-tile-img"><img src="media/agach/img65.webp" srcset="media/agach/img65-s.webp 760w, media/agach/img65.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Dekor" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Dekor</span><span class="nx-n">31</span></span></button>
       <button class="nx-tile is-more" type="button" data-zoom="media/agach/img58.webp" data-cat="3" aria-label="Emalatxana, böyüt"><span class="nx-tile-img"><img src="media/agach/img58.webp" srcset="media/agach/img58-s.webp 760w, media/agach/img58.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Emalatxana" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Emalatxana</span><span class="nx-n">32</span></span></button>
       <button class="nx-tile is-more" type="button" data-zoom="media/agach/e11.webp" data-cat="0" aria-label="Masa və mebel, böyüt"><span class="nx-tile-img"><img src="media/agach/e11.webp" srcset="media/agach/e11-s.webp 760w, media/agach/e11.webp 1600w" sizes="(max-width: 760px) 50vw, 33vw" width="1600" height="2000" alt="Agach Interiors · Masa və mebel" loading="lazy" decoding="async"></span><span class="nx-tile-cap"><span>Masa və mebel</span><span class="nx-n">33</span></span></button>
@@ -1794,7 +1810,7 @@ input:checked+.lm{border-color:var(--dark);background:#fff;box-shadow:0 18px 30p
       <div class="nx-tbl-copy">
         <p class="nx-label r"><span>Quruluş</span></p>
         <h2 class="nx-h2 r d1">Masanın <em>dörd</em> qatı.</h2>
-        <p class="nx-lead r d2">Scroll edin: masa qatlarına ayrılır. Hər qat ayrıca əl işidir.</p>
+        <p class="nx-lead r d2">Aşağı sürüşdürün: masa qatlarına ayrılır. Hər qat ayrıca əl işidir.</p>
         <div class="r d3"><a class="nx-btn nx-btn-light" href="#contact"><span>Öz masanızı sifariş edin</span><i class="nx-ic nx-flip" aria-hidden="true"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M198,64V168a6,6,0,0,1-12,0V78.48L68.24,196.24a6,6,0,0,1-8.48-8.48L177.52,70H88a6,6,0,0,1,0-12H192A6,6,0,0,1,198,64Z"/></svg></i></a></div>
       </div>
       <ol class="nx-tbl-list">
@@ -1803,7 +1819,7 @@ input:checked+.lm{border-color:var(--dark);background:#fff;box-shadow:0 18px 30p
         <li class="nx-tbl-item" data-k="2"><span class="nx-n">02</span><div><h3 class="nx-tbl-t">Qoz lövhələr</h3><p>Canlı kənarlı iki qoz lövhəsi. Ağac aylarla qurudulur, damarları əllə seçilir.</p></div></li>
         <li class="nx-tbl-item" data-k="3"><span class="nx-n">01</span><div><h3 class="nx-tbl-t">Polad ayaqlar</h3><p>X formalı polad, mat qara toz boya. Hər masanın ölçüsünə görə qaynaq olunur.</p></div></li>
       </ol>
-      <p class="nx-hint nx-tbl-hint"><span>Scroll edin</span><i class="nx-ic" aria-hidden="true"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M204.24,148.24l-72,72a6,6,0,0,1-8.48,0l-72-72a6,6,0,0,1,8.48-8.48L122,201.51V40a6,6,0,0,1,12,0V201.51l61.76-61.75a6,6,0,0,1,8.48,8.48Z"/></svg></i></p>
+      <p class="nx-hint nx-tbl-hint"><span>Aşağı sürüşdürün</span><i class="nx-ic" aria-hidden="true"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M204.24,148.24l-72,72a6,6,0,0,1-8.48,0l-72-72a6,6,0,0,1,8.48-8.48L122,201.51V40a6,6,0,0,1,12,0V201.51l61.76-61.75a6,6,0,0,1,8.48,8.48Z"/></svg></i></p>
     </div>
     <div class="nx-tbl-progress" aria-hidden="true"><span></span></div>
   </div>
@@ -1812,7 +1828,7 @@ input:checked+.lm{border-color:var(--dark);background:#fff;box-shadow:0 18px 30p
 <!-- TESTIMONIAL ──────────────────────────────────────── -->
 <section class="testimonial">
   <blockquote class="t-q r">
-    "Agach Interiors komandası evimizdəki hər otağı fərqli bir sənət əserinə çevirdi. Keyfiyyət, vaxtında çatdırılma, professional yanaşma."
+    "Agach Interiors komandası evimizdəki hər otağı fərqli bir sənət əsərinə çevirdi. Keyfiyyət, vaxtında çatdırılma, professional yanaşma."
   </blockquote>
   <p class="t-who r d1">Nigar Həsənova, Bakı - Nərimanov rayonu</p>
 </section>
@@ -1881,7 +1897,7 @@ input:checked+.lm{border-color:var(--dark);background:#fff;box-shadow:0 18px 30p
         <h3 class="bcard-name">HAUZ Furniture</h3>
       </div>
       <p class="bcard-tag">Mebel İstehsalı</p>
-      <p class="bcard-desc">Qrupun ən böyük mebel istehsalı bölməsi. Klassik, Neoklassik, Modern, Avanqard, Loft və İndustrial üslublarda istehsal.</p>
+      <p class="bcard-desc">Qrupun ən böyük mebel istehsalı bölməsi. klassik, neoklassik, modern, avanqard, loft və industrial üslublarda istehsal.</p>
       <div class="bcard-chips">
         <span class="chip">MDF / LDSP</span>
         <span class="chip">Veneyer</span>
@@ -1947,10 +1963,10 @@ input:checked+.lm{border-color:var(--dark);background:#fff;box-shadow:0 18px 30p
           <p class="legs-kind" data-kind="round">Dəyirmi masa</p>
           <div class="legs-models">
             <label><input type="radio" name="l-model" value="xtrapeze"><span class="lm" data-kind="round" data-finish="black"><span class="lm-n">10</span><span class="lm-t">Çarpaz trapes</span><span class="lm-d" hidden>Bir-birini kəsən iki trapes çərçivə</span></span></label>
-            <label><input type="radio" name="l-model" value="column"><span class="lm" data-kind="round" data-finish="brass"><span class="lm-n">11</span><span class="lm-t">Sütun</span><span class="lm-d" hidden>Butulka formalı sütun, disk altlıq</span></span></label>
+            <label><input type="radio" name="l-model" value="column"><span class="lm" data-kind="round" data-finish="brass"><span class="lm-n">11</span><span class="lm-t">Sütun</span><span class="lm-d" hidden>Şüşə formalı sütun, disk altlıq</span></span></label>
             <label><input type="radio" name="l-model" value="cone"><span class="lm" data-kind="round" data-finish="brass"><span class="lm-n">12</span><span class="lm-t">Konus</span><span class="lm-d" hidden>Tək parça konus, ağır və dayanıqlı</span></span></label>
             <label><input type="radio" name="l-model" value="baluster"><span class="lm" data-kind="round" data-finish="brass"><span class="lm-n">13</span><span class="lm-t">Baluster</span><span class="lm-d" hidden>Torna işi, klassik profil</span></span></label>
-            <label><input type="radio" name="l-model" value="trumpet"><span class="lm" data-kind="round" data-finish="gold"><span class="lm-n">14</span><span class="lm-t">Truba</span><span class="lm-d" hidden>Axan altlıq, güzgü kimi cilalanıb</span></span></label>
+            <label><input type="radio" name="l-model" value="trumpet"><span class="lm" data-kind="round" data-finish="gold"><span class="lm-n">14</span><span class="lm-t">Boru</span><span class="lm-d" hidden>Axan altlıq, güzgü kimi cilalanıb</span></span></label>
             <label><input type="radio" name="l-model" value="tulip"><span class="lm" data-kind="round" data-finish="gold"><span class="lm-n">15</span><span class="lm-t">Lalə</span><span class="lm-d" hidden>28 əyilmiş çubuqdan səbət</span></span></label>
             <label><input type="radio" name="l-model" value="chain"><span class="lm" data-kind="round" data-finish="chrome"><span class="lm-n">16</span><span class="lm-t">Zəncir</span><span class="lm-d" hidden>Çarpaz gərilmiş xrom zəncirlər</span></span></label>
           </div>
@@ -2002,7 +2018,7 @@ input:checked+.lm{border-color:var(--dark);background:#fff;box-shadow:0 18px 30p
         <span class="faq-arrow">+</span>
       </button>
       <div class="faq-a">
-        <p>Sifarişin mürəkkəbliyindən asılı olaraq 2-6 həftə. Sadə coffee table — 2 həftə. Epoxy ilə böyük yemək masası — 4-6 həftə. Tam otaq dəsti — 6-8 həftə. Dəqiq müddəti sifariş zamanı bildiririk.</p>
+        <p>Sifarişin mürəkkəbliyindən asılı olaraq 2-6 həftə. Sadə qəhvə masası — 2 həftə. Epoksi ilə böyük yemək masası — 4-6 həftə. Tam otaq dəsti — 6-8 həftə. Dəqiq müddəti sifariş zamanı bildiririk.</p>
       </div>
     </div>
 
@@ -2012,17 +2028,17 @@ input:checked+.lm{border-color:var(--dark);background:#fff;box-shadow:0 18px 30p
         <span class="faq-arrow">+</span>
       </button>
       <div class="faq-a">
-        <p>Bəli. Bakı daxili çatdırılma pulsuz (sifarişin dəyərindən asılı olaraq). Bakı xaricinə — Azərbaycan üzrə çatdırılma mövcuddur. Komandamız istehsal etdiyimiz mebelləri sizin obyektinizdə şəxsən quraşdırır.</p>
+        <p>Bəli. Bakı daxilində çatdırılma pulsuzdur (sifarişin dəyərindən asılı olaraq). Bakı xaricinə — Azərbaycan üzrə çatdırılma mövcuddur. Komandamız istehsal etdiyimiz mebelləri sizin obyektinizdə şəxsən quraşdırır.</p>
       </div>
     </div>
 
     <div class="faq-item r d3">
       <button class="faq-q" aria-expanded="false">
-        Zəmanət verirsinizsə?
+        Zəmanət verirsinizmi?
         <span class="faq-arrow">+</span>
       </button>
       <div class="faq-a">
-        <p>Bəli, bütün məhsullarımıza 2 il istehsal zəmanəti verilir. Epoxy örtüklü məhsullar üçün əlavə qoruma tövsiyələri veririk. Material qüsuru olarsa, pulsuz dəyişdiririk.</p>
+        <p>Bəli, bütün məhsullarımıza 2 il istehsal zəmanəti verilir. Epoksi örtüklü məhsullar üçün əlavə qoruma tövsiyələri veririk. Material qüsuru olarsa, pulsuz dəyişdiririk.</p>
       </div>
     </div>
 
@@ -2055,7 +2071,7 @@ input:checked+.lm{border-color:var(--dark);background:#fff;box-shadow:0 18px 30p
     <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l2-1.14"/><path d="M16.5 9.4 7.55 4.24"/><polyline points="3.29 7 12 12 20.71 7"/><line x1="12" y1="22" x2="12" y2="12"/><circle cx="18.5" cy="15.5" r="2.5"/><path d="M20.27 17.27 22 19"/></svg>
     <div>
       <strong>Pulsuz çatdırılma</strong>
-      <p>Bakı daxili bütün sifarişlər üçün</p>
+      <p>Bakı daxilində bütün sifarişlər üçün</p>
     </div>
   </div>
   <div class="info-item r d1">
@@ -2178,7 +2194,7 @@ input:checked+.lm{border-color:var(--dark);background:#fff;box-shadow:0 18px 30p
 <footer>
   <div>
     <span class="foot-logo">Agach Interiors</span>
-    <p style="font-size:.68rem;color:rgba(17,17,16,.35);margin-top:.3rem;">Epoxy Azerbaijan Group</p>
+    <p style="font-size:.68rem;color:rgba(241,236,227,.4);margin-top:.3rem;">Epoxy Azerbaijan Group</p>
   </div>
   <ul class="foot-links">
     <li><a href="#services">Xidmətlər</a></li>
@@ -2252,9 +2268,10 @@ tick(0);
 
 /* hero image parallax on scroll */
 const heroImg=document.querySelector('.hero-bg img');
+const heroMir=document.querySelector('.nx-partners-bg');
 if(heroImg){
   let _ht=false;
-  window.addEventListener('scroll',()=>{if(!_ht){_ht=true;requestAnimationFrame(()=>{if(scrollY<innerHeight*1.5)heroImg.style.transform=`translateY(${scrollY*.28}px)`;_ht=false;});}},{passive:true});
+  window.addEventListener('scroll',()=>{if(!_ht){_ht=true;requestAnimationFrame(()=>{if(scrollY<innerHeight*1.5)heroImg.style.transform=`translateY(${scrollY*.28}px)`;if(heroMir)heroMir.style.transform=`translateY(${-scrollY*.28}px)`;_ht=false;});}},{passive:true});
 }
 </script>
 
@@ -2400,13 +2417,13 @@ ham.addEventListener('click',()=>{
   const CATS = {
     masalar: {
       title: 'Masalar',
-      sub: 'Massiv ağac və epoxy stollar',
+      sub: 'Massiv ağac və epoksi stollar',
       items: [
         {src:'media/img/img11.jpg', name:'Live Edge Coffee Table'},
-        {src:'media/img/img12.jpg', name:'Epoxy Qonaq Masası'},
-        {src:'media/img/img20.jpg', name:'Massive Walnut & Resin'},
-        {src:'media/img/img21.jpg', name:'Massive Walnut & Resin'},
-        {src:'media/img/img22.jpg', name:'Massive Walnut & Resin'},
+        {src:'media/img/img12.jpg', name:'Epoksi qonaq masası'},
+        {src:'media/img/img20.jpg', name:'Massiv qoz və epoksi qətranı'},
+        {src:'media/img/img21.jpg', name:'Massiv qoz və epoksi qətranı'},
+        {src:'media/img/img22.jpg', name:'Massiv qoz və epoksi qətranı'},
         {src:'media/img/img23.jpg', name:'ROOT Masa'},
         {src:'media/img/img24.jpg', name:'ROOT Masa'},
         {src:'media/img/img25.jpg', name:'ROOT Masa'},
