@@ -162,7 +162,7 @@
     mio.observe(map);
   }
 
-  /* haqqımızda: şəkillər scroll ilə müxtəlif sürətdə sürüşür (parallaks), nişan scroll-a görə əlavə fırlanır */
+  /* haqqımızda: şəkillər scroll ilə müxtəlif sürətdə sürüşür (parallaks) */
   if (gsap && ST && !reduced) {
     [['.nx-about-img img', -7, 7], ['.nx-about-img2 img', 10, -10]].forEach(function (c) {
       var el = $(c[0]);
@@ -170,8 +170,6 @@
     });
     var img2 = $('.nx-about-img2');
     if (img2) gsap.fromTo(img2, { y: 70 }, { y: -50, ease: 'none', scrollTrigger: { trigger: '.nx-about', start: 'top bottom', end: 'bottom top', scrub: true } });
-    var badge = $('.nx-about-ring');
-    if (badge) gsap.to(badge, { rotate: 160, ease: 'none', scrollTrigger: { trigger: '.nx-about', start: 'top bottom', end: 'bottom top', scrub: true } });
   }
 
   /* iş prosesi: yandakı şəkil görünən addımı izləyir */
