@@ -1,6 +1,6 @@
 /* index.html — tərcümələr: "AZ": ["EN", "RU", "AR"] */
 I18N.add({
-"Epoxy Azerbaijan Group — Agach Interiors, HAUZ Furniture, ARCHI Studio, Doorsa":["Epoxy Azerbaijan Group — Agach Interiors, HAUZ Furniture, ARCHI Studio, Doorsa","Epoxy Azerbaijan Group — Agach Interiors, HAUZ Furniture, ARCHI Studio, Doorsa","مجموعة إيبوكسي أذربيجان — Agach Interiors وHAUZ Furniture وARCHI Studio وDoorsa"],
+"Epoxy Azerbaijan Group — AGACH Interiors, HAUZ Furniture, ARCHI Studio, Doorsa":["Epoxy Azerbaijan Group — AGACH Interiors, HAUZ Furniture, ARCHI Studio, Doorsa","Epoxy Azerbaijan Group — AGACH Interiors, HAUZ Furniture, ARCHI Studio, Doorsa","مجموعة إيبوكسي أذربيجان — AGACH Interiors وHAUZ Furniture وARCHI Studio وDoorsa"],
 "Massiv Mebel":["Solid Wood Furniture","Мебель из массива","أثاث من الخشب الصلب"],
 "Massiv ağac və epoksi qətranından fərdi mebel. Bakı.":["Bespoke furniture in solid wood and epoxy resin. Baku.","Мебель на заказ из массива дерева и эпоксидной смолы. Баку.","أثاث حسب الطلب من الخشب الصلب وراتنج الإيبوكسي. باكو."],
 "Sayta keç":["Visit site","Перейти на сайт","زيارة الموقع"],
