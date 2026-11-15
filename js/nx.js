@@ -162,6 +162,12 @@
     mio.observe(map);
   }
 
+  /* haqqımızda: animasiya element ekrana girməmişdən bir az əvvəl başlasın ki, şəkil gec açılmasın */
+  var aio = new IntersectionObserver(function (en) {
+    en.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); aio.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px 25% 0px' });
+  $$('.nx-about .r').forEach(function (el) { aio.observe(el); });
+
   /* haqqımızda: şəkillər scroll ilə müxtəlif sürətdə sürüşür (parallaks) */
   if (gsap && ST && !reduced) {
     [['.nx-about-img img', -7, 7], ['.nx-about-img2 img', 10, -10]].forEach(function (c) {
