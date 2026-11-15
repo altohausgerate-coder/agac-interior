@@ -504,6 +504,14 @@ body::after{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;bac
   font-size:.72rem;font-weight:500;letter-spacing:.12em;
   text-transform:uppercase;color:var(--muted);
 }
+/* rəylər üst-üstə dayanır, növbə ilə görünür; hündürlük ən uzun rəyə görədir */
+.t-slides{display:grid;touch-action:pan-y}
+.t-slide{grid-area:1/1;margin:0;opacity:0;visibility:hidden;transition:opacity .8s ease,visibility 0s .8s}
+.t-slide.on{opacity:1;visibility:visible;transition:opacity .8s ease}
+.t-dots{display:flex;justify-content:center;gap:4px;margin-top:1.75rem;color:var(--muted)}
+.t-dots button{width:24px;height:24px;display:grid;place-items:center;background:none;border:0;padding:0;cursor:pointer;color:inherit}
+.t-dots button::after{content:'';width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.35;transition:opacity .3s,transform .3s}
+.t-dots button[aria-current="true"]::after{opacity:1;transform:scale(1.25)}
 
 /* ─ CTA DARK ────────────────────────────────────────── */
 .cta-dark{position:relative;overflow:hidden;min-height:500px}
@@ -1830,11 +1838,34 @@ input:checked+.lm{border-color:var(--dark);background:rgba(255,255,255,.12);box-
 </section>
 
 <!-- TESTIMONIAL ──────────────────────────────────────── -->
-<section class="testimonial">
-  <blockquote class="t-q r">
-    "AGACH Interiors komandası evimizdəki hər otağı fərqli bir sənət əsərinə çevirdi. Keyfiyyət, vaxtında çatdırılma, professional yanaşma."
-  </blockquote>
-  <p class="t-who r d1">Nigar Həsənova, Bakı - Nərimanov rayonu</p>
+<section class="testimonial" aria-label="Müştəri rəyləri">
+  <div class="t-slides r">
+    <figure class="t-slide on">
+      <blockquote class="t-q">
+        "AGACH Interiors komandası evimizdəki hər otağı fərqli bir sənət əsərinə çevirdi. Keyfiyyət, vaxtında çatdırılma, professional yanaşma."
+      </blockquote>
+      <figcaption class="t-who">Nigar Həsənova, Bakı - Nərimanov rayonu</figcaption>
+    </figure>
+    <figure class="t-slide" aria-hidden="true">
+      <blockquote class="t-q">
+        "Qoz və yaşıl epoksidən river masa sifariş etdik. Ölçünü və rəngi birlikdə seçdik, masa qonaq otağımızın ən gözəl guşəsinə çevrildi."
+      </blockquote>
+      <figcaption class="t-who">Elvin M., Bakı - Yasamal rayonu</figcaption>
+    </figure>
+    <figure class="t-slide" aria-hidden="true">
+      <blockquote class="t-q">
+        "Bakı səfərindən xatirə olaraq qoz nərd götürdüm. Tam əl işidir, daşları da çox keyfiyyətlidir. Ailədə hamı onunla oynamaq istəyir."
+      </blockquote>
+      <figcaption class="t-who">Selin A., İstanbul, Türkiyə</figcaption>
+    </figure>
+    <figure class="t-slide" aria-hidden="true">
+      <blockquote class="t-q">
+        "Bakıda yaşadığım müddətdə massiv qozdan yemək masası sifariş etdim. Ağacın damarları canlıdır, işçilik isə son dərəcə səliqəlidir."
+      </blockquote>
+      <figcaption class="t-who">Daniel R., Çikaqo, ABŞ</figcaption>
+    </figure>
+  </div>
+  <div class="t-dots r d1"></div>
 </section>
 
 <!-- CTA DARK ─────────────────────────────────────────── -->
@@ -2538,6 +2569,39 @@ ham.addEventListener('click',()=>{
   track.appendChild(copy);
   /* sürət sabit qalsın: ~45px/san, loqo sayından asılı olmayaraq */
   track.style.setProperty('--dur',Math.max(30,list.scrollWidth/45)+'s');
+})();
+</script>
+<script>
+/* RƏYLƏR: avtomatik növbə (7 san), nöqtələr, sürüşdürmə; üzərinə gələndə dayanır */
+(()=>{
+  const box=document.querySelector('.testimonial');
+  if(!box) return;
+  const slides=[...box.querySelectorAll('.t-slide')], dots=box.querySelector('.t-dots');
+  if(slides.length<2) return;
+  let cur=0, timer=null;
+  const btns=slides.map((_,i)=>{
+    const b=document.createElement('button');
+    b.type='button'; b.setAttribute('aria-label',(i+1)+' / '+slides.length);
+    b.addEventListener('click',()=>{go(i);start()});
+    dots.appendChild(b); return b;
+  });
+  function go(i){
+    cur=(i+slides.length)%slides.length;
+    slides.forEach((s,k)=>{s.classList.toggle('on',k===cur);k===cur?s.removeAttribute('aria-hidden'):s.setAttribute('aria-hidden','true')});
+    btns.forEach((b,k)=>b.setAttribute('aria-current',k===cur));
+  }
+  const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function start(){clearInterval(timer); if(!still) timer=setInterval(()=>go(cur+1),7000)}
+  box.addEventListener('mouseenter',()=>clearInterval(timer));
+  box.addEventListener('mouseleave',start);
+  let x0=null;
+  box.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});
+  box.addEventListener('touchend',e=>{
+    if(x0===null) return;
+    const dx=e.changedTouches[0].clientX-x0; x0=null;
+    if(Math.abs(dx)>40){go(cur+(dx<0?1:-1)*(document.documentElement.dir==='rtl'?-1:1));start()}
+  });
+  go(0); start();
 })();
 </script>
 </body>
