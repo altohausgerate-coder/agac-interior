@@ -370,7 +370,7 @@ I18N.add({
 
 /* əməkdaşlar loqo zolağı */
 I18N.add({
-"Əməkdaşlıq etdiyimiz şirkətlər":["Companies we work with","Компании, с которыми мы сотрудничаем","الشركات التي نتعاون معها"]
+"Bizə etibar edən məkanlar":["Venues that trust us","Заведения, которые нам доверяют","أماكن تثق بنا"]
 });
 
 /* masa ayaqlıqları (3D) */

@@ -1346,15 +1346,17 @@ input:checked+.lm{border-color:var(--dark);background:rgba(255,255,255,.12);box-
 .nx-partners-head{display:flex;justify-content:center;margin-bottom:clamp(20px,2.6vw,34px);padding-inline:var(--gutter)}
 .nx-partners-view{direction:ltr;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
 .nx-partners-track{display:flex;width:max-content;direction:ltr;animation:nxPartners var(--dur,48s) linear infinite}
-.nx-partners-view:hover .nx-partners-track{animation-play-state:paused}
+.nx-partners-view:hover .nx-partners-track,.nx-partners-view.is-paused .nx-partners-track{animation-play-state:paused}
 .nx-partners-list{display:flex;align-items:center;gap:clamp(18px,2vw,32px);padding-inline-end:clamp(18px,2vw,32px);margin:0;padding-inline-start:0;list-style:none;flex-shrink:0}
 /* hər loqo açıq "lövhə" üzərində: naxış loqonun altından oxunmağı pozmasın */
-.nx-partners-list li{flex-shrink:0;display:flex;align-items:center;justify-content:center;height:calc(92px * var(--k,1));padding-inline:calc(34px * var(--k,1));background:rgba(252,249,243,.9);border:1px solid rgba(139,106,69,.18);border-radius:14px;box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 6px 18px -10px rgba(74,52,28,.35);transition:transform .4s var(--ease),box-shadow .4s}
+.nx-partners-list li{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:calc(210px * var(--k,1));height:calc(92px * var(--k,1));padding-inline:calc(22px * var(--k,1));background:rgba(252,249,243,.92);border:1px solid rgba(139,106,69,.18);border-radius:14px;box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 6px 18px -10px rgba(74,52,28,.35);transition:transform .4s var(--ease),box-shadow .4s}
 /* --h: hər loqonun optik hündürlüyü (enli loqolar alçaq, kvadrata yaxınlar hündür) */
-.nx-partners-list img{display:block;height:calc(var(--h,40px) * var(--k,1));width:auto}
-/* öz fonu olan loqolar: lövhəni bütöv doldurur */
-.nx-partners-list li.is-fill{padding:0;overflow:hidden;background:none}
-.nx-partners-list li.is-fill img{height:100%}
+.nx-partners-list img{display:block;height:auto;width:auto;max-height:calc(var(--h,40px) * var(--k,1));max-width:100%}
+/* loqolar əvvəlcə sakit boz tonda, üzərinə gələndə öz rənginə keçir; toxunma ekranlarında həmişə rənglidir */
+@media(hover:hover){
+  .nx-partners-list img{filter:grayscale(1) brightness(.62) contrast(1.7) sepia(.15);opacity:.78;transition:filter .45s var(--ease),opacity .45s var(--ease)}
+  .nx-partners-list li:hover img{filter:none;opacity:1}
+}
 @media(max-width:760px){.nx-partners-list{--k:.72}}
 .nx-partners-list li:hover{transform:translateY(-3px);box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 12px 24px -12px rgba(74,52,28,.45)}
 @keyframes nxPartners{from{transform:translateX(-50%)}to{transform:translateX(0)}}
@@ -1462,21 +1464,21 @@ input:checked+.lm{border-color:var(--dark);background:rgba(255,255,255,.12);box-
   <!-- ƏMƏKDAŞLAR: loqo zolağı ─────────────────────────────
        Loqo əlavə etmək / dəyişmək: media/partners/ qovluğuna fayl qoy,
        aşağıdakı siyahıya <li><img ...></li> sətri əlavə et. Dövr üçün kopya JS ilə yaranır. -->
-  <section class="nx nx-partners" aria-label="Əməkdaşlıq etdiyimiz şirkətlər">
+  <section class="nx nx-partners" aria-label="Bizə etibar edən məkanlar">
     <div class="nx-partners-bg" aria-hidden="true"></div>
-    <div class="nx-partners-head"><p class="nx-label r"><span>Əməkdaşlıq etdiyimiz şirkətlər</span></p></div>
+    <div class="nx-partners-head"><p class="nx-label r"><span>Bizə etibar edən məkanlar</span></p></div>
     <div class="nx-partners-view">
       <div class="nx-partners-track">
         <ul class="nx-partners-list">
-          <li><img src="media/partners/lioness.webp" alt="Lioness Aza Studio" width="161" height="200" style="--h:78px"></li>
-          <li class="is-fill"><img src="media/partners/pivbar.webp" alt="Pivbar Baku" width="287" height="200"></li>
-          <li class="is-fill"><img src="media/partners/mocca.webp" alt="Mocca" width="247" height="200"></li>
-          <li class="is-fill"><img src="media/partners/zloy.webp" alt="Zloy Coffee" width="300" height="200"></li>
-          <li><img src="media/partners/seven.webp" alt="Seven Pub" width="201" height="200" style="--h:72px"></li>
-          <li><img src="media/partners/casa.webp" alt="CASA — Culinary Arts Center of Azerbaijan" width="689" height="200" style="--h:44px"></li>
-          <li class="is-fill"><img src="media/partners/ethno.webp" alt="Ethno Restaurant" width="355" height="200"></li>
-          <li><img src="media/partners/gastro.webp" alt="The Gastro Gourmet" width="779" height="200" style="--h:40px"></li>
-          <li class="is-fill"><img src="media/partners/coffeebag.webp" alt="Coffeebag" width="329" height="200"></li>
+          <li><img src="media/partners/lioness.webp" alt="Lioness Aza Studio" width="625" height="240" style="--h:50px"></li>
+          <li><img src="media/partners/pivbar.webp" alt="Pivbar Baku" width="411" height="240" style="--h:52px"></li>
+          <li><img src="media/partners/mocca.webp" alt="Mocca" width="407" height="240" style="--h:54px"></li>
+          <li><img src="media/partners/zloy.webp" alt="Zloy Coffee" width="396" height="240" style="--h:54px"></li>
+          <li><img src="media/partners/seven.webp" alt="Seven Pub" width="241" height="240" style="--h:64px"></li>
+          <li><img src="media/partners/casa.webp" alt="CASA — Culinary Arts Center of Azerbaijan" width="826" height="240" style="--h:40px"></li>
+          <li><img src="media/partners/ethno.webp" alt="Ethno Restaurant" width="530" height="240" style="--h:48px"></li>
+          <li><img src="media/partners/gastro.webp" alt="The Gastro Gourmet" width="935" height="240" style="--h:38px"></li>
+          <li><img src="media/partners/coffeebag.webp" alt="Coffeebag" width="815" height="240" style="--h:40px"></li>
         </ul>
       </div>
     </div>
@@ -2604,6 +2606,9 @@ ham.addEventListener('click',()=>{
   track.appendChild(copy);
   /* sürət sabit qalsın: ~45px/san, loqo sayından asılı olmayaraq */
   track.style.setProperty('--dur',Math.max(30,list.scrollWidth/45)+'s');
+  /* toxunma ekranında: zolağa toxunanda dayanır, yenidən toxunanda davam edir */
+  const view=track.parentElement;
+  view.addEventListener('click',e=>{if(matchMedia('(hover: none)').matches)view.classList.toggle('is-paused')});
 })();
 </script>
 <script>
