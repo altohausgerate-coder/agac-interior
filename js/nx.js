@@ -162,6 +162,17 @@
     mio.observe(map);
   }
 
+  /* şəkillər gec açılmasın: bölmə ekrana ~2 ekran hündürlüyü qədər yaxınlaşanda içindəki "lazy" şəkillər əvvəlcədən yüklənir.
+     Brauzerin öz lazy yükləməsi üfüqi sürüşən kolleksiyada şəkilləri çox gec başladırdı. */
+  var pre = new IntersectionObserver(function (en) {
+    en.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      pre.unobserve(e.target);
+      $$('img[loading="lazy"]', e.target).forEach(function (im) { im.loading = 'eager'; });
+    });
+  }, { rootMargin: '200% 0px' });
+  $$('body > section, body > main > section, section > section, footer').forEach(function (sec) { pre.observe(sec); });
+
   /* haqqımızda: animasiya element ekrana girməmişdən bir az əvvəl başlasın ki, şəkil gec açılmasın */
   var aio = new IntersectionObserver(function (en) {
     en.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); aio.unobserve(e.target); } });
