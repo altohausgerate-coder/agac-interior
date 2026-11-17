@@ -144,7 +144,7 @@ I18N.add({
 "Dekorativ panel · Friez":["Decorative panel · Frieze","Декоративная панель · Фриз","لوح زخرفي · إفريز"],
 "Layihənizi":["Let's start your","Давайте начнём","لنبدأ"],
 "birlikdə başladaq":["project together","ваш проект вместе","مشروعك معاً"],
-"Pulsuz məsləhət üçün bizimlə əlaqə saxlayın. Mütəxəssisimiz ən qısa zamanda sizinlə əlaqə saxlayacaq.":["Contact us for a free consultation. Our specialist will get back to you shortly.","Свяжитесь с нами для бесплатной консультации. Наш специалист скоро ответит.","تواصل معنا للحصول على استشارة مجانية. سيعاود مختصّنا الاتصال بك قريباً."],
+"Ödənişsiz məsləhət üçün bizimlə əlaqə saxlayın. Mütəxəssisimiz ən qısa zamanda sizinlə əlaqə saxlayacaq.":["Contact us for a free consultation. Our specialist will get back to you shortly.","Свяжитесь с нами для бесплатной консультации. Наш специалист скоро ответит.","تواصل معنا للحصول على استشارة مجانية. سيعاود مختصّنا الاتصال بك قريباً."],
 "Telefon":["Phone","Телефон","الهاتف"],
 "E-poçt":["Email","Эл. почта","البريد الإلكتروني"],
 "Ünvan":["Address","Адрес","العنوان"],
