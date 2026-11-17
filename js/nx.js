@@ -181,12 +181,13 @@
 
   /* haqqımızda: şəkillər scroll ilə müxtəlif sürətdə sürüşür (parallaks) */
   if (gsap && ST && !reduced) {
-    [['.nx-about-img img', -7, 7], ['.nx-about-img2 img', 10, -10]].forEach(function (c) {
+    [['.nx-about-img img', -6, 6], ['.nx-about-img2 img', 6, -6]].forEach(function (c) {
       var el = $(c[0]);
       if (el) gsap.fromTo(el, { '--py': c[1] + '%' }, { '--py': c[2] + '%', ease: 'none', scrollTrigger: { trigger: el.parentNode, start: 'top bottom', end: 'bottom top', scrub: true } });
     });
     var img2 = $('.nx-about-img2');
-    if (img2) gsap.fromTo(img2, { y: 70 }, { y: -50, ease: 'none', scrollTrigger: { trigger: '.nx-about', start: 'top bottom', end: 'bottom top', scrub: true } });
+    // yalnız iki sütunlu düzülüşdə: mobil-də şəkil yuxarıdakı mətnin üstünə çıxırdı
+    if (img2 && matchMedia('(min-width: 1101px)').matches) gsap.fromTo(img2, { y: 70 }, { y: -50, ease: 'none', scrollTrigger: { trigger: '.nx-about', start: 'top bottom', end: 'bottom top', scrub: true } });
   }
 
   /* iş prosesi: yandakı şəkil görünən addımı izləyir */
