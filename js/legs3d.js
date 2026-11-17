@@ -202,46 +202,6 @@ const FINISH = {
   chrome: { color: 0xf0f1f2, metalness: 1, roughness: 0.05, env: 1.15 },
 };
 
-/* ---------- walnut for the top ---------- */
-function noise2(seed) {
-  const p = new Uint8Array(512);
-  const r = Array.from({ length: 256 }, (_, i) => i);
-  let s = seed;
-  for (let i = 255; i > 0; i--) { s = (s * 16807) % 2147483647; const j = s % (i + 1); [r[i], r[j]] = [r[j], r[i]]; }
-  for (let i = 0; i < 512; i++) p[i] = r[i & 255];
-  const f = (t) => t * t * (3 - 2 * t);
-  return (x, y) => {
-    const xi = Math.floor(x), yi = Math.floor(y);
-    const u = f(x - xi), v = f(y - yi);
-    const h = (i, j) => p[p[(xi + i) & 255] + ((yi + j) & 255)] / 255;
-    return (h(0, 0) * (1 - u) + h(1, 0) * u) * (1 - v) + (h(0, 1) * (1 - u) + h(1, 1) * u) * v;
-  };
-}
-function walnut() {
-  const W = 768, Hc = 768; // covers 2 × 2 m
-  const c = document.createElement('canvas');
-  c.width = W; c.height = Hc;
-  const ctx = c.getContext('2d');
-  const img = ctx.createImageData(W, Hc);
-  const n1 = noise2(11), n2 = noise2(23), n3 = noise2(41);
-  const fbm = (n, x, y) => n(x, y) * 0.55 + n(x * 2.1, y * 2.1) * 0.3 + n(x * 4.3, y * 4.3) * 0.15;
-  for (let v = 0; v < Hc; v++) {
-    const y = (v / Hc - 0.5) * 2;
-    for (let u = 0; u < W; u++) {
-      const x = (u / W - 0.5) * 2;
-      const g = y * 13 + fbm(n1, x * 0.8 + 3, y * 1.6) * 7 + fbm(n2, x * 2.6, y * 5) * 1.4;
-      const ring = 0.5 + 0.5 * Math.sin(g * Math.PI * 2);
-      const tone = Math.min(1, Math.max(0, (fbm(n3, x * 1.4, y * 5) - 0.3) * 1.6));
-      const late = Math.pow(1 - ring, 4) * 0.3 + Math.pow(1 - ring, 14) * 0.22;
-      const pore = 1 - n2(x * 90, y * 900) * 0.1;
-      const k = (1 - late) * pore;
-      const i = (v * W + u) * 4;
-      img.data[i] = (62 + 72 * tone) * k; img.data[i + 1] = (39 + 46 * tone) * k; img.data[i + 2] = (25 + 26 * tone) * k; img.data[i + 3] = 255;
-    }
-  }
-  ctx.putImageData(img, 0, 0);
-  return c;
-}
 function topGeo(t) {
   const s = new THREE.Shape();
   if (t.shape === 'round') s.absarc(0, 0, t.r, 0, Math.PI * 2, false);
@@ -312,7 +272,8 @@ function legs(sec, { reduced }) {
   const metal = new THREE.MeshStandardMaterial({ clippingPlanes: clip, clipShadows: true });
   const setFinish = (f) => { metal.color.setHex(f.color); metal.metalness = f.metalness; metal.roughness = f.roughness; metal.envMapIntensity = f.env; };
 
-  const map = new THREE.CanvasTexture(walnut());
+  // walnut grain, pre-rendered from the old procedural fbm generator (drawing it here froze the page for ~150 ms)
+  const map = new THREE.TextureLoader().load('media/agach/walnut.webp');
   map.colorSpace = THREE.SRGBColorSpace;
   map.wrapS = map.wrapT = THREE.RepeatWrapping;
   map.repeat.set(0.5, 0.5);
